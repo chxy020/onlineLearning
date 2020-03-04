@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>晋安安全-登录</title>
+    <link rel="stylesheet" charset="utf-8" href="../css/reset.css">
+    <link rel="stylesheet" charset="utf-8" href="../css/reg.css">
+
+    <script type="text/javascript" src="../libs/jquery/jquery-1.12.4.min.js" ></script>
+	<script type="text/javascript" src="../libs/jquery/jquery_ex.js" ></script>
+	<script type="text/javascript" src="../libs/layer-v2.2/layer/layer.js"></script>
+	<script type="text/javascript" src="../libs/utils.js"></script>
+    <script type="text/javascript" src="../libs/base.js"></script>
+    
+</head>
+<body class="bodybg">
+    <div class="login_content clearfix">
+        <!-- <form action="" method=""> -->
+            <div class="login_box">
+                <div class="title clearfix">
+                    <span class="myfl"></span><h1 class="myfl">晋安安全</h1><span class="myfr"></span>
+                </div>
+                <p class="system_error"></p><!-- 点击登录 错误提示 例：$("system_error").append("用户名或密码错误!");-->
+                <input type="text" name="username" value="" placeholder="手机号或身份证号" id="username"/>
+                <p class="input_error"><span id="usernamemsg"></span></p><!--失去焦点时的错误提示-->
+                <input type="password" placeholder="密码" id="password" name="password" maxlength="16" value=""/>
+                <p class="input_error"><span id="passwordmsg"></span></p><!-- 失去焦点时的错误提示 -->
+                <p class="forget_password clearfix"><a href="../reg/register_cg.html" class="">立即注册</a><a href="" class="myfr">忘记密码？</a></p>
+                <input type="submit" id="subbtn" value="立即登录" class="submit_btn">
+            </div>
+        <!-- </form> -->
+    </div>
+
+    <script type="text/javascript" src="js/login.js"></script>
+</body>
+</html>

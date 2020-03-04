@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注安考前培训注册</title>
+    <link rel="stylesheet" charset="utf-8" href="../css/reset.css">
+    <link rel="stylesheet" charset="utf-8" href="../css/reg.css">
+
+    <script type="text/javascript" src="../libs/jquery/jquery-1.12.4.min.js" ></script>
+	<script type="text/javascript" src="../libs/jquery/jquery_ex.js" ></script>
+	<script type="text/javascript" src="../libs/layer-v2.2/layer/layer.js"></script>
+	<script type="text/javascript" src="../libs/utils.js"></script>
+	<script type="text/javascript" src="../libs/base.js"></script>
+</head>
+<body class="bodybg">
+    <div class="login_content clearfix">
+        <!-- <form action="" method=""> -->
+            <div class="login_box register_person">
+                <div class="title clearfix">
+                    <span class="myfl"></span><h1 class="myfl">晋安安全</h1><span class="myfr"></span>
+                </div>
+                <p class="rg_cg_ti">注安考前培训注册</p>
+                <p class="system_error"></p>
+
+                <!-- 姓名 -->
+                <input type="text" name="name" value="" placeholder="请输入姓名" id="name"/>
+                <p class="input_error"><span></span></p>
+                <!-- 单位 -->
+                <input type="text" name="comname" value="" placeholder="请输入单位" id="comname"/>
+                <p class="input_error"><span></span></p>
+                <!-- 联系方式 -->
+                <input type="text" name="username" value="" placeholder="请输入联系方式" id="username"/>
+                <p class="input_error"><span></span></p>
+                <!-- 培训级别（初级，中级） -->
+                <input type="text" name="traininglevel" value="" placeholder="请输入培训级别（初级，中级）" id="traininglevel"/>
+                <p class="input_error"><span></span></p>
+                <!-- 同意条款 -->
+                <div class="my_agreement">
+                    <input type="checkbox" id="agreeck" name="agreement" value="1" checked>我已阅读并同意
+                     <a href="" target="_blank">《晋安注安培训服务条款》</a>
+                </div>
+                <!-- 点击注册 错误提示-->
+                <p class="system_error"></p>
+                <input type="submit" id="subbtn" value="注册" class="submit_btn">
+            </div>
+        <!-- </form> -->
+    </div>
+
+    <script type="text/javascript" src="js/register_training.js"></script>
+</body>
+</html>

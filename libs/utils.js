@@ -86,63 +86,6 @@ else{
 		return guid;
 	};
 
-	//判断手机平台
-	//手机平台
-	var mobilePlatform = {
-		android: /android/i.test(navigator.userAgent),
-		ipad: /ipad/i.test(navigator.userAgent),
-		iphone: /iphone/i.test(navigator.userAgent),
-		wphone: /Windows Phone/i.test(navigator.userAgent)
-	};
-
-	function getPlatform(){
-		var plat = "";
-		plat = mobilePlatform.android && "android";
-		if(plat === false){
-			plat = mobilePlatform.ipad && "ipad";
-		}
-		if(plat === false){
-			plat = mobilePlatform.iphone && "iphone";
-		}
-		if(plat === false){
-			plat = mobilePlatform.wphone && "Windows Phone";
-		}
-		return plat;
-	};
-
-	//判断是否移动平台true/false
-	function isMobile(){
-		var plat = false;
-		var mobilePlatform = {
-			android: /android/i.test(navigator.userAgent),
-			ipad: /ipad/i.test(navigator.userAgent),
-			iphone: /iphone/i.test(navigator.userAgent),
-			wphone: /Windows Phone/i.test(navigator.userAgent)
-		};
-		plat = mobilePlatform.android || mobilePlatform.ipad || mobilePlatform.iphone || mobilePlatform.wphone;
-		return plat;
-	}
-
-	//判断是否为微信浏览器
-	function isWeiXin(){
-		var ua = window.navigator.userAgent.toLowerCase();
-		if(ua.match(/MicroMessenger/i) == 'micromessenger'){
-			return true;
-		}else{
-			return false;
-		}
-	}
-
-	//判断是否为微博浏览器
-	function isWeiBo(){
-		var ua = window.navigator.userAgent.toLowerCase();
-		if(ua.match(/weibo/i) == 'weibo'){
-			return true;
-		}else{
-			return false;
-		}
-	}
-
 	//根据秒换算天/小时/分钟/秒
 	function secondToDate(second){
 		if(second >= 0){
@@ -585,17 +528,17 @@ else{
 	};
 	
 	var loadid = "";
-	function load(shadeClose){
+	function load(closeTime,shadeClose){
 		if(typeof layer !== "undefined"){
 			//采用layer弹层
-			loadid = layer.open({
-				type:2,
+			loadid = layer.load(2,{
+				time: closeTime || 10*1000,
 				//点击遮罩关闭弹层
 				shadeClose:shadeClose || false
 			});
 		}
 		else{
-			alert(msg);
+			alert("no layer");
 		}
 	}
 	
@@ -607,9 +550,6 @@ else{
 			else{
 				layer.closeAll();
 			}
-		}
-		else{
-			
 		}
 	}
 	
@@ -633,19 +573,7 @@ else{
 		return (((sign)?'':'-') + num);
 	}
 
-	function changeTitle(title){
-		document.title = title;
-		//修复微信
-		if(isWeiXin() && mobilePlatform.iphone){
-			var $body = $('body');
-			// hack在微信等webview中无法修改document.title的情况
-			var $iframe = $('<iframe src="/favicon.ico"></iframe>').on('load', function() {
-				setTimeout(function() {
-					$iframe.off('load').remove();
-				}, 0);
-			}).appendTo($body);
-		}
-	}
+	
 
 	//验证全是数字
 	function isNumber(val){
@@ -704,7 +632,6 @@ else{
 	Utils.getClientHeight = getClientHeight;
 	Utils.getScrollHeight = getScrollHeight;
 	
-	Utils.changeTitle = changeTitle;
 	Utils.formatCurrency = formatCurrency;
 	Utils.imageLoaded = imageLoaded;
 	Utils.secondToDate = secondToDate;
@@ -715,10 +642,6 @@ else{
 	Utils.getGuid = getGuid;
 	Utils.httpTip = httpTip;
 	
-	Utils.getPlatform = getPlatform;
-	Utils.isMobile = isMobile;
-	Utils.isWeiXin = isWeiXin;
-	Utils.isWeiBo = isWeiBo;
 	
 }(window));
 

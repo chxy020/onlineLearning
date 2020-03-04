@@ -21,32 +21,10 @@ if(typeof(jQuery) != "undefined"){
 				$(this).css('visibility', 'hidden');
 			});
 		},
-		onbind: function( type,fn, scope,date ) {
-			var browser = {"tap":"click","touchstart":"mousedown","touchmove":"mousemove","touchend":"mouseup","doubleTap":"dblclick","longTap":"dblclick"};
-			var agent = navigator.userAgent.toLowerCase();
-			var i = agent.indexOf("android");
-			var j = agent.indexOf("iphone");
-			var evt = type;
-			if(i == -1 && j == -1){
-				evt = browser[type];
-			}
-			if(evt == undefined){
-				evt = type;
-			}
-			return  $(this).bind(evt,date, $.proxy(fn,scope));
+		onbind: function(evt,fn,scope,date) {
+			return  $(this).bind(evt,date,$.proxy(fn,scope));
 		},
-		rebind:function(type,fn, scope,date ) {
-			var browser = {"tap":"click","touchstart":"mousedown","touchmove":"mousemove","touchend":"mouseup","doubleTap":"dblclick","longTap":"dblclick"};
-			var agent = navigator.userAgent.toLowerCase();
-			var i = agent.indexOf("android");
-			var j = agent.indexOf("iphone");
-			var evt = type;
-			if(i == -1 && j == -1){
-				evt = browser[type];
-			}
-			if(evt == undefined){
-				evt = type;
-			}
+		rebind:function(evt,fn,scope,date) {
 			//解除绑定
 			$(this).unbind(evt);
 			return  $(this).bind(evt,date, $.proxy(fn,scope));
@@ -75,20 +53,17 @@ if(typeof(jQuery) != "undefined"){
 				}
 			}
 			else{
-				//调用jquery-ajax请求
-				//标示,返回Access-Control-Allow-Origin头,
-				option.data = option.data || {};
-				//上行统一标示
-				var dd = option.data.data || "";
-				if(dd !== ""){
-					var reqkey = option.data.data.reqkey || "";
-					if(reqkey === ""){
-						reqkey = Utils.getGuid();
-						option.data.data.reqkey = reqkey;
+
+				var url = option.url;
+				var ignoreToken = ['login', 'regist'];
+				var needToken = ignoreToken.filter(u => url.match(u));
+				if(!needToken.length){
+					option.beforeSend = function(req){
+						req.setRequestHeader('Authentication', Base.token);
 					}
 				}
-				//option.data.rtype = 1;
-				
+
+				option.contentType='multipart/form-data';
 				$.ajax(option);
 			}
 		}

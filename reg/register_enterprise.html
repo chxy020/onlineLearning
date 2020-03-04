@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>继续教育企业注册</title>
+    <link rel="stylesheet" charset="utf-8" href="../css/reset.css">
+    <link rel="stylesheet" charset="utf-8" href="../css/reg.css">
+
+    <script type="text/javascript" src="../libs/jquery/jquery-1.12.4.min.js" ></script>
+	<script type="text/javascript" src="../libs/jquery/jquery_ex.js" ></script>
+	<script type="text/javascript" src="../libs/layer-v2.2/layer/layer.js"></script>
+	<script type="text/javascript" src="../libs/utils.js"></script>
+	<script type="text/javascript" src="../libs/base.js"></script>
+</head>
+<body class="bodybg">
+    <div class="login_content clearfix">
+        <!-- <form action="" method=""> -->
+            <div class="login_box register_person">
+                <div class="title clearfix">
+                    <span class="myfl"></span><h1 class="myfl">晋安安全</h1><span class="myfr"></span>
+                </div>
+                <p class="rg_cg_ti">继续教育企业注册</p>
+                <p class="system_error"></p>
+
+                <!-- 手机号 -->
+                <input type="text" name="username" value="" placeholder="请输入手机号" id="username"/>
+                <p class="input_error"><span></span></p><!--失去焦点时的错误提示-->
+                <!-- 验证码 -->
+                <div class="photo_code clearfix">
+                    <input type="text" class="myfl" name="captchaCode" placeholder="请输入验证码" maxlength="4"/>
+                    <p class="input_error"><span></span></p><!--失去焦点时的错误提示-->
+                    <img src="data:image/png;base64,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" class="myfr"/>
+                </div>
+                <!-- 短信验证码 -->
+                <div class="clearfix message_code_box">
+                    <input type="text" class="message_code myfl" name="validCode" maxlength="6" placeholder="请输入短信验证码" value=""/>
+                    <p class="input_error"><span></span></p><!--失去焦点时的错误提示-->
+                    <a href="javascript:;" class="message_code_btn">发送验证码</a>
+                    <span class="message_code_again"><em>60</em>秒重发</span>
+                </div>
+                <!-- 企业名 -->
+                <input type="text" name="comname" value="" placeholder="请输入企业名" id="comname" />
+                <p class="input_error"><span id="comnamemsg"></span></p>
+                <!-- 姓名 -->
+                <input type="text" name="name" value="" placeholder="请输入姓名" id="name" />
+                <p class="input_error"><span id="namemsg"></span></p>
+                <!-- 密码 -->
+                <input type="password" placeholder="请输入您的密码" id="password1" name="password" maxlength="16" value=""/>
+                <p class="input_error"><span></span></p>
+                <!-- 重复密码 -->
+                <input type="password" placeholder="请重复您的密码" id="password2" name="password" maxlength="16" value=""/>
+                <p class="input_error"><span id="password2msg"></span></p>
+                <!-- 企业邮箱 -->
+                <input type="text" name="email" value="" placeholder="请输入企业邮箱" id="email"/>
+                <p class="input_error"><span id="emailmsg"></span></p>
+                <!-- 同意条款 -->
+                <div class="my_agreement">
+                    <input type="checkbox" id="agreeck" name="agreement" value="1" checked>我已阅读并同意
+                     <a href="" target="_blank">《晋安注安培训服务条款》</a>
+                </div>
+                <!-- 点击注册 错误提示-->
+                <p class="system_error"></p>
+                <input type="submit" id="subbtn" value="注册" class="submit_btn">
+            </div>
+        <!-- </form> -->
+    </div>
+
+    <script type="text/javascript" src="js/register_enterprise.js"></script>
+</body>
+</html>

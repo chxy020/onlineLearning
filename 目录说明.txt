@@ -1,0 +1,13 @@
+config -- 自动化预留
+css -- 样式文件
+img -- 图片资源
+js -- 预留js文件夹
+layout -- 网页布局结构预留
+libs -- js公共库,插件
+
+
+login -- 模块
+reg  -- 模块
+
+shtml -- 初始静态模板文件
+
