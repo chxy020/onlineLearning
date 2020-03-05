@@ -1,0 +1,46 @@
+/*index.html*/
+.textC{text-align: center;}
+.mt25mb55{padding-top: 55px;padding-bottom: 65px;}
+.mt50mb55{padding-top: 60px;padding-bottom: 60px;}
+/*---------头部-----------*/
+.w1190{width: 1190px;margin: 0 auto;}
+.head_content{background:#fff;border-bottom: 2px solid #00a0e9;color: #000;font-size: 15px;height: 80px;line-height: 80px;}
+.head_logo{float:left;color: #00a0e9;font-size: 18px;}
+.head_list{float:right;}
+.head_list ul li{float:left;padding: 0 15px;}
+.head_list ul li a{color: #000;font-size: 16px;}
+.head_list ul li.on a,.head_list ul li a:hover{color: #00a0e9;}
+.head_list ul li.dl a{display: block;font-size: 12px;width: 47px;text-align: center;color: #00a0e9;background: url("../img/login-icon.png") no-repeat center;}
+.head_list ul li.dl span{display: block;text-align: center;color: #5c5c5c;cursor:pointer}
+/*---------头部 end-----------*/
+/*---------课程列表 -----------*/
+.moco-course-list {margin: 0 0 0 -22px;padding-bottom: 20px;}
+.course-card-container {width: 281px;position: relative;transition: .3s all linear;float: left;margin: 0 0 22px 22px;z-index: 0;font-size: 0;}
+.course-card-container a{display: block;}
+.course-card-container a img{width: 281px;background-color: #f3f5f7;border-radius: 8px;}
+.course-card-container a p{margin-top: 10px;font-size: 16px;color: #444;line-height: 24px;word-wrap: break-word;overflow: hidden;text-overflow: ellipsis;/* font-weight: 700; */height: 46px;}
+.course-card-container a:hover p{color: #00a0e9;}
+/*------------------footer---------------*/
+.footer{background:#fff;border-top:1px solid #e1e1e1;padding: 30px 0;}
+.footer p{font-size: 13px;color: #999;text-align: center;line-height: 24px;}
+/*------------------banner---------------*/
+.dpt_banner { width:100%; height:500px; overflow:hidden; }
+.c1006-row2-left { width:100%; height:500px; overflow:hidden; }
+.c1006-row2-left-con { width: 1920px; height: 500px; margin: 0 auto 0 -960px; position: relative; left: 50%; overflow: hidden; z-index: 4; }
+.c1006-row2-left .slideCon { width: 100%; height: 500px; }
+.c1006-row2-left .slideCon ul { width: 1920px; height: 500px; }
+.c1006-row2-left .slideCon ul li.on { display: block; }
+.c1006-row2-left .slideCon ul li { width: 100%; height: 100%; position:absolute; left: 0; top: 0; display: none; }
+.c1006-row2-left .slideCon ul li a { width: 1920px; height: 500px; display: block; cursor:pointer; }
+.c1006-row2-left .slideCon ul li img { width: 100%; height: 100%; }
+.c1006-row2-left .slideCon .slidtTab { height: 4px; margin-left: -90px; position: absolute; top:475px; left: 50%; z-index: 10; }
+.c1006-row2-left .slideCon .slidtTab span { width:26px; height:4px; background:#64686a; display:block; float:left; margin-right: 10px; font-size: 0; cursor:pointer; }
+.c1006-row2-left .slideCon .slidtTab .on { width:26px; height:4px; background:#fff; display:block; float:left; margin-right: 10px; font-size: 0 }
+/* 左右按钮 star */
+.row0-btnLeft, .row0-btnRight { width: 28px; height: 42px; line-height: 42px; margin-top: -30px; position: absolute; top: 50%; z-index: 999; cursor: pointer; display:none; }
+.row0-btnLeft { left: 370px; background:url(../img/row0-btnLeft.png) no-repeat center top; }
+.row0-btnRight { right: 365px; background:url(../img/row0-btnRight.png) no-repeat center top; }
+.row0-btnLeft:hover { transition:0.3s; background:url(../img/row0-btnLeft.png) no-repeat center bottom; }
+.row0-btnRight:hover { transition:0.3s; background:url(../img/row0-btnRight.png) no-repeat center bottom; }
+/* 左右按钮 over */
+/*------------------banner end---------------*/

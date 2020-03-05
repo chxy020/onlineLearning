@@ -38,3 +38,48 @@ i{font-style: normal;}
 .def{cursor: default;}
 .laquCopy img{margin-top: 15px}
 .pink{color: #ff366f}
+/*-----------------下拉菜单样式-------------------*/
+.w310{width: 310px;}
+.tzSelect {font-size: 14px;text-indent: 6px;height: 30px; +margin-bottom: 0; display: inline-block; +display: inline; +zoom: 1; background-color: #fff; position: relative; text-align: left; font-weight:normal; vertical-align: middle;}
+.tzSelect .selectBox {overflow: hidden; text-overflow: ellipsis; white-space: nowrap; position: absolute; bottom: 0; top: 0; left: 0; right: 0; line-height: 28px; font-family: "Microsoft Yahei", "Hiragino Sans GB"; text-align: left; color: #666; cursor: pointer; border: 1px solid #ccc;border-radius: 4px;background-color: #FFF; padding: 0 22px 0 8px; background: #FFF;}
+.tzSelect .selectBox.expanded {color: #333; background: #FFF;}
+.tzSelect .dropDown {position: absolute; top: 29px; left: 0; right: 0px; border: 1px solid #ccc; list-style: none; z-index: 1000; background-color: #FFF;}
+.tzSelect .icon-down {background: url("../img/arrdown.png") no-repeat center;position: absolute;right: 10px;top: 9px;height: 10px;width: 14px; pointer-events: none;}
+.tzSelect li {background-color: #fff; word-break: break-all; line-height: 120%; cursor: pointer; padding: 3px 8px 4px; text-align: left; font-size: 14px; font-family: "Microsoft Yahei", "Hiragino Sans GB"; color:#666}
+.tzSelect li:hover {background-color:#92dcff;color:#fff;}
+.w98 {width: 98px !important;}
+.wauto {width: auto !important; padding: 0 15px;}
+.hauto {height: auto !important;}
+.wautoa {width: auto !important;}
+.H-overF300 .tzSelect .dropDown {height: 300px; overflow: auto; overflow-x: hidden;}
+/*select36 下拉框36高　28*/
+.tzSelect36 {margin-left:20px}
+.tzSelect36 .tzSelect {height: 48px !important;}
+.tzSelect36 .tzSelect .selectBox {line-height: 46px !important;}
+.tzSelect36 .tzSelect .dropDown {top: 48px !important;}
+.tzSelect36 .tzSelect li {padding:16px 8px !important;color:#666}
+.tzSelect36 .tzSelect li:hover {background-color:#f1f1f1;color:#111;}
+.tzSelect36 .tzSelect .icon-down {top: 18px;}
+/*--------------------表单单选框、复选框美化--------------------*/
+.custom_checkbox, .custom_radio { position:relative; }
+.custom_checkbox input { position:absolute; left:7px; top:6px; margin:0; }
+.custom_checkbox label { display:block;
+     /* height:24px; line-height:26px; */
+      position:relative; padding:0 0 0 28px; cursor:pointer; }
+.custom_checkbox label { background:url(../img/checkbox.png) no-repeat; }
+.custom_radio label { background:url(../img/radiobutton.png) no-repeat; }
+.custom_checkbox label, .custom_radio label { background-position:-10px -15px; }
+.custom_checkbox label.hover, .custom_checkbox label.focus, .custom_radio label.hover, .custom_radio label.focus { background-position:-10px -115px; }
+.custom_checkbox label.checked, .custom_radio label.checked { background-position:-10px -216px; }
+.custom_checkbox label.c_disabled { background-position:-10px -415px; }
+.custom_checkbox label.c_ck_disabled { background-position:-10px -515px; }
+.custom_checkbox label.checkedHover, .custom_checkbox label.checkedFocus { background-position:-10px -316px; }
+.custom_checkbox label.focus, .custom_radio label.focus { outline:none; }
+.custom_checkbox label a { color:#0088ee; height:24px; line-height:24px; display:inline-block }
+.custom_radio input { position:absolute; left:7px; top:6px; margin:0; }
+.custom_radio label { display:block; height:24px; line-height:24px; font-size:14px; position:relative; padding:0 0 0 28px; cursor:pointer; }
+.custom_radio label.c_disabled { background-position:-10px -315px; }
+.custom_radio label.c_ck_disabled { background-position:-10px -415px; }
+.cont_box_all { display:none; }
+.show { display:block; }
+.fl {float: left;display: inline;}
