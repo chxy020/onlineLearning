@@ -31,9 +31,86 @@ PageManager.prototype = {
 			success: function(res){
 				if(res.code == 0){
 					var data = res.data || {};
-					var sildeShow = data.sildeShow || [];
+					var slideShow = data.sildeShow || [];
 					var hot = data.hot || [];
-					
+					this.setSlideImageHtml(slideShow);
+					this.setHotCourseHtml(hot);
+				}else{
+					layer.msg(res.message || "请求错误");
+				}
+			},
+			error:function(res){
+				layer.msg(res.message || "请求错误");
+			}
+		});
+	},
+	setSlideImageHtml:function(data){
+		var images = [];
+		var slidetab = [];
+		for(var i = 0,len = data.length; i < len; i++){
+			var item = data[i] || {};
+			var courseId = item.courseId;
+			var imgSrc = item.imgSrc;
+			if(i == 0){
+				images.push('<li class="on"><a href="#"><img src="' + imgSrc + '"></a></li>');
+				slidetab.push('<span class="on">1</span>');
+			}else{
+				images.push('<li ><a href="#"><img src="' + imgSrc + '"></a></li>');
+				slidetab.push('<span class="">' + (i+1) + '</span>');
+			}
+		}
+		$(".testSlidePics").html(images.join(''));
+		$(".testSlideTabs").html(slidetab.join(''));
+
+		this.slideImageInit();
+	},
+	slideImageInit:function(){
+		$(".testSlide1").slideGradual({
+	        slideCon:".testSlidePics",
+	        tabCon:".testSlideTabs",
+	        btnLeft:".testBtnLeft",
+	        btnRight:".testBtnRight",
+	        fadeInTime:900,
+	        fadeOutTime:1400,
+	        intervalTime:3400
+	    });
+	    $(".testSlide2").slideGradual({
+	        slideCon:".testSlidePics",
+	        tabCon:".testSlideTabs",
+	        fadeInTime:900,
+	        fadeOutTime:1400,
+	        intervalTime:3400
+	    });
+	},
+	setHotCourseHtml:function(data){
+		var html = [];
+		for(var i = 0,len = data.length; i < len; i++){
+			var id = data[i].hotCourse;
+			html.push('<div id="course_' + id + '" class="course-card-container">');
+			html.push('<a target="_blank" href="" class="course-card">');
+			html.push('<img id="course_img_' + id + '" src="img/keimg1.png" style="width:240px;height:135px;">');
+			html.push('<p id="course_title_' + id + '" >热门课程</p>');
+			html.push('</a>');
+			html.push('</div>');
+		}
+		
+		$("#hotcourse").html(html.join(''));
+
+		for(var j = 0, len2 = data.length; j < len2; j++){
+			this.getHotCourseInfoHttp(data[j].hotCourse);
+		}
+	},
+
+	getHotCourseInfoHttp:function(id){
+		var url = Base.serverUrl + "/home/"+id;
+		var condi = {};
+		$.Ajax({
+			url:url,type:"POST",data:condi,dataType:"json",context:this,global:false,
+			success: function(res){
+				if(res.code == 0){
+					var data = res.data || {};
+					$("#course_img_" + id).attr("src",data.courseImg);
+					$("#course_title_" + id).html(data.classTitle);
 				}else{
 					layer.msg(res.message || "请求错误");
 				}
