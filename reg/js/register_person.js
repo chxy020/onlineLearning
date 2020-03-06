@@ -11,13 +11,13 @@ PageManager.prototype = {
 		this.bindEvent();
 	},
 	bindEvent:function(){
-		$("#subbtn").onbind("click",this.setReg,this);
+		$("#regFormBtn02").onbind("click",this.setReg,this);
 	},
 	pageLoad:function(){
 	},
 	//注册
 	setReg:function(evt){
-
+		
 		var username = $("#username").val().trim() || "";
 		var vcode = $("#vcode").val().trim() || "";
 		var name = $("#name").val().trim() || "";
@@ -30,7 +30,7 @@ PageManager.prototype = {
 			return;
 		}
 
-		var agreeck = $("#agreeck").is(":checked");
+		var agreeck = $("#checkbox-1").is(":checked");
 
 		if(!agreeck){
 			layer.msg('请阅读服务条款');
@@ -38,11 +38,8 @@ PageManager.prototype = {
 		}
 		
 		
-		console.log(username,name,idcard,password1,password2,agreeck)
-		
 		var condi = {};
 		condi.username = username;
-		condi.vcode = vcode;
 		condi.name = name;
 		condi.idcard = idcard;
 		condi.password = password2;
@@ -50,9 +47,8 @@ PageManager.prototype = {
 		//注册
 		this.sendRegHttp(condi);
 	},
-	//跳转到登录
-	loginBtnUp:function(evt){
-		history.go(-1);
+	gotoLogin:function(evt){
+		location.href = "../login/login.html";
 	},
 	
 	//发送获取验证码http请求
@@ -102,16 +98,19 @@ PageManager.prototype = {
 	sendRegHttp:function(condi){
 		
 		Utils.load();
-		var url = Base.serverUrl + "/regisat";
+		var url = Base.serverUrl + "/regist";
 		
 		$.Ajax({
 			url:url,type:"POST",data:condi,dataType:"json",context:this,global:false,
 			success: function(res){
-				Utils.loadClose();
+				layer.msg(res.message || "注册成功");
+				var t = this;
+				setTimeout(function(){
+					t.gotoLogin();
+				},1200);
 			},
 			error:function(res){
-				console.error(res);
-				layer.msg("注册错误");
+				layer.msg(res.message || "注册错误");
 			}
 		});
 	}

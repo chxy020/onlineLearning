@@ -13,14 +13,8 @@ PageManager.prototype = {
 	},
 	bindEvent:function(){
 		$("#subbtn").onbind("click",this.setLogin,this);
-		$("#password").onbind("keydown",this.keyDown,this);
 	},
 	pageLoad:function(){
-	},
-	keyDown:function(evt){
-		if(evt.keyCode == 13){
-			this.setLogin();
-		}
 	},
 	//登录
 	setLogin:function(evt){
@@ -35,9 +29,9 @@ PageManager.prototype = {
 		//登录
 		this.sendLoginHttp(condi);
 	},
-	//跳转到首页
-	gotoIndex:function(evt){
-		location.href = "../index.html";
+	//跳转到登录
+	loginBtnUp:function(evt){
+		history.go(-1);
 	},
 	
 	//注册请求
@@ -57,8 +51,6 @@ PageManager.prototype = {
 				Utils.offlineStore.set("__userInfo",JSON.stringify(userInfo),true);
 				Utils.offlineStore.set("__user",JSON.stringify(user),true);
 				Utils.offlineStore.set("__token",token,true);
-
-				this.gotoIndex();
 			},
 			error:function(res){
 				layer.msg(res.message || "登录错误");

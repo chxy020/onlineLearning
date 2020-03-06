@@ -9,7 +9,7 @@
 		Base = {};
 	}
 
-	var serverUrl = "http://2a963r3510.picp.vip";
+	var serverUrl = "http://114.215.40.65:9527";
 
 	//从本地获取token数据
 	var token = "";

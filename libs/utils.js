@@ -324,11 +324,7 @@ else{
 		set: function(key, value,forever,time) {
 			var localStorage = window.localStorage || "";
 			if (localStorage !== null && localStorage !== "") {
-				//删除本地以前存储的JS模块信息，先removeItem后setItem防止在iphone浏览器上报错
-				for (var name = key, len = localStorage.length, id; len--;) {
-					id = localStorage.key(len);
-					- 1 < id.indexOf(name) && localStorage.removeItem(id);
-				}
+				this.remove(key,forever);
 				try {
 					if(forever){
 						//永久保存

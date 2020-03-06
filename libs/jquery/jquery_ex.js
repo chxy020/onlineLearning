@@ -55,15 +55,29 @@ if(typeof(jQuery) != "undefined"){
 			else{
 
 				var url = option.url;
-				var ignoreToken = ['login', 'regist'];
-				var needToken = ignoreToken.filter(u => url.match(u));
+				var ignoreToken = ['login', 'regist','home'];
+				var needToken = ignoreToken.filter(function(u){
+					return url.match(u);
+				});
 				if(!needToken.length){
 					option.beforeSend = function(req){
 						req.setRequestHeader('Authentication', Base.token);
 					}
 				}
 
-				option.contentType='multipart/form-data';
+				option.contentType='application/x-www-form-urlencoded;';
+				
+				var error = option.error || function(){};
+				option.error = function(res){
+					Utils.loadClose();
+					error.call(this,res.responseJSON || {});
+				}
+				var success = option.success || function(){};
+				option.success = function(res){
+					Utils.loadClose();
+					success.call(this,res || {});
+				}
+
 				$.ajax(option);
 			}
 		}
