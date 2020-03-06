@@ -583,7 +583,7 @@ else{
 	
 	//验证为手机号
 	function isTel(val){
-		var reg = /^1[3|5|7|8]\d{9}$/;
+		var reg = /^1[3|4|5|6|7|8]\d{9}$/;
 		var b = false;
 		if(val !== ""){
 			b = reg.test(val);

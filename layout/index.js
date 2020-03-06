@@ -109,6 +109,7 @@ PageManager.prototype = {
 			success: function(res){
 				if(res.code == 0){
 					var data = res.data || {};
+					var id = data.id || id;
 					$("#course_img_" + id).attr("src",data.courseImg);
 					$("#course_title_" + id).html(data.classTitle);
 				}else{
