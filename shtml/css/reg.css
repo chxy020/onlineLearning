@@ -43,21 +43,7 @@
 .login_content .register_person .my_agreement a{color: #0084c0;vertical-align: middle;}
 .login_content .login_box.register_person .submit_btn {margin: 5px 20px 15px;}
 .login_content .login_box.register_person .system_error {margin-top: 10px;}
-/*--------------------服务条款弹框--------------------*/
-.mask { background: url(../img/bghalf.png) repeat 0 0; position: absolute;left: 0px;top: 0px;height: 100%;width: 100%;opacity: 0.15;z-index: 9998;} 
-.feedback_mian { height: auto; width:800px;height:500px;left:50%;margin-left:-400px;top:50%;margin-top:-250px;position: fixed;  z-index: 9999; overflow:auto;border: 2px solid #ccc;border-radius: 8px;box-shadow: 0px 0px 15px #ccc; }
-.feedback_box {  background: #fff; }
-.close_btn { display: block;position: absolute;right: 10px;top: 10px;width: 24px;height: 24px;background: url(../img/close_btn.png) no-repeat;cursor: pointer;}
-.feedback_tit {height:40px;line-height: 40px;  border-bottom: 2px solid #0084c0; }
-.feedback_tit h3 { font-size: 18px; font-weight: normal; color: #0084c0; display: inline-block; margin-left: 20px;  }
-.feedback_con {  color: #666;}
-.feedback_con h5{font-size: 14px; color: #000; }
-.feedback_con p{text-indent: 2em;}
-.btn { width: 120px; border-radius: 4px;margin-top:15px;height: 38px; line-height: 38px; padding: 0 18px; text-align: center; display: inline-block; color: #fff; cursor: pointer; font-size: 16px; background-color: #ff366f; border: 1px solid #ff366f; padding: 0 38px; }
-.btn:hover { background-color: #ff0e52; color: #fff; }
-.futiaokuanbtn_box{height:68px; background-color:#fff;}
-.pop_h400{line-height: 26px;padding:10px 0;height: 370px;overflow: auto;padding: 10px 20px;}
-/*--------------------服务条款弹框 end--------------------*/
+
 
 
 
