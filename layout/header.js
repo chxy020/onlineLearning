@@ -27,7 +27,8 @@
 		__header.push('<a href="login/login.html">登录</a>');
 	}else{
 		// __header.push('<!-- 登录后 -->');
-		__header.push('<span onclick="loginOut()">'+username+' 退出</span>');
+		// __header.push('<span onclick="loginOut()">'+username+' 退出</span>');
+		__header.push('<a href="usercenter/personal_center.html">'+username+'</a>');
 	}
 	__header.push('</li>');
 	__header.push('</ul>');

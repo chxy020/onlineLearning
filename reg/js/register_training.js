@@ -56,7 +56,7 @@ PageManager.prototype = {
 		var url = Base.serverUrl + "/getCode";
 
 		$.Ajax({
-			url:url,type:"POST",data:condi,dataType:"json",context:this,global:false,
+			url:url,type:"GET",data:condi,dataType:"json",context:this,global:false,
 			success: function(res){
 				if(res.code == 0){
 					var data = res.data || "";
