@@ -65,7 +65,8 @@ if(typeof(jQuery) != "undefined"){
 					}
 				}
 
-				var ignoreCross = ['login', 'regist','getCode'];
+				// 'login',
+				var ignoreCross = ['loginWeb','regist','getCode'];
 				var needCross = ignoreCross.filter(function(u){
 					return url.match(u);
 				});
