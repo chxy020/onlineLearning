@@ -3,36 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>晋安安全-视频观看</title>
-    <link rel="stylesheet" charset="utf-8" href="css/reset.css">
-    <link rel="stylesheet" charset="utf-8" href="css/index.css">
+    <link rel="stylesheet" charset="utf-8" href="../css/reset.css">
+    <link rel="stylesheet" charset="utf-8" href="../css/index.css">
+
+    <script type="text/javascript" src="../libs/jquery/jquery-1.12.4.min.js" ></script>
+    <script type="text/javascript" src="../libs/ie8-polyfill.js" ></script>
+    <script type="text/javascript" src="../libs/jquery/jquery_ex.js" ></script>
+	<script type="text/javascript" src="../libs/layer-v2.2/layer/layer.js"></script>
+	<script type="text/javascript" src="../libs/utils.js"></script>
+    <script type="text/javascript" src="../libs/base.js"></script>
 </head>
 <body>
     <!-- 头部 -->
-    <div class="head_content video_watch_head clearfix">
-        <div class="head_logo ml20">
-            晋安安全
-        </div>
-        <div class="head_list">
-            <ul>
-                <li><a href="">法律法规</a></li>
-                <li class="on"><a href="">标准规范</a></li>
-                <li><a href="">政策文件</a></li>
-                <li><a href="">安全咨询</a></li>
-                <li><a href="">互学互荐</a></li>
-                <li><a href="">案例分析</a></li>
-                <li class="dl">
-                    <!-- 登录前 -->
-                    <a href="">登录</a>
-                    <!-- 登录后 -->
-                    <!-- <span>蒙蒙雨 退出</span> -->
-                </li>
-            </ul>
-        </div>
-    </div>
+    <script type="text/javascript" src="../layout/header.js"></script>
+
+
+    
     <div class="video_content">
         <div class="video_content_left">
             <!-- 测试视频  -->
-            <iframe height="100%" width="100%" src='http://static.99114.com/static/cyw_video/festival_wine.mp4' frameborder=0 'allowfullscreen'></iframe>
+            <!-- <iframe height="100%" width="100%" src='http://static.99114.com/static/cyw_video/festival_wine.mp4' frameborder=0 'allowfullscreen'></iframe> -->
         </div>
         <div class="video_content_right">
             <h3>课程目录</h3>
@@ -57,7 +47,7 @@
                         <ul class="list-group">
                             <li class="list-group-item clearfix">
                                 <div class="col-xs-1">
-                                    <img src="img/ico_wrong.png">
+                                    <img src="../img/ico_wrong.png">
                                 </div>
                                 <div class="col-xs-11">
                                     A、违章行为
@@ -65,7 +55,7 @@
                             </li>
                             <li class="list-group-item clearfix">
                                 <div class="col-xs-1">
-                                    <img src="img/ico_right.png">
+                                    <img src="../img/ico_right.png">
                                 </div>
                                 <div class="col-xs-11">
                                     B、违章行为
@@ -73,7 +63,7 @@
                             </li>
                             <li class="list-group-item clearfix">
                                 <div class="col-xs-1">
-                                    <img src="img/ico_notselected.png">
+                                    <img src="../img/ico_notselected.png">
                                 </div>
                                 <div class="col-xs-11">
                                    C、违章行为
@@ -81,7 +71,7 @@
                             </li>
                             <li class="list-group-item clearfix">
                                 <div class="col-xs-1">
-                                    <img src="img/ico_notselected.png">
+                                    <img src="../img/ico_notselected.png">
                                 </div>
                                 <div class="col-xs-11">
                                    D、违章行为
@@ -112,9 +102,6 @@
         </div>
     </div>
 
-
-
-
-
+    <script type="text/javascript" src="js/video_watch.js"></script>
 </body>
 </html>

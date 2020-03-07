@@ -9,7 +9,7 @@
 		Base = {};
 	}
 
-	var serverUrl = "http://114.215.40.65:9999";
+	var serverUrl = "http://114.215.40.65:9999/api";
 
 	//从本地获取token数据
 	var token = "";

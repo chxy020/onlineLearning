@@ -80,6 +80,11 @@ if(typeof(jQuery) != "undefined"){
 				
 				var error = option.error || function(){};
 				option.error = function(res){
+					if(res.status == 401){
+						//未登陆
+						location.href = "/login/login.html";
+						return;
+					}
 					Utils.loadClose();
 					error.call(this,res.responseJSON || {});
 				}
