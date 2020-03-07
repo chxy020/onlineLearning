@@ -65,6 +65,16 @@ if(typeof(jQuery) != "undefined"){
 					}
 				}
 
+				var ignoreCross = ['login', 'regist','getCode'];
+				var needCross = ignoreCross.filter(function(u){
+					return url.match(u);
+				});
+				if(needCross.length){
+					option.xhrFields = {withCredentials: true};
+					option.crossDomain = true;
+				}
+			
+
 				option.contentType='application/x-www-form-urlencoded;';
 				
 				var error = option.error || function(){};

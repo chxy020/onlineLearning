@@ -92,8 +92,6 @@ PageManager.prototype = {
 		var url = Base.serverUrl + "/user/codeimg";
 		var condi = {};
 		
-		// xhrFields: {withCredentials: true},
-		// crossDomain: true,
 		$.Ajax({
 			url:url,type:"GET",data:condi,dataType:"json",context:this,global:false,
 			success: function(res){
