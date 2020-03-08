@@ -166,29 +166,29 @@ PageManager.prototype = {
 		
 		var condi = {};
 		condi.username = username;
-		// condi.vcode = vcode;
-		condi.password = password2;
+		condi.code = code;
+		condi.newPassword = password2;
 		// condi.usertype = 1;
-		this.sendRegHttp(condi);
+		this.sendChangePasswordHttp(condi);
 	},
 	gotoLogin:function(evt){
 		location.href = "../login/login.html";
 	},
-	sendRegHttp:function(condi){
+	sendChangePasswordHttp:function(condi){
 		
 		Utils.load();
-		var url = Base.serverUrl + "/regist";
+		var url = Base.serverUrl + "/user/forgetPasswordPhone";
 		
 		$.Ajax({
 			url:url,type:"POST",data:condi,dataType:"json",context:this,global:false,
 			success: function(res){
-				layer.msg(res.message || "注册成功");
+				layer.msg(res.message || "请求错误");
 				setTimeout(function(){
 					this.gotoLogin();
 				}.bind(this),1200);
 			},
 			error:function(res){
-				layer.msg(res.message || "注册错误");
+				layer.msg(res.message || "请求错误");
 			}
 		});
 	}

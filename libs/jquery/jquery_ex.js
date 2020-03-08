@@ -55,7 +55,7 @@ if(typeof(jQuery) != "undefined"){
 			else{
 
 				var url = option.url;
-				var ignoreToken = ['login', 'regist','home','getCode','codeimg'];
+				var ignoreToken = ['login', 'regist','home','getCode','codeimg','forgetPasswordPhone'];
 				var needToken = ignoreToken.filter(function(u){
 					return url.match(u);
 				});
