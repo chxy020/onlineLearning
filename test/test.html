@@ -1,0 +1,410 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>在线考试</title>
+		<link href="css/main.css" rel="stylesheet" type="text/css" />
+		<link href="css/iconfont.css" rel="stylesheet" type="text/css" />
+		<link href="css/test.css" rel="stylesheet" type="text/css" />
+
+		<style>
+			.hasBeenAnswer {
+	background: #5d9cec;
+	color:#fff;
+}
+
+</style>
+	</head>
+
+	<body>
+		<div class="main">
+			<!--nr start-->
+			<div class="test_main">
+				<div class="nr_left">
+					<div class="test">
+						<form action="http://114.215.40.65:9999/api/testwork/score" method="post" id="testForm">
+							<div class="test_title">
+								<p class="test_time">
+									<b class="alt-1">01:40</b>
+								</p>
+								<font><input type="button" name="test_jiaojuan" onclick="submitTest()" value="交卷"></font>
+							</div>
+
+							<div class="test_content">
+								<div class="test_content_title">
+									<h2>单选题</h2>
+									<p>
+										<span>共</span><i class="content_lit" id="radioCount">60</i><span>题</span>
+									</p>
+								</div>
+							</div>
+							<div>
+								<ul class="test_content_ra" id="test_content_ra">
+								</ul>
+							</div>
+
+							<div class="test_content">
+								<div class="test_content_title">
+									<h2>多选题</h2>
+									<p>
+										<span>共</span><i class="content_lit" id="multiCount">30</i><span>题</span>
+									</p>
+								</div>
+							</div>
+							<div>
+								<ul class="test_content_nr" id="test_content_mu">
+								</ul>
+							</div>
+
+							<div class="test_content">
+								<div class="test_content_title">
+									<h2>判断题</h2>
+									<p>
+										<span>共</span><i class="content_lit" id="judgeCount">30</i><span>题</span>
+									</p>
+								</div>
+							</div>
+							<div>
+								<ul class="test_content_ju" id="test_content_ju">
+								</ul>
+							</div>
+
+						</form>
+					</div>
+
+				</div>
+				<div class="nr_right">
+					<div class="nr_rt_main">
+						<div class="rt_nr1">
+							<div class="rt_nr1_title">
+								<h1>
+									答题卡
+								</h1>
+								<p class="test_time">
+									<b class="alt-1">01:40</b>
+								</p>
+							</div>
+
+							<div class="rt_content">
+								<div class="rt_content_tt">
+									<h2>单选题</h2>
+									<p>
+										<span>共</span><i class="content_lit" id="radioCountCard">60</i><span>题</span>
+									</p>
+								</div>
+								<div class="rt_content_nr answerSheet">
+									<ul id="card_ra">
+
+									</ul>
+								</div>
+							</div>
+
+							<div class="rt_content">
+								<div class="rt_content_tt">
+									<h2>多选题</h2>
+									<p>
+										<span>共</span><i class="content_lit" id="multiCountCard">30</i><span>题</span>
+									</p>
+								</div>
+								<div class="rt_content_nr answerSheet">
+									<ul id="card_mul">
+
+										<li><a href="#qu_1_0">1</a></li>
+
+
+
+									</ul>
+								</div>
+							</div>
+
+							<div class="rt_content">
+								<div class="rt_content_tt">
+									<h2>判断题</h2>
+									<p>
+										<span>共</span><i class="content_lit" id="judgeCountCard">30</i><span>题</span>
+									</p>
+								</div>
+								<div class="rt_content_nr answerSheet">
+									<ul id="card_jud">
+
+										<li><a href="#qu_1_0">1</a></li>
+
+
+
+									</ul>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<!--nr end-->
+			<div class="foot"></div>
+		</div>
+
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../libs/ie8-polyfill.js"></script>
+		<script type="text/javascript" src="../libs/jquery/jquery_ex.js"></script>
+		<script type="text/javascript" src="../libs/layer-v2.2/layer/layer.js"></script>
+		<script type="text/javascript" src="../libs/utils.js"></script>
+		<script type="text/javascript" src="../libs/base.js"></script>
+		<script type="text/javascript" src="js/jquery.easy-pie-chart.js"></script>
+		<!--时间js-->
+		<script type="text/javascript" src="js/jquery.countdown.js"></script>
+		<script>
+			var PageManager = function(obj) {
+				this.init.apply(this, arguments);
+			};
+			PageManager.prototype = {
+				constructor: PageManager,
+				time: 61,
+				init: function() {
+					//this.httpTip = new Utils.httpTip({});
+					this.bindEvent();
+				},
+				bindEvent: function() {
+					Utils.load();
+					var url = Base.serverUrl + "/testwork/getquestions/34";
+					$.Ajax({
+						async: false,
+						url: url,
+						type: "POST",
+						dataType: "json",
+						context: this,
+						global: false,
+						success: function(res) {
+							if (res.code == 0) {
+								var data = res.data || {};
+
+								var radio = data.radio || [];
+								var multi = data.multi || [];
+								var judge = data.judge || [];
+								this.setTestHtml(radio, multi, judge);
+							} else {
+								layer.msg(res.message || "请求错误");
+							}
+						},
+						error: function(res) {
+							layer.msg(res.message || "请求错误");
+						}
+					});
+
+				},
+				setTestHtml: function(radio, multi, judge) {
+					var html = [];
+					var htmlMul = [];
+					var htmlJud = [];
+
+					var htmlCardRadio = [];
+					var htmlCardMulti = [];
+					var htmlCardJudge = [];
+					
+					var radioCount = 0;
+					var multiCount = 0;
+					var judgeCount = 0;
+
+					//单选题渲染开始
+				for (var i = 0, len = radio.length; i < len; i++) {
+						radioCount++;
+						var pointid = i;
+						pointid = ++pointid;
+						var id = radio[i].id;
+						var title = radio[i].title;
+						var chooses = radio[i].choose;
+						var choose = chooses.split(';');
+						choose.pop()
+						htmlCardRadio.push('<li><a href="#qu_0_' + id + '">' + pointid + '</a></li>')
+						html.push('<li id="qu_0_' + id + '">');
+						html.push('<div class="test_content_nr_tt">');
+						html.push('<i>' + pointid + '</i>' + title + '</font>');
+						html.push('</div>');
+						html.push('<div class="test_content_nr_main">');
+						html.push('<ul>');
+						for (var j = 0, lent = choose.length; j < lent; j++) {
+							var point = j;
+							point = ++point;
+							var cho = choose[j].split(':');
+							html.push('<li class="option">');
+							html.push('<input type="radio" class="radioOrCheck" name="radio_' + id + '_'+pointid+'" id="0_answer_' + pointid +
+								'_option_' + point + '" />');
+							html.push('<label for="0_answer_' + pointid + '_option_' + point + '">');
+							html.push('' + cho[0] + '.&nbsp');
+							html.push('<p class="ue" style="display: inline;">' + cho[1] + '</p>');
+							html.push('</label>');
+							html.push('</li>');
+						}
+						html.push('</ul>');
+						html.push('</div>');
+						html.push('</li>');
+					}
+					//单选题渲染结束
+
+					//多选题渲染开始
+					for (var i = 0, len = multi.length; i < len; i++) {
+						multiCount++;
+						var pointid = i;
+						pointid = ++pointid;
+						var id = multi[i].id;
+						var title = multi[i].title;
+						var chooses = multi[i].choose;
+						var choose = chooses.split(';');
+						choose.pop()
+						htmlCardMulti.push('<li><a href="#qu_1_' + id + '">' + pointid + '</a></li>')
+						htmlMul.push('<li id="qu_1_' + id + '">');
+						htmlMul.push('<div class="test_content_nr_tt">');
+						htmlMul.push('<i>' + pointid + '</i>' + title + '</font>');
+						htmlMul.push('</div>');
+						htmlMul.push('<div class="test_content_nr_main">');
+						htmlMul.push('<ul>');
+						for (var j = 0, lent = choose.length; j < lent; j++) {
+							var point = j;
+							point = ++point;
+							var cho = choose[j].split(':');
+							htmlMul.push('<li class="option">');
+							htmlMul.push('<input type="checkbox" class="radioOrCheck" name="multi_' + id + '_'+pointid+'" id="1_answer_' + pointid +
+								'_option_' + point + '" />');
+							htmlMul.push('<label for="1_answer_' + pointid + '_option_' + point + '">');
+							htmlMul.push('' + cho[0] + '.');
+							htmlMul.push('<p class="ue" style="display: inline;">' + cho[1] + '</p>');
+							htmlMul.push('</label>');
+							htmlMul.push('</li>');
+						}
+						htmlMul.push('</ul>');
+						htmlMul.push('</div>');
+						htmlMul.push('</li>');
+					}
+					//多选题渲染结束
+
+					//判断题渲染开始
+					for (var i = 0, len = judge.length; i < len; i++) {
+						judgeCount++;
+						var pointid = i;
+						pointid = ++pointid;
+						var id = judge[i].id;
+						var title = judge[i].title;
+						var chooses = judge[i].choose;
+						var choose = chooses.split(';');
+						choose.pop()
+						htmlCardJudge.push('<li><a href="#qu_2_' + id + '">' + pointid + '</a></li>')
+						htmlJud.push('<li id="qu_2_' + id + '">');
+						htmlJud.push('<div class="test_content_nr_tt">');
+						htmlJud.push('<i>' + pointid + '</i>' + title + '</font>');
+						htmlJud.push('</div>');
+						htmlJud.push('<div class="test_content_nr_main">');
+						htmlJud.push('<ul>');
+						for (var j = 0, lent = 2; j < lent; j++) {
+							var point = j;
+							point = ++point;
+							var cho = choose[j].split(':');
+							htmlJud.push('<li class="option">');
+							htmlJud.push('<input type="radio" class="radioOrCheck" name="judge_' + id + '_'+pointid+'" id="2_answer_' + pointid +
+								'_option_' + point + '" />');
+							htmlJud.push('<label for="2_answer_' + pointid + '_option_' + point + '">');
+							if (j == 0) {
+								htmlJud.push('A.&nbsp');
+								htmlJud.push('<p class="ue" style="display: inline;">正确</p>');
+							} else {
+								htmlJud.push('B.&nbsp');
+								htmlJud.push('<p class="ue" style="display: inline;">错误</p>');
+							}
+
+							htmlJud.push('</label>');
+							htmlJud.push('</li>');
+						}
+						htmlJud.push('</ul>');
+						htmlJud.push('</div>');
+						htmlJud.push('</li>');
+					}
+					//判断题渲染结束
+
+					//渲染数据 题目
+					$("#test_content_ju").html(htmlJud.join(''));
+					$("#test_content_ra").html(html.join(''));
+					$("#test_content_mu").html(htmlMul.join(''));
+					//渲染数据 答题卡
+					$("#card_ra").html(htmlCardRadio.join(''));
+					$("#card_mul").html(htmlCardMulti.join(''));
+					$("#card_jud").html(htmlCardJudge.join(''));
+					//渲染数据 题目个数
+					$("#radioCount").html(radioCount);
+					$("#multiCount").html(multiCount);
+					$("#judgeCount").html(judgeCount);
+					$("#radioCountCard").html(radioCount);
+					$("#multiCountCard").html(multiCount);
+					$("#judgeCountCard").html(judgeCount);
+				},
+				pageLoad: function() {},
+				gotoLogin: function(evt) {
+					location.href = "../login/login.html";
+				}
+			};
+			window.jQuery(function($) {
+				"use strict";
+
+				$('time').countDown({
+					with_separators: true
+				});
+				$('.alt-1').countDown({
+					css_class: 'countdown-alt-1'
+				});
+				$('.alt-2').countDown({
+					css_class: 'countdown-alt-2'
+				});
+
+			});
+
+			//页面初始化
+			$(function() {
+				var page = new PageManager({});
+				$('li.option label').click(function() {
+					var examId = $(this).closest('.test_content_nr_main').closest('li').attr('id'); // 得到题目ID
+					var cardLi = $("a[href='#" + examId + "']"); // 根据题目ID找到对应答题卡
+					// 设置已答题
+					if (!cardLi.hasClass('hasBeenAnswer')) {
+						cardLi.addClass('hasBeenAnswer');
+					}
+
+				});
+			});
+			
+			function submitTest(){
+				var testForm = $("#testForm").serializeArray();
+				$.each(testForm,function(idx,data){
+					var name = data.name;
+				})
+			}
+			
+			Array.prototype.equals = function (array) {
+			    // if the other array is a falsy value, return
+			    if (!array)
+			        return false;
+			
+			    // compare lengths - can save a lot of time 
+			    if (this.length != array.length)
+			        return false;
+			
+			    for (var i = 0, l = this.length; i < l; i++) {
+			        // Check if we have nested arrays
+			        if (this[i] instanceof Array && array[i] instanceof Array) {
+			            // recurse into the nested arrays
+			            if (!this[i].equals(array[i]))
+			                return false;       
+			        }           
+			        else if (this[i] != array[i]) { 
+			            // Warning - two different object instances will never be equal: {x:20} != {x:20}
+			            return false;   
+			        }           
+			    }       
+			    return true;
+			}
+		</script>
+		<div style="text-align:center;">
+		</div>
+
+	</body>
+
+</html>
