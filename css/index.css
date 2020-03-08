@@ -11,8 +11,9 @@
 .head_list ul li{float:left;padding: 0 15px;}
 .head_list ul li a{color: #000;font-size: 16px;}
 .head_list ul li.on a,.head_list ul li a:hover{color: #00a0e9;}
-.head_list ul li.dl a{display: block;font-size: 12px;width: 47px;text-align: center;color: #00a0e9;background: url("../img/login-icon.png") no-repeat center;}
-.head_list ul li.dl span{display: block;text-align: center;color: #5c5c5c;cursor:pointer}
+.head_list ul li a.dl{display: block;font-size: 12px;width: 47px;text-align: center;color: #00a0e9;background: url("../img/login-icon.png") no-repeat center;}
+.head_list ul li span{text-align: center;color: #5c5c5c;cursor:pointer;margin:0 10px 0 20px;}
+.head_list ul li a.tc{color: #5c5c5c;}
 /*---------头部 end-----------*/
 /*---------课程列表 -----------*/
 .moco-course-list {margin: 0 0 0 -22px;padding-bottom: 20px;}
@@ -93,107 +94,26 @@
 /*------------------personal_center.html---------------*/
 .ps_biaoti{height: 50px;line-height: 50px;border-bottom: 2px solid #00a0e9;margin-bottom: 30px;background:url(../img/ps_biaotibg.png) no-repeat left bottom;}
 .ps_biaoti span{color: #fff;font-size: 16px;padding:0 30px}
-table {border-collapse: collapse;border-spacing: 0;display: table;}
-.table {width: 100%;background-color: #fff;}
-.table thead tr {background-color: #f2f2f2;}
-.table td,.table th {padding: 9px 15px; min-height: 24px; line-height: 24px; border: 1px solid #e2e2e2; font-size:14px; text-align: left;}
-.table td{font-size:12px;}
-.view_a{display: block;width: 60px;height: 26px;line-height: 26px;border-radius: 4px;background: #00a0e9;color: #fff;font-size: 12px;text-align: center;}
-.view_a:hover{background:#0084c0;}
-
-
-
-.ps_cont li{
-    display: block;
-    float: left;
-    width: 20%;
-    height: 200px;
-    
-    text-align: center;
-}
-
-
-
-.ps_cont li a{
-    display: block;
-    height: 200px;
-    color: #939393;
-    font-size: 14px;
-    background-color: #f7f7f9;
-}
-
-
-.ps_cont li.a2 a,.ps_cont li.a4 a{
-    background-color: #fff;
-}
-
-.ps_cont li a div{
-    display: block;
-    height: 70px;
-    width: 70px;
-    margin: 0 auto;
-    padding:40px 0 10px
-}
-
-.ps_cont li a h3{
-    color: #353535;
-    font-size: 16px;
-    margin-bottom: 5px;
-}
-.ps_cont li a p span{
-    color: #ff6600;
-    font-size: 16px;
-    margin-right: 5px;
-    font-weight: bold;
-}
-
-
-.ps_cont li.a1 a{
-    border-radius: 10px 0 0 10px;
-}
-.ps_cont li.a5 a{
-    border-radius: 0 10px 10px 0;
-}
-.ps_cont li.a1 a div{
-    background:url(../img/icon_shichang.png) no-repeat center 35px;
-}
-.ps_cont li.a2 a div{
-    background:url(../img/icon_kecheng.png) no-repeat center 35px;
-}
-.ps_cont li.a3 a div{
-    background:url(../img/icon_kaoshi.png) no-repeat center 35px;
-}
-.ps_cont li.a4 a div{
-    background:url(../img/icon_shouchang.png) no-repeat center 35px;
-}
-.ps_cont li.a5 a div{
-    background:url(../img/icon_jingxing.png) no-repeat center 35px;
-}
-
-.ps_cont li a:hover{
-    background-color: #ff6600;
-    color: #fff;
-}
-.ps_cont li a:hover h3 {
-    color: #fff;
-}
-.ps_cont li a:hover p span {
-    color: #fff;
-}
-.ps_cont li.a1 a:hover div{
-    background:url(../img/icon_shichang_on.png) no-repeat center 35px;
-}
-.ps_cont li.a2 a:hover div{
-    background:url(../img/icon_kecheng_on.png) no-repeat center 35px;
-}
-.ps_cont li.a3 a:hover div{
-    background:url(../img/icon_kaoshi_on.png) no-repeat center 35px;
-}
-.ps_cont li.a4 a:hover div{
-    background:url(../img/icon_shouchang_on.png) no-repeat center 35px;
-}
-.ps_cont li.a5 a:hover div{
-    background:url(../img/icon_jingxing_on.png) no-repeat center 35px;
-}
+.ps_cont li{display: block;float: left;width: 20%;height: 200px;text-align: center;}
+.ps_cont li a{display: block;height: 200px;color: #939393;font-size: 14px;background-color: #f7f7f9;}
+.ps_cont li.a2 a,.ps_cont li.a4 a{background-color: #fff;}
+.ps_cont li a div{display: block;height: 70px;width: 70px;margin: 0 auto;padding:40px 0 10px}
+.ps_cont li a h3{color: #353535;font-size: 16px;margin-bottom: 5px;}
+.ps_cont li a p span{color: #ff6600;font-size: 16px;margin-right: 5px;font-weight: bold;}
+.ps_cont li.a1 a{border-radius: 10px 0 0 10px;}
+.ps_cont li.a5 a{border-radius: 0 10px 10px 0;}
+.ps_cont li.a1 a div{background:url(../img/icon_shichang.png) no-repeat center 35px;}
+.ps_cont li.a2 a div{background:url(../img/icon_kecheng.png) no-repeat center 35px;}
+.ps_cont li.a3 a div{background:url(../img/icon_kaoshi.png) no-repeat center 35px;}
+.ps_cont li.a4 a div{background:url(../img/icon_shouchang.png) no-repeat center 35px;}
+.ps_cont li.a5 a div{background:url(../img/icon_jingxing.png) no-repeat center 35px;}
+.ps_cont li a:hover{background-color: #ff6600;color: #fff;}
+.ps_cont li a:hover h3 {color: #fff;}
+.ps_cont li a:hover p span {color: #fff;}
+.ps_cont li.a1 a:hover div{background:url(../img/icon_shichang_on.png) no-repeat center 35px;}
+.ps_cont li.a2 a:hover div{background:url(../img/icon_kecheng_on.png) no-repeat center 35px;}
+.ps_cont li.a3 a:hover div{background:url(../img/icon_kaoshi_on.png) no-repeat center 35px;}
+.ps_cont li.a4 a:hover div{background:url(../img/icon_shouchang_on.png) no-repeat center 35px;}
+.ps_cont li.a5 a:hover div{background:url(../img/icon_jingxing_on.png) no-repeat center 35px;}
 
 

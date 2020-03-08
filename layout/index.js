@@ -87,7 +87,7 @@ PageManager.prototype = {
 		for(var i = 0,len = data.length; i < len; i++){
 			var id = data[i].hotCourse;
 			html.push('<div id="course_' + id + '" class="course-card-container">');
-			html.push('<a target="_blank" href="" class="course-card">');
+			html.push('<a target="_blank" href="/video/video_watch.html?id=' + id + '" class="course-card">');
 			html.push('<img id="course_img_' + id + '" src="img/keimg1.png" style="width:240px;height:135px;">');
 			html.push('<p id="course_title_' + id + '" >热门课程</p>');
 			html.push('</a>');

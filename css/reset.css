@@ -38,6 +38,10 @@ i{font-style: normal;}
 .def{cursor: default;}
 .laquCopy img{margin-top: 15px}
 .pink{color: #ff366f}
+.textR{text-align: right}
+.textC{text-align: center}
+.mb20{margin-bottom: 20px}
+.ml10{margin-left: 10px}
 /*-----------------下拉菜单样式-------------------*/
 .w310{width: 310px;}
 .tzSelect {font-size: 14px;text-indent: 6px;height: 30px; +margin-bottom: 0; display: inline-block; +display: inline; +zoom: 1; background-color: #fff; position: relative; text-align: left; font-weight:normal; vertical-align: middle;}
@@ -99,3 +103,28 @@ i{font-style: normal;}
 .pop_h400{line-height: 26px;padding:10px 0;height: 370px;overflow: auto;padding: 10px 20px;}
 .h438 {height: 428px;padding-bottom: 20px;}
 /*--------------------服务条款弹框 end--------------------*/
+/*--------------------表格--------------------*/
+table {border-collapse: collapse;border-spacing: 0;display: table;}
+.table {width: 100%;background-color: #fff;}
+.table thead tr {background-color: #f2f2f2;}
+.table td,.table th {padding: 9px 15px; min-height: 24px; line-height: 24px; border: 1px solid #e2e2e2; font-size:14px; text-align: left;}
+.table td{font-size:12px;}
+.table td.center,.table th.center {text-align: center}
+.table td.textTR,.table th.textTR {text-align: right;}
+.table td .red{ color:#ff0000; }
+.login_content .login_box .table td .tableinput{color: #ff0000;font-size: 12px;line-height: 36px;height: 36px;border-radius: 4px;width: 298px;}
+.view_a{display:inline-block;width: 60px;height: 26px;line-height: 26px;border-radius: 4px;background: #00a0e9;color: #fff;font-size: 12px;text-align: center;}
+.view_a:hover{background:#0084c0;}
+/*--------------------表格 end--------------------*/
+
+
+
+
+
+
+
+
+
+
+
+

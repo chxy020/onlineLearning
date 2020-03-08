@@ -18,3 +18,15 @@ http://zt.99114.com/design/jinan/personal_center.html 个人中心页
 http://zt.99114.com/design/jinan/the_test.html 正式/模拟考试页面
 
 http://zt.99114.com/design/jinan/the_simulation.html 模拟考试解析页面
+
+
+
+invoice.html 发票确认信息
+
+personal_information.html 个人信息完善
+
+purchase_confirmation.html 购买信息确认
+
+enterprise_management.html 企业报名管理
+
+enterprise_management_confirm.html 企业报名信息确认

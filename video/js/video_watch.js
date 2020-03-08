@@ -6,10 +6,19 @@ var PageManager = function (obj){
 
 PageManager.prototype = {
 	constructor:PageManager,
-	
+	id:"",
 	init: function(){
 		//this.httpTip = new Utils.httpTip({});
+
+		this.id = +Utils.getQueryString("id") || "";
+		if(!this.id){
+			layer.msg("没有获取到课程id");
+			return;
+		}
+
 		this.bindEvent();
+
+		this.getInClassHttp();
 	},
 	bindEvent:function(){
 		// $("#subbtn").onbind("click",this.setLogin,this);
@@ -17,54 +26,60 @@ PageManager.prototype = {
 	},
 	pageLoad:function(){
 	},
-	keyDown:function(evt){
-		if(evt.keyCode == 13){
-			this.setLogin();
-		}
-	},
-	//登录
-	setLogin:function(evt){
-
-		var username = $("#username").val().trim() || "";
-		var password = $("#password").val().trim() || "";
-		
-		
+	getInClassHttp:function(){
+		Utils.load();
+		var url = Base.serverUrl + "/class/inclass/" + this.id;
 		var condi = {};
-		condi.username = username;
-		condi.password = password;
-		//登录
-		this.sendLoginHttp(condi);
-	},
-	//跳转到首页
-	gotoIndex:function(evt){
-		location.href = "../index.html";
+
+		$.Ajax({
+			url:url,type:"POST",data:condi,dataType:"json",context:this,global:false,
+			success: function(res){
+				var obj = res.data || [];
+				var html = [];
+				var icid = 0;
+				obj.forEach(function(item,i){
+					if( i == 0){
+						icid = item.id;
+					}
+					html.push('<li data="' + item.id + '"><a href="javascript:;">' + (i+1)+'、' + item.title + '</a></li>')
+				});
+
+				$("#inclasslist").html(html.join(''));
+
+				$("#inclasslist li").rebind('click',this.inclassItemClick,this);
+
+				//默认加载第一条
+				this.getIncateHttp(icid);
+			},
+			error:function(res){
+				layer.msg(res.message || "请求错误");
+			}
+		});
 	},
 	
-	//注册请求
-	sendLoginHttp:function(condi){
-		
+	inclassItemClick:function(evt){
+		var ele = evt.currentTarget;
+		var icid = +$(ele).attr("data");
+		this.getIncateHttp(icid);
+	},
+
+	getIncateHttp:function(id){
 		Utils.load();
-		var url = Base.serverUrl + "/login";
+		var url = Base.serverUrl + "/class/incate/" + id;
+		var condi = {};
+		condi.id = id;
 		
 		$.Ajax({
 			url:url,type:"POST",data:condi,dataType:"json",context:this,global:false,
 			success: function(res){
-				var obj = res.data || {};
-				var userInfo = obj.userInfo || {};
-				var user = obj.user || {};
-				var token = obj.token || "";
-
-				Utils.offlineStore.set("__userInfo",JSON.stringify(userInfo),true);
-				Utils.offlineStore.set("__user",JSON.stringify(user),true);
-				Utils.offlineStore.set("__token",token,true);
-
-				this.gotoIndex();
+				var obj = res.data || [];
+				
 			},
 			error:function(res){
-				layer.msg(res.message || "登录错误");
+				layer.msg(res.message || "请求错误");
 			}
 		});
-	}
+	},
 };
 
 //页面初始化
