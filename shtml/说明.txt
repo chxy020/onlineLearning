@@ -30,3 +30,15 @@ purchase_confirmation.html 购买信息确认
 enterprise_management.html 企业报名管理
 
 enterprise_management_confirm.html 企业报名信息确认
+
+
+
+个人信息完善是注册结束。
+
+企业报名管理页面是在企业账号登录后有个提示框，点击进入或者是一个按钮。
+
+
+企业报名信息确认页面是企业报名管理页面点击提交学员信息按钮后出现。
+
+
+购买信息确认是个人购买单个课程时出现的页面。

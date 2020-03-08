@@ -21,7 +21,7 @@ PageManager.prototype = {
 		this.getInClassHttp();
 	},
 	bindEvent:function(){
-		// $("#subbtn").onbind("click",this.setLogin,this);
+		$("#buybtn").onbind("click",this.buyBtnClick,this);
 		// $("#password").onbind("keydown",this.keyDown,this);
 	},
 	pageLoad:function(){
@@ -79,6 +79,9 @@ PageManager.prototype = {
 				layer.msg(res.message || "请求错误");
 			}
 		});
+	},
+	buyBtnClick:function(evt){
+		
 	},
 };
 
