@@ -8,8 +8,10 @@
 	}
 
 	var url = location.href;
-	var on = 0;
-	if(url.indexOf('video_watch.html') > -1){
+	var on = -1;
+	if(url.indexOf('index.html') > -1){
+		on = 0;
+	}else if(url.indexOf('video_watch.html') > -1){
 		on = 2;
 	}
 
@@ -21,6 +23,11 @@
 	__header.push('</div>');
 	__header.push('<div class="head_list">');
 	__header.push('<ul>');
+	if(on == 0){
+		__header.push('<li class="on"><a href="/index.html">首页</a></li>');
+	}else{
+		__header.push('<li><a href="/index.html">首页</a></li>');
+	}
 	if(on == 1){
 		__header.push('<li class="on"><a href="">法律法规</a></li>');
 	}else{
@@ -41,12 +48,12 @@
 	}else{
 		__header.push('<li><a href="">安全咨询</a></li>');
 	}
-	if(on == 4){
+	if(on == 5){
 		__header.push('<li class="on"><a href="">互学互荐</a></li>');
 	}else{
 		__header.push('<li><a href="">互学互荐</a></li>');
 	}
-	if(on == 5){
+	if(on == 6){
 		__header.push('<li class="on"><a href="">案例分析</a></li>');
 	}else{
 		__header.push('<li><a href="">案例分析</a></li>');
