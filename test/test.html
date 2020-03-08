@@ -372,6 +372,20 @@
 			});
 			
 			function submitTest(){
+				var q1 = $("[name='radio_9_1'");
+				var q1ck = false;
+				q1.each(function(item){
+					if($(this).is(":checked")){
+						//只有有一个选项选中即可
+						q1ck = true;
+					}
+				});
+				if(!q1ck){
+					layer.msg("第一题未选择");
+					return;
+				}
+
+
 				var testForm = $("#testForm").serializeArray();
 				$.each(testForm,function(idx,data){
 					var name = data.name;
