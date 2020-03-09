@@ -3,40 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>晋安安全-视频观看</title>
-    <link rel="stylesheet" charset="utf-8" href="../css/reset.css">
-    <link rel="stylesheet" charset="utf-8" href="../css/index.css">
-
-    <script type="text/javascript" src="../libs/jquery/jquery-1.12.4.min.js" ></script>
-    <script type="text/javascript" src="../libs/ie8-polyfill.js" ></script>
-    <script type="text/javascript" src="../libs/jquery/jquery_ex.js" ></script>
-	<script type="text/javascript" src="../libs/layer-v2.2/layer/layer.js"></script>
-	<script type="text/javascript" src="../libs/utils.js"></script>
-    <script type="text/javascript" src="../libs/base.js"></script>
+    <link rel="stylesheet" charset="utf-8" href="css/reset.css">
+    <link rel="stylesheet" charset="utf-8" href="css/index.css">
 </head>
 <body>
     <!-- 头部 -->
-    <script type="text/javascript" src="../layout/header2.js"></script>
-
-
-    
+    <div class="head_content video_watch_head clearfix">
+        <div class="head_logo ml20">
+            晋安安全
+        </div>
+        <div class="head_list">
+            <ul>
+                <li><a href="">法律法规</a></li>
+                <li class="on"><a href="">标准规范</a></li>
+                <li><a href="">政策文件</a></li>
+                <li><a href="">安全咨询</a></li>
+                <li><a href="">互学互荐</a></li>
+                <li><a href="">案例分析</a></li>
+                <li class="dl">
+                    <!-- 登录前 -->
+                    <a href="">登录</a>
+                    <!-- 登录后 -->
+                    <!-- <span>蒙蒙雨 退出</span> -->
+                </li>
+            </ul>
+        </div>
+    </div>
     <div class="video_content">
         <div class="video_content_left">
             <video id="video1" width="100%" height="100%" muted controls autoplay loop="loop">
                 <source src="http://static.99114.com/static/cyw_video/festival_wine.mp4" type="video/mp4">
                 <!–[if lt IE 8]>
-                    <embed id="video2" muted preload="auto" controls="" autoplay="auto-play" src="http://static.99114.com/static/cyw_video/festival_wine.mp4" type="video/mp4" width="100%" height="100%" allowfullscreen="true" quality="high" loop="true" volume="-4200"/></embed>
+                    <embed muted preload="auto" controls="" autoplay="auto-play" src="http://static.99114.com/static/cyw_video/festival_wine.mp4" type="video/mp4" width="100%" height="100%" allowfullscreen="true" quality="high" loop="true" volume="-4200"/></embed>
                 <![endif]–>
             </video>
         </div>
         <div class="video_content_right">
             <h3>课程目录</h3>
-            <ul id="inclasslist">
-                <!-- <li>1、安全规范</li>
+            <ul>
+                <li>1、安全规范</li>
                 <li>2、安全标准国际标准法，中国标准。</li>
                 <li>3、安全标准国际标准法，中国标准的区别。</a></li>
                 <li><a href="">3、安全标准国际标准法，中国标准的区别。</a></li>
                 <li><a href="">1、安全规范</a></li>
-                <li><a href="">1、安全规范</a></li> -->
+                <li><a href="">1、安全规范</a></li>
             </ul>
         </div>
     </div>
@@ -51,7 +61,7 @@
                         <ul class="list-group">
                             <li class="list-group-item clearfix">
                                 <div class="col-xs-1">
-                                    <img src="../img/ico_wrong.png">
+                                    <img src="img/ico_wrong.png">
                                 </div>
                                 <div class="col-xs-11">
                                     A、违章行为
@@ -59,7 +69,7 @@
                             </li>
                             <li class="list-group-item clearfix">
                                 <div class="col-xs-1">
-                                    <img src="../img/ico_right.png">
+                                    <img src="img/ico_right.png">
                                 </div>
                                 <div class="col-xs-11">
                                     B、违章行为
@@ -67,7 +77,7 @@
                             </li>
                             <li class="list-group-item clearfix">
                                 <div class="col-xs-1">
-                                    <img src="../img/ico_notselected.png">
+                                    <img src="img/ico_notselected.png">
                                 </div>
                                 <div class="col-xs-11">
                                    C、违章行为
@@ -75,7 +85,7 @@
                             </li>
                             <li class="list-group-item clearfix">
                                 <div class="col-xs-1">
-                                    <img src="../img/ico_notselected.png">
+                                    <img src="img/ico_notselected.png">
                                 </div>
                                 <div class="col-xs-11">
                                    D、违章行为
@@ -95,17 +105,18 @@
             </div>
     </div>
     <!-- 试看结束 弹框 -->
-    <div class="video_content_pop" style="display:none">
+    <div class="video_content_pop" style="display: none;">
         <div class="video_content_pop_c">
             <p>试看3分钟或试看3张幻灯片已结束</p>
             <div class="rg_cg_a clearfix">
-                <a id="buybtn" href="javascript:;" class="myfr">立即购买</a>
+                <a href="#" class="myfr">立即购买</a>
                 <a href="#" class="myfr">再看一遍</a>
                 <a href="#" class="myfr">取消</a>
             </div>
         </div>
     </div>
 
-    <script type="text/javascript" src="js/video_watch.js"></script>
+
+    
 </body>
 </html>

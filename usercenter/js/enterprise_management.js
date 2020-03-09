@@ -25,8 +25,8 @@ PageManager.prototype = {
 		Utils.load();
 		var url = Base.serverUrl + "/companyHome/get";
 		var condi = {};
-		condi.pageNum = this.pageNum;
-		condi.pageSize = this.pageSize;
+		// condi.pageNum = this.pageNum;
+		// condi.pageSize = this.pageSize;
 		// condi.name = Base
 		// condi.idCard = Base
 		// condi.phone = Base

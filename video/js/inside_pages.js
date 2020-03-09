@@ -73,8 +73,7 @@ PageManager.prototype = {
 			url:url,type:"POST",data:condi,dataType:"json",context:this,global:false,
 			success: function(res){
 				var obj = res.data || [];
-				var videoShort = obj.videoShort || "";
-				$("#video1,#video2").attr("src",videoShort);
+				
 			},
 			error:function(res){
 				layer.msg(res.message || "请求错误");

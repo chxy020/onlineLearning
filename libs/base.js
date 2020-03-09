@@ -9,7 +9,7 @@
 		Base = {};
 	}
 
-	var serverUrl = "http://114.215.40.65:9999/api";
+	var serverUrl = " http://www.panshicse.com/api";
 
 	//从本地获取token数据
 	var token = "";

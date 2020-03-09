@@ -20,9 +20,8 @@
 	}
 
 	var __header = [];
-	__header.push('<div class="head_content clearfix">');
-	__header.push('<div class="w1190">');
-	__header.push('<div class="head_logo">');
+	__header.push('<div class="head_content video_watch_head clearfix">');
+	__header.push('<div class="head_logo ml20">');
 	__header.push('晋安安全');
 	__header.push('</div>');
 	__header.push('<div class="head_list">');
@@ -86,7 +85,6 @@
 	}
 	__header.push('</li>');
 	__header.push('</ul>');
-	__header.push('</div>');
 	__header.push('</div>');
 	__header.push('</div>');
 
