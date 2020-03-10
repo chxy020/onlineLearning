@@ -33,40 +33,40 @@ PageManager.prototype = {
 				var studyCount = obj.studyCount || 0;
 				var studying = obj.studying || [];
 
-				studying = [
-					{
-						"courseTitle": "氧化安全课程",
-						"studyTime": "19:30",
-						"courseImg": "https:\/\/ss0.bdstatic.com\/70cFvHSh_Q1YnxGkpoWK1HF6h",
-						"videoId": "1",
-						"id": 9
-					},
-					{
-						"courseTitle": "消防安全课程",
-						"studyTime": "10:01",
-						"courseImg": "https:\/\/timgsa.baidu.com\/timg?image&quality=80&siz",
-						"videoId": "2",
-						"id": 10
-					}
-				]
+				// studying = [
+				// 	{
+				// 		"courseTitle": "氧化安全课程",
+				// 		"studyTime": "19:30",
+				// 		"courseImg": "https:\/\/ss0.bdstatic.com\/70cFvHSh_Q1YnxGkpoWK1HF6h",
+				// 		"videoId": "1",
+				// 		"id": 9
+				// 	},
+				// 	{
+				// 		"courseTitle": "消防安全课程",
+				// 		"studyTime": "10:01",
+				// 		"courseImg": "https:\/\/timgsa.baidu.com\/timg?image&quality=80&siz",
+				// 		"videoId": "2",
+				// 		"id": 10
+				// 	}
+				// ]
 				var examCount = obj.examCount || 0;
 				var examOver = obj.examOver || [];
-				examOver = [
-					{
-						"score": "85",
-						"qualified": "1",
-						"testTime": "2020-02-24 17:00:00",
-						"id": 1,
-						"testTitle": "氧化安全考模拟考试"
-					},
-					{
-						"score": "60",
-						"qualified": "0",
-						"testTime": "2020-02-25 17:00:00",
-						"id": 2,
-						"testTitle": "化工安全考正式考试"
-					}
-				]
+				// examOver = [
+				// 	{
+				// 		"score": "85",
+				// 		"qualified": "1",
+				// 		"testTime": "2020-02-24 17:00:00",
+				// 		"id": 1,
+				// 		"testTitle": "氧化安全考模拟考试"
+				// 	},
+				// 	{
+				// 		"score": "60",
+				// 		"qualified": "0",
+				// 		"testTime": "2020-02-25 17:00:00",
+				// 		"id": 2,
+				// 		"testTitle": "化工安全考正式考试"
+				// 	}
+				// ]
 
 				$("#course").html(course);
 				$("#examCount").html(examCount);

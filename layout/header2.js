@@ -11,9 +11,24 @@
 	var on = -1;
 	if(url.indexOf('index.html') > -1){
 		on = 0;
-	}else if(url.indexOf('inside_pages.html') > -1){
+	}else if(url.indexOf('legal.html') > -1){
+		on = 1;
+	}else if(url.indexOf('standard.html') > -1){
 		on = 2;
-	}else if(url.indexOf('course.html') > -1){
+	}
+	else if(url.indexOf('policy.html') > -1){
+		on = 3;
+	}
+	else if(url.indexOf('safety.html') > -1){
+		on = 4;
+	}
+	else if(url.indexOf('share.html') > -1){
+		on = 5;
+	}
+	else if(url.indexOf('case.html') > -1){
+		on = 6;
+	}
+	else if(url.indexOf('course.html') > -1){
 		on = 7;
 	}else if(url.indexOf('personal_center.html') > -1){
 		on = 8;
@@ -32,34 +47,34 @@
 		__header.push('<li><a href="/index.html">首页</a></li>');
 	}
 	if(on == 1){
-		__header.push('<li class="on"><a href="">法律法规</a></li>');
+		__header.push('<li class="on"><a href="/recommend/legal.html">法律法规</a></li>');
 	}else{
-		__header.push('<li><a href="">法律法规</a></li>');
+		__header.push('<li><a href="/recommend/legal.html">法律法规</a></li>');
 	}
 	if(on == 2){
-		__header.push('<li class="on"><a href="/video/inside_pages.html">标准规范</a></li>');
+		__header.push('<li class="on"><a href="/recommend/standard.html">标准规范</a></li>');
 	}else{
-		__header.push('<li><a href="/video/inside_pages.html">标准规范</a></li>');
+		__header.push('<li><a href="/recommend/standard.html">标准规范</a></li>');
 	}
 	if(on == 3){
-		__header.push('<li class="on"><a href="">政策文件</a></li>');
+		__header.push('<li class="on"><a href="/recommend/policy.html">政策文件</a></li>');
 	}else{
-		__header.push('<li><a href="">政策文件</a></li>');
+		__header.push('<li><a href="/recommend/policy.html">政策文件</a></li>');
 	}
 	if(on == 4){
-		__header.push('<li class="on"><a href="">安全咨询</a></li>');
+		__header.push('<li class="on"><a href="/recommend/safety.html">安全咨询</a></li>');
 	}else{
-		__header.push('<li><a href="">安全咨询</a></li>');
+		__header.push('<li><a href="/recommend/safety.html">安全咨询</a></li>');
 	}
 	if(on == 5){
-		__header.push('<li class="on"><a href="">互学互荐</a></li>');
+		__header.push('<li class="on"><a href="/recommend/share.html">互学互荐</a></li>');
 	}else{
-		__header.push('<li><a href="">互学互荐</a></li>');
+		__header.push('<li><a href="/recommend/share.html">互学互荐</a></li>');
 	}
 	if(on == 6){
-		__header.push('<li class="on"><a href="">案例分析</a></li>');
+		__header.push('<li class="on"><a href="/recommend/case.html">案例分析</a></li>');
 	}else{
-		__header.push('<li><a href="">案例分析</a></li>');
+		__header.push('<li><a href="/recommend/case.html">案例分析</a></li>');
 	}
 	if(on == 7){
 		__header.push('<li class="on"><a href="/course/course.html">所有课程</a></li>');

@@ -6,82 +6,72 @@ var PageManager = function (obj){
 
 PageManager.prototype = {
 	constructor:PageManager,
-	
+	// 1：法律法规；2：标准规范；3：政策文件；4：安全咨询；5：互学互鉴；6案例分析
+	id:0,
 	init: function(){
 		//this.httpTip = new Utils.httpTip({});
+
+		// this.id = +Utils.getQueryString("id") || "";
+		// if(!this.id){
+		// 	layer.msg("没有获取到课程id");
+		// 	return;
+		// }
+
 		this.bindEvent();
 
-		this.getHomeDataHttp();
+		this.getUrlType();
+		this.getCourseByType();
 	},
 	bindEvent:function(){
+		// $("#buybtn").onbind("click",this.buyBtnClick,this);
+		// $("#password").onbind("keydown",this.keyDown,this);
 	},
 	pageLoad:function(){
 	},
-	//跳转到首页
-	gotoIndex:function(evt){
-		location.href = "../index.html";
+	getUrlType:function(){
+		var url = location.href;
+		var on = 0;
+		if(url.indexOf('legal.html') > -1){
+			on = 1;
+		}else if(url.indexOf('standard.html') > -1){
+			on = 2;
+		}
+		else if(url.indexOf('policy.html') > -1){
+			on = 3;
+		}
+		else if(url.indexOf('safety.html') > -1){
+			on = 4;
+		}
+		else if(url.indexOf('share.html') > -1){
+			on = 5;
+		}
+		else if(url.indexOf('case.html') > -1){
+			on = 6;
+		}
+		this.id = on;
 	},
-	getHomeDataHttp:function(condi){
-		
+	getCourseByType:function(){
 		Utils.load();
-		var url = Base.serverUrl + "/home";
-		
+		var url = Base.serverUrl + "/home/getCourseByType/" + this.id;
+		var condi = {};
+
 		$.Ajax({
-			url:url,type:"GET",data:condi,dataType:"json",context:this,global:false,
+			url:url,type:"POST",data:condi,dataType:"json",context:this,global:false,
 			success: function(res){
 				var data = res.data || {};
-				var slideShow = data.sildeShow || [];
-				var hot = data.hot || [];
-				this.setSlideImageHtml(slideShow);
-				this.setHotCourseHtml(hot);
+				var hotCourse = data.hotCourse || [];
+				this.setHotCourseHtml(hotCourse);
 			},
 			error:function(res){
 				layer.msg(res.message || "请求错误");
 			}
 		});
 	},
-	setSlideImageHtml:function(data){
-		var images = [];
-		var slidetab = [];
-		for(var i = 0,len = data.length; i < len; i++){
-			var item = data[i] || {};
-			var courseId = item.courseId;
-			var imgSrc = item.imgSrc;
-			if(i == 0){
-				images.push('<li class="on"><a href="#"><img src="' + imgSrc + '"></a></li>');
-				slidetab.push('<span class="on">1</span>');
-			}else{
-				images.push('<li ><a href="#"><img src="' + imgSrc + '"></a></li>');
-				slidetab.push('<span class="">' + (i+1) + '</span>');
-			}
-		}
-		$(".testSlidePics").html(images.join(''));
-		$(".testSlideTabs").html(slidetab.join(''));
-
-		this.slideImageInit();
-	},
-	slideImageInit:function(){
-		$(".testSlide1").slideGradual({
-	        slideCon:".testSlidePics",
-	        tabCon:".testSlideTabs",
-	        btnLeft:".testBtnLeft",
-	        btnRight:".testBtnRight",
-	        fadeInTime:900,
-	        fadeOutTime:1400,
-	        intervalTime:3400
-	    });
-	    $(".testSlide2").slideGradual({
-	        slideCon:".testSlidePics",
-	        tabCon:".testSlideTabs",
-	        fadeInTime:900,
-	        fadeOutTime:1400,
-	        intervalTime:3400
-	    });
-	},
+	
 	setHotCourseHtml:function(data){
 		var html = [];
 		for(var i = 0,len = data.length; i < len; i++){
-			var id = data[i].hotCourse;
+			var id = data[i].hotId;
 			html.push('<div id="course_' + id + '" class="course-card-container">');
 			html.push('<a href="/video/video_watch.html?id=' + id + '" class="course-card">');
 			// html.push('<a target="_blank" href="/video/video_watch.html?id=' + id + '" class="course-card">');
@@ -94,7 +84,7 @@ PageManager.prototype = {
 		$("#hotcourse").html(html.join(''));
 
 		for(var j = 0, len2 = data.length; j < len2; j++){
-			this.getHotCourseInfoHttp(data[j].hotCourse);
+			this.getHotCourseInfoHttp(data[j].hotId);
 		}
 	},
 
