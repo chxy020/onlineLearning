@@ -2,13 +2,19 @@ var allClicke = [];
 var PageManager = function(obj) {
 	this.init.apply(this, arguments);
 };
-var testId = '39';
+var testId = '';
 var title = '';
 PageManager.prototype = {
 	constructor: PageManager,
 	time: 61,
+	testId: '',
 	init: function() {
 		//this.httpTip = new Utils.httpTip({});
+		testId = +Utils.getQueryString("testId") || "";
+		if(!testId){
+			layer.msg("没有获取到测试id");
+			return;
+		}
 		this.bindEvent();
 	},
 	bindEvent: function() {
@@ -511,6 +517,7 @@ function submitTest() {
 
 
 }
+
 
 
 
