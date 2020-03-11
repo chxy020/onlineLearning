@@ -7,6 +7,11 @@ var PageManager = function (obj){
 PageManager.prototype = {
 	constructor:PageManager,
 	id:"",
+	classTitle:"",
+	currentClassId:0,
+	pageSize:10,
+	pageNum:1,
+	allPages:1,
 	init: function(){
 		//this.httpTip = new Utils.httpTip({});
 
@@ -16,10 +21,24 @@ PageManager.prototype = {
 		this.getCourseType();
 	},
 	bindEvent:function(){
-		$("#buybtn").onbind("click",this.buyBtnClick,this);
+		$("#classtitle").onbind("keydown",this.keyDownSearch,this);
+		$("#searchbtn").onbind("click",this.keySearch,this);
 		// $("#password").onbind("keydown",this.keyDown,this);
 	},
 	pageLoad:function(){
+	},
+	keySearch:function(evt){
+		this.classTitle = $("#classtitle").val() || "";
+		this.pageNum = 1;
+		this.getCourseHttp();
+	},
+	keyDownSearch:function(evt){
+		var keycode = evt.keyCode;
+		if(keycode == 13){
+			this.classTitle = $("#classtitle").val() || "";
+			this.pageNum = 1;
+			this.getCourseHttp();
+		}
 	},
 	getCourseType:function(){
 		Utils.load();
@@ -31,6 +50,9 @@ PageManager.prototype = {
 			success: function(res){
 				var rows = res.rows || [];
 				this.bulidCourseTypeHtml(rows);
+
+				this.currentClassId = 0;
+				this.getCourseHttp();
 			},
 			error:function(res){
 				layer.msg(res.message || "请求错误");
@@ -40,17 +62,17 @@ PageManager.prototype = {
 	bulidCourseTypeHtml:function(rows){
 		var html = [];
 		rows.forEach(function(item,i){
-			if(i == 0){
-				this.getCourseHttp(item.id);
+			// if(i == 0){
+			// 	// this.getCourseHttp(item.id);
 
-				html.push('<li data="' + item.id +'" class="course-nav-item on">');
-				html.push('<a href="javascript:;">'+item.name+'</a>');
-				html.push('</li>');
-			}else{
+			// 	html.push('<li data="' + item.id +'" class="course-nav-item on">');
+			// 	html.push('<a href="javascript:;">'+item.name+'</a>');
+			// 	html.push('</li>');
+			// }else{
 				html.push('<li data="' + item.id +'" class="course-nav-item">');
 				html.push('<a href="javascript:;">'+item.name+'</a>');
 				html.push('</li>');
-			}
+			// }
 		}.bind(this));
 
 		$("#course-type").append(html.join(''));
@@ -62,15 +84,20 @@ PageManager.prototype = {
 		var classId = +$(ele).attr("data");
 		$("#course-type > li").removeClass("on");
 		$(ele).addClass("on");
-		this.getCourseHttp(classId);
+		this.pageNum = 1;
+		this.currentClassId = classId;
+		this.getCourseHttp();
 	},
-	getCourseHttp:function(classId){
+	getCourseHttp:function(){
 		Utils.load();
 		var url = Base.serverUrl + "/gen/course/selectBy";
 		var condi = {};
-		if(classId){
-			condi.classId = classId;
+		if(this.currentClassId){
+			condi.classId = this.currentClassId;
 		}
+		condi.classTitle = "";
+		condi.pageSize = this.pageSize;
+		condi.pageNum = this.pageNum;
 		
 		// condi.classType = 0;
 		
@@ -79,6 +106,10 @@ PageManager.prototype = {
 			success: function(res){
 				var rows = res.rows || [];
 				this.setHotCourseHtml(rows);
+				var current = res.current || 1;
+				var pages = res.pages || 1;
+				this.allPages = pages;
+				this.setPagesHtml(current,pages);
 			},
 			error:function(res){
 				layer.msg(res.message || "请求错误");
@@ -103,6 +134,68 @@ PageManager.prototype = {
 		// for(var j = 0, len2 = data.length; j < len2; j++){
 		// 	this.getHotCourseInfoHttp(data[j].hotId);
 		// }
+	},
+
+	setPagesHtml:function(current,pages){
+		var html = [];
+		html.push('<li data="0" class="item prev prev-disabled">');
+		html.push('<span class="num" trace="srp_bottom_pageup">');
+		html.push('<span>首页</span>');
+		html.push('</span>');
+        html.push('</li>');
+        html.push('<li data="pre" class="item prev prev-disabled">');
+        html.push('<span class="num" trace="srp_bottom_pageup">');
+		html.push('<span>上一页</span>');
+		html.push('</span>');
+		html.push('</li>');
+		
+		for(var i = 1; i <= pages; i++){
+			if(i==current){
+				html.push('<li data="' + i + '" class="item active">');
+				html.push('<span class="num">' + i +'</span>');
+				html.push('</li>');
+			}else{
+				html.push('<li data="' + i + '" class="item ">');
+				html.push('<span class="num">' + i +'</span>');
+				html.push('</li>');
+			}
+		}
+		html.push('<li data="next" class="item next">');
+        html.push('<a class="num icon-tag" href="#">');
+		html.push('<span>下一页</span>');
+		html.push('</a>');
+		html.push('</li>');
+		html.push('<li data="' + pages +'" class="item next">');
+        html.push('<span class="num" trace="srp_bottom_pageup">');
+		html.push('<span>末页</span>');
+		html.push('</span>');
+		html.push('</li>');
+
+		$("#pages").html(html.join(''));
+
+		$("#pages li").rebind('click',this.changeListPage,this);
+	},
+	changeListPage:function(evt){
+		var ele = evt.currentTarget;
+		var num = $(ele).attr("data");
+		if(num == "pre"){
+			if(this.pageNum == 1){
+				layer.msg("当前是第一页");
+				return;
+			}
+			this.pageNum--;
+		}else if(num == "next"){
+			if(this.pageNum == this.allPages){
+				layer.msg("当前是最后一页");
+				return;
+			}
+			this.pageNum++;
+		}else{
+			this.pageNum = +num;
+		}
+
+		
+		this.getCourseHttp();
 	},
 
 	getHotCourseInfoHttp:function(id){

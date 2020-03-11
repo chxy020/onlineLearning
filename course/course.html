@@ -22,18 +22,18 @@
         <div class="ps_seach clearfix">
             <p>搜索课程：</p>
             <div class="search_area">
-                <input type="text" class="myfl" name="captchaCode" placeholder="搜索你感兴趣的课程"/>
-                <div class="showhide_search"></div>
+                <input id="classtitle" type="text" class="myfl" name="captchaCode" placeholder="搜索你感兴趣的课程"/>
+                <div id="searchbtn" class="showhide_search"></div>
             </div>
         </div>
         <div class="course-nav-row clearfix">
             <span class="hd l">类别：</span>
             <div class="bd">
                 <ul id="course-type" class="">
-                    <!-- <li data="0" class="course-nav-item on">
-                        <a href="">全部</a>
+                    <li data="0" class="course-nav-item on">
+                        <a href="javascript:;">全部</a>
                     </li>
-                    <li class="course-nav-item">
+                    <!-- <li class="course-nav-item">
                         <a href="">课程类别1</a>
                     </li> -->
                 </ul>
@@ -75,8 +75,8 @@
             </div>
             <div class="m-page">
                 <form method="get" action="" name="qPagerForm">
-                    <ul class="items">
-                        <li class="item prev prev-disabled">
+                    <ul id="pages" class="items">
+                        <!-- <li class="item prev prev-disabled">
                             <span class="num" trace="srp_bottom_pageup">
                                 <span>首页</span>
                             </span>
@@ -89,43 +89,11 @@
                         <li class="item active">
                             <span class="num">1</span>
                         </li>
-                        <li class="item">
-                            <a class="num" href="">2</a>
-                        </li>
-                        <li class="item">
-                            <span class="num" href="">3</span>
-                        </li>
-                        <li class="item">
-                            <a class="num" href="">4</a>
-                        </li>
-                        <li class="item">
-                            <a class="num" href="">5</a>
-                        </li>
-                        <li class="item">
-                            <a class="num" href="">6</a>
-                        </li>
-                        <li class="item">
-                            <a class="num" href="">7</a>
-                        </li>
-                        <li class="item">
-                            <a class="num" href="">8</a>
-                        </li>
-                        <li class="item">
-                            <a class="num" href="">9</a>
-                        </li>
-                        <li class="item">
-                            <a class="num" href="">10</a>
-                        </li>
-                        <li class="item next">
-                            <a class="num icon-tag" href="#">
-                                <span>下一页</span>
-                            </a>
-                        </li>  
                         <li class="item next">
                             <span class="num" trace="srp_bottom_pageup">
                                 <span>末页</span>
                             </span>
-                        </li>
+                        </li> -->
                     </ul>
                 </form>
             </div>

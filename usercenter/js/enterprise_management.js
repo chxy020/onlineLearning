@@ -7,7 +7,7 @@ var PageManager = function (obj){
 PageManager.prototype = {
 	constructor:PageManager,
 	pageNum:1,
-	pageSize:10,
+	pageSize:1,
 	init: function(){
 		//this.httpTip = new Utils.httpTip({});
 		this.bindEvent();
@@ -15,18 +15,90 @@ PageManager.prototype = {
 		this.getListHttp();
 	},
 	bindEvent:function(){
-		// $("#subbtn").onbind("click",this.setLogin,this);
+		$("#addbtn").onbind("click",this.addBtnClick,this);
+		$("#addFormBtn02").onbind("click",this.subBtnClick,this);
 		// $("#password").onbind("keydown",this.keyDown,this);
 	},
 	pageLoad:function(){
 	},
+
+	addBtnClick:function(){
+		$("#addmask").show();
+		$("#addform").show();
+	},
+	subBtnClick:function(){
+		var name = $("#name").val().trim() || "";
+		var idcard = $("#idcard").val().trim() || "";
+		var phone = $("#phone").val().trim() || "";
+		var classType = $("#classType").val().trim() || "";
+		
+		$("#namemsg").html("");
+		if(!name){
+			$("#namemsg").html("姓名不能为空");
+			return;
+		}
+
+		$("#idcardmsg").html("");
+		if(!idcard){
+			$("#idcardmsg").html("身份证号不能为空");
+			return;
+		}
+		if(idcard.length != 18){
+			$("#idcardmsg").html("身份证号输入错误");
+			return;
+		}
+
+		$("#phonemsg").html("");
+		if(!name){
+			$("#phonemsg").html("手机号不能为空");
+			return;
+		}
+
+		if(!Utils.isTel(phone)){
+			$("#phonemsg").html("手机号输入错误");
+			return;
+		}
+
+		var condi = {};
+		condi.name = name;
+		condi.idCard = idcard;
+		condi.phone = phone;
+		condi.classType = 3;
+
+		this.addCompanyInsHttp(condi);
+	},
+	addCompanyInsHttp:function(condi){
+		Utils.load();
+		var url = Base.serverUrl + "/companyHome/ins";
+		
+		$.Ajax({
+			url:url,type:"POST",data:condi,dataType:"json",context:this,global:false,
+			success: function(res){
+				var obj = res.data || {};
+				
+			},
+			error:function(res){
+				layer.msg(res.message || "请求错误");
+			}
+		});
+	},
+
+
+
+
+
+
+
+
+
+
 	getListHttp:function(){
 		
 		Utils.load();
 		var url = Base.serverUrl + "/companyHome/get";
 		var condi = {};
-		// condi.pageNum = this.pageNum;
-		// condi.pageSize = this.pageSize;
+		condi.pageNum = this.pageNum;
+		condi.pageSize = this.pageSize;
 		// condi.name = Base
 		// condi.idCard = Base
 		// condi.phone = Base

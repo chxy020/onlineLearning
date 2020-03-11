@@ -22,7 +22,7 @@
                 </div>
                 <div class="qiye_cont">
                     <p class="mb20">
-                        <a href="#" class="view_a w100">添加学员</a>
+                        <a id="addbtn" href="javascript:;" class="view_a w100">添加学员</a>
                     </p>
                     <table class="table J-check-box">
                         <colgroup>
@@ -113,41 +113,40 @@
     </div>
 
     <!--3.10 添加 添加学员-->
-    <div class="mask J-mask" style="display:none-"></div>
-    <div class="J-fuwutiaokuan" style="display:none-;">
+    <div id="addmask" class="mask J-mask" style="display:none"></div>
+    <div id="addform" class="J-fuwutiaokuan" style="display:none;">
         <div class="login_content clearfix">
-            <form action="" method="">
+            <!-- <form action="" method=""> -->
                 <div class="login_box" style="z-index:9999">
                     <a class="close_btn J-close-btn"></a>
                     <p class="rg_cg_ti">添加学员</p>
                     <p class="system_error"></p>
                     <!-- 姓名 -->
-                    <input type="text" name="nick" value="" placeholder="请输入姓名" id="username"/>
-                    <p class="input_error"><span></span></p>
+                    <input type="text" name="name" value="" placeholder="请输入姓名" id="name"/>
+                    <p class="input_error"><span id="namemsg"></span></p>
                     <!-- 请输入身份证号 -->
-                    <input type="text" name="nick" value="" placeholder="请输入身份证号" id="username"/>
-                    <p class="input_error"><span></span></p>
+                    <input type="text" name="idCard" value="" placeholder="请输入身份证号" id="idcard"/>
+                    <p class="input_error"><span id="idcardmsg"></span></p>
                     <!-- 联系方式 -->
-                    <input type="text" name="nick" value="" placeholder="请输入联系方式" id="username"/>
-                    <p class="input_error"><span></span></p>
+                    <input type="text" name="phone" value="" placeholder="请输入联系方式" id="phone"/>
+                    <p class="input_error"><span id="phonemsg"></span></p>
                     <!-- 培训级别（初级，中级） -->
                     <div class="tzSelect36">
-                        <select name="" class="regularSelect w310">
-                            <option value="opt1" selected>培训级别-初级</option>
-                            <option value="opt2">培训级别-中级</option>
+                        <select name="" id="classType" class="regularSelect w310">
+                            <option value="1" selected>培训级别-初级</option>
+                            <option value="2">培训级别-中级</option>
                         </select>
                     </div>
                     <p class="input_error"><span></span></p>
-                    <input type="submit" value="确定" class="submit_btn" id="regFormBtn02">
+                    <input type="submit" value="确定" class="submit_btn" id="addFormBtn02">
     
                 </div>
-            </form>
+            <!-- </form> -->
         </div>
     </div>
     <!--3.10 添加 添加学员 结束-->
     <!-- 3.10 添加 -->
-    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script><!--通用必须得要-->
-    <script type="text/javascript" src="js/jquery.tzSelect.js"></script><!--下拉框美化-->
+    <script type="text/javascript" src="../js/jquery.tzSelect.js"></script><!--下拉框美化-->
     <script type="text/javascript">            
         /*-------------select美化下拉菜单样式-------------------*/
         $('select.regularSelect').tzSelect();
@@ -163,5 +162,7 @@
         });
     </script>
     <!-- 3.10 添加 结束-->
+
+    <script type="text/javascript" src="js/enterprise_management.js"></script>
 </body>
 </html>
