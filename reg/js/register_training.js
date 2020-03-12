@@ -196,6 +196,7 @@ PageManager.prototype = {
 		var condi = {};
 		condi.username = username;
 		condi.password = password2;
+		condi.code = code;
 		condi.name = name;
 		condi.comname = comname;
 		condi.email = email;
