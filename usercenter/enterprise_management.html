@@ -15,7 +15,7 @@
 </head>
 <body class="bodybg">
     <div class="login_content clearfix">
-        <form action="" method="">
+        <!-- <form action="" method=""> -->
             <div class="login_box qiye_management">
                 <div class="title clearfix">
                     <span class="myfl"></span><h1 class="myfl">企业报名管理</h1><span class="myfr"></span>
@@ -36,8 +36,8 @@
                         <thead>
                             <tr>
                                 <th class="center">
-                                    <input type="checkbox" name="genre" id="comedy3" value="comedy3" />
-                                    <label for="comedy3" class="J-checkAll"></label>
+                                    <input type="checkbox" name="genre" id="allckbox" value="" />
+                                    <label for="allckbox" class="J-checkAll"></label>
                                 </th>
                                 <th>姓名</th>
                                 <th>身份证号</th>
@@ -46,19 +46,9 @@
                                 <th>操作</th>
                             </tr> 
                         </thead>
-                        <tbody class="mouseover_ta01">
-                            <tr>
-                                <td class="center">
-                                    <input type="checkbox" name="genre1" id="comedy41" value="comedy3" />
-                                    <label for="comedy41" class="J-check"></label>
-                                </td>
-                                <td>张三</td>
-                                <td>370209198804054556</td>
-                                <td>13301466511</td>
-                                <td>煤矿安全</td>
-                                <td><a href="#" class="view_a">编辑</a><a href="#" class="view_a ml10">删除</a></td>
-                            </tr>
-                            <tr>
+                        <tbody id="recordslist" class="mouseover_ta01">
+                            
+                            <!-- <tr>
                                 <td class="center">
                                     <input type="checkbox" name="genre1" id="comedy42" value="comedy3" />
                                     <label for="comedy42" class="J-check"></label>
@@ -101,15 +91,15 @@
                                 <td>13301466511</td>
                                 <td>煤矿安全</td>
                                 <td><a href="#" class="view_a">编辑</a><a href="#" class="view_a ml10">删除</a></td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </div>
                 <div class="textR">
-                    <input type="submit" value="提交学员信息" class="submit_btn" id="regFormBtn02">
+                    <input type="submit" value="提交学员信息" class="submit_btn" id="subFormBtn02">
                 </div>
             </div>
-        </form>
+        <!-- </form> -->
     </div>
 
     <!--3.10 添加 添加学员-->
@@ -133,8 +123,13 @@
                     <!-- 培训级别（初级，中级） -->
                     <div class="tzSelect36">
                         <select name="" id="classType" class="regularSelect w310">
-                            <option value="1" selected>培训级别-初级</option>
-                            <option value="2">培训级别-中级</option>
+                            <option value="0" selected>煤矿安全</option>
+                            <option value="1">金属非金属矿山安全</option>
+                            <option value="2">化工安全</option>
+                            <option value="3">金属冶炼安全</option>
+                            <option value="4">建筑施工安全</option>
+                            <option value="5">道路运输安全</option>
+                            <option value="6">其他安全（不包括消防安全）</option>
                         </select>
                     </div>
                     <p class="input_error"><span></span></p>

@@ -6,12 +6,13 @@ var PageManager = function (obj){
 
 PageManager.prototype = {
 	constructor:PageManager,
-	
+	classType:['煤矿安全','金属非金属矿山安全','化工安全','金属冶炼安全,建筑施工安全','道路运输安全','其他安全（不包括消防安全）'],
 	init: function(){
 		//this.httpTip = new Utils.httpTip({});
 		this.bindEvent();
 
-		this.getUserInfoHttp();
+		// this.getUserInfoHttp();
+		this.getEnterRecordList();
 	},
 	bindEvent:function(){
 		// $("#subbtn").onbind("click",this.setLogin,this);
@@ -19,6 +20,29 @@ PageManager.prototype = {
 	},
 	pageLoad:function(){
 	},
+	getEnterRecordList:function(){
+		var list = Utils.offlineStore.get("__enterRecordList") || "";
+		if(list){
+			list = JSON.parse(list);
+			var html = [];
+			list.forEach(function(item){
+				html.push('<tr>');
+				html.push('<td>' + item.name +'</td>');
+				html.push('<td>' + item.idCard + '</td>');
+				html.push('<td>' + item.phone + '</td>');
+				html.push('<td>' + this.classType[+item.classType] + '</td>');
+				html.push('</tr>');
+			}.bind(this));
+			$("#recordlist").html(html.join());
+		}
+	},
+
+
+
+
+
+
+
 	getUserInfoHttp:function(condi){
 		
 		Utils.load();

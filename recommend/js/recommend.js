@@ -57,9 +57,12 @@ PageManager.prototype = {
 
 		$.Ajax({
 			url:url,type:"POST",data:condi,dataType:"json",context:this,global:false,
-			success: function(res){
-				var data = res.data || {};
-				var hotCourse = data.hotCourse || [];
+			success: function(data){
+				var hotCourse = data.data || [];
+
+				var pageContent = data.pageContent;
+				$(".pindao_cont").html(pageContent);
+
 				this.setHotCourseHtml(hotCourse);
 			},
 			error:function(res){
