@@ -132,25 +132,14 @@
 .course-nav-item a:active,.course-nav-item a:hover {color:#ec1500;}
 .course-nav-item.on a {background:rgba(242,13,13,.06);border-radius:6px;font-weight:700;color:#f20d0d;}
 .pindao_cont {padding:20px}
-.pindao_cont h3{
-        height: 46px;
-        line-height: 46px;
-        color: #000;
-}
-.pindao_cont p{
-        text-indent: 2em;
-        line-height: 26px;
-        font-size: 16px;
-        color: #444;
-margin:10px 0;
-}
-.pindao_cont p.pleft{
-        text-indent: 0;
-}
-
-
-
-
-
-
+.pindao_cont h3{height: 46px;line-height: 46px;color: #000;}
+.pindao_cont p{text-indent: 2em;line-height: 26px;font-size: 16px;color: #444;margin:10px 0;}
+.pindao_cont p.pleft{text-indent: 0;}
+/*------------------the_test_list.html---------------*/
+.test-card-container {width: 281px;position: relative;float: left;margin: 0 0 22px 22px;z-index: 0;font-size: 0;}
+.test-card-container a {display: block;padding:20px;background: #f7f7f7;border-radius: 8px}
+.test-card-container a:hover {background: #f1f1f1;}
+.test-card-container a h3{margin-top: 10px;font-size: 16px;color: #444;line-height: 24px;word-wrap: break-word;overflow: hidden;text-overflow: ellipsis;height: 48px;font-weight: 100;}
+.test-card-container a p{font-size: 12px;color: #444;line-height: 24px;word-wrap: break-word;overflow: hidden;text-overflow: ellipsis;}
+.test-card-container a p span{color: #ff0000;margin:0 3px;/*font-size: 16px;*/}
 
