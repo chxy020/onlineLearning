@@ -28,14 +28,12 @@ PageManager.prototype = {
 	pageLoad:function(){
 	},
 	keySearch:function(evt){
-		this.classTitle = $("#classtitle").val() || "";
 		this.pageNum = 1;
 		this.getCourseHttp();
 	},
 	keyDownSearch:function(evt){
 		var keycode = evt.keyCode;
 		if(keycode == 13){
-			this.classTitle = $("#classtitle").val() || "";
 			this.pageNum = 1;
 			this.getCourseHttp();
 		}
@@ -95,7 +93,7 @@ PageManager.prototype = {
 		if(this.currentClassId){
 			condi.classId = this.currentClassId;
 		}
-		condi.classTitle = "";
+		condi.classTitle = this.classTitle = $("#classtitle").val() || "";
 		condi.pageSize = this.pageSize;
 		condi.pageNum = this.pageNum;
 		

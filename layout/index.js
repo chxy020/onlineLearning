@@ -48,10 +48,10 @@ PageManager.prototype = {
 			var courseId = item.courseId;
 			var imgSrc = item.imgSrc;
 			if(i == 0){
-				images.push('<li class="on"><a href="#"><img src="' + imgSrc + '"></a></li>');
+				images.push('<li class="on"><a href="/video/video_watch.html?id=' + courseId + '"><img src="' + imgSrc + '"></a></li>');
 				slidetab.push('<span class="on">1</span>');
 			}else{
-				images.push('<li ><a href="#"><img src="' + imgSrc + '"></a></li>');
+				images.push('<li ><a href="/video/video_watch.html?id=' + courseId + '"><img src="' + imgSrc + '"></a></li>');
 				slidetab.push('<span class="">' + (i+1) + '</span>');
 			}
 		}

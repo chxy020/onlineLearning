@@ -10,8 +10,8 @@ PageManager.prototype = {
 	init: function(){
 		//this.httpTip = new Utils.httpTip({});
 
-		this.userType = Base.userType;
-		this.setUserTypeHtml();
+		// this.userType = Base.userType;
+		// this.setUserTypeHtml();
 
 		this.bindEvent();
 
@@ -24,11 +24,6 @@ PageManager.prototype = {
 	pageLoad:function(){
 	},
 	setUserTypeHtml:function(){
-		if(this.userType == 1){
-			$(".studytime,.a3,.a4").hide();
-		}else{
-			$(".entername").hide();
-		}
 	},
 
 	getUserInfoHttp:function(condi){

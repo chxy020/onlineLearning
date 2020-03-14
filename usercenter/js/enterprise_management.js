@@ -51,7 +51,7 @@ PageManager.prototype = {
 		var ck = $("#allckbox").is(':checked');
 		this.recordsList.forEach(function(item){
 			var ckid = "ckr_" + item.id;
-			$("#"+ckid).attr("checked",ck);
+			$("#"+ckid).prop("checked",ck);
 		});
 	},
 	addBtnClick:function(){

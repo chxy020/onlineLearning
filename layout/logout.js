@@ -6,5 +6,5 @@ function loginOut(){
 	Utils.offlineStore.remove("__user",true);
 	Utils.offlineStore.remove("__token",true);
 
-	location.href="index.html";
+	location.href="/index.html";
 }
