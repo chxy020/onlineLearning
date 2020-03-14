@@ -6,9 +6,13 @@ var PageManager = function (obj){
 
 PageManager.prototype = {
 	constructor:PageManager,
-	
+	userType:0,
 	init: function(){
 		//this.httpTip = new Utils.httpTip({});
+
+		this.userType = Base.userType;
+		this.setUserTypeHtml();
+
 		this.bindEvent();
 
 		this.getUserInfoHttp();
@@ -19,6 +23,14 @@ PageManager.prototype = {
 	},
 	pageLoad:function(){
 	},
+	setUserTypeHtml:function(){
+		if(this.userType == 1){
+			$(".studytime,.a3,.a4").hide();
+		}else{
+			$(".entername").hide();
+		}
+	},
+
 	getUserInfoHttp:function(condi){
 		
 		Utils.load();

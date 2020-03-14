@@ -16,8 +16,15 @@
 	if(typeof(Utils) !== "undefined"){
 		token = Utils.offlineStore.get("__token",true) || "";
 	}
-
+	var userType = 0;
+	if(typeof(Utils) !== "undefined"){
+		var userInfo = Utils.offlineStore.get("__userInfo",true) || "";
+		if(userInfo){
+			userType = JSON.parse(userInfo).userType;
+		}
+	}
 	Base.token = token;
+	Base.userType = userType;
 	Base.serverUrl = serverUrl;
 }(window));
 
