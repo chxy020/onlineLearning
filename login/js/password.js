@@ -46,7 +46,7 @@ PageManager.prototype = {
 		}
 
 		var condi = {};
-		condi.status = 1;
+		condi.status = 0;
 		condi.username = username;
 		condi.code = icode;
 		this.getMsgCodeHttp(condi);
