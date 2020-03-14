@@ -7,6 +7,8 @@ var PageManager = function (obj){
 PageManager.prototype = {
 	constructor:PageManager,
 	id:"",
+	classType:0,
+	playTime:10000,
 	init: function(){
 		//this.httpTip = new Utils.httpTip({});
 
@@ -19,6 +21,8 @@ PageManager.prototype = {
 		this.bindEvent();
 
 		this.getInClassHttp();
+
+		
 	},
 	bindEvent:function(){
 		$("#buybtn").onbind("click",this.buyBtnClick,this);
@@ -37,6 +41,8 @@ PageManager.prototype = {
 				var obj = res.data || [];
 				var html = [];
 				var icid = 0;
+				// 课程类型   0: 视频 1: PPT
+				this.classType = +res.classType;
 				obj.forEach(function(item,i){
 					if( i == 0){
 						icid = item.id;
@@ -72,9 +78,31 @@ PageManager.prototype = {
 		$.Ajax({
 			url:url,type:"POST",data:condi,dataType:"json",context:this,global:false,
 			success: function(res){
-				var obj = res.data || [];
+				var obj = res.courseCategory || [];
 				var videoShort = obj.videoShort || "";
-				$("#video1,#video2").attr("src",videoShort);
+				if(this.classType == 0){
+					$("#video1").show();
+
+
+					$("#video1,#video2").attr("src",videoShort);
+					$("#video1")[0].play();
+					// $("#video2")[0].play();
+				}else{
+					var imgs = videoShort.split(',');
+					var html = [];
+					imgs.forEach(function(item){
+						html.push('<div class="swiper-slide"><img src="' + item + '" /></div>');
+					});
+					$(".swiper-wrapper").html(html.join(''));
+
+					$(".swiper-container").show();
+					
+					var swiper = new Swiper('.swiper-container', {
+						pagination: '.swiper-pagination',
+						paginationClickable: true,
+						autoplay: this.playTime
+					});
+				}
 			},
 			error:function(res){
 				layer.msg(res.message || "请求错误");
