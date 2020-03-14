@@ -32,7 +32,10 @@
 		on = 7;
 	}else if(url.indexOf('personal_center.html') > -1){
 		on = 8;
+	}else if(url.indexOf('the_test_list.html') > -1){
+		on = 9;
 	}
+
 
 	var __header = [];
 	__header.push('<div class="head_content video_watch_head clearfix">');
@@ -80,6 +83,11 @@
 		__header.push('<li class="on"><a href="/course/course.html">所有课程</a></li>');
 	}else{
 		__header.push('<li><a href="/course/course.html">所有课程</a></li>');
+	}
+	if(on == 9){
+		__header.push('<li class="on"><a href="/test/the_test_list.html">试卷查看</a></li>');
+	}else{
+		__header.push('<li><a href="/test/the_test_list.html">试卷查看</a></li>');
 	}
 	
 	__header.push('<li class="dl">');
