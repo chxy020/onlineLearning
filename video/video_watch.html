@@ -83,49 +83,47 @@
     <div class="J-fuwutiaokuan feedback_mian" style="display:none">
             <div class="feedback_box">
                 <a class="close_btn J-close-btn"></a>
-                <div class="feedback_tit"><h3>播放到一定位置弹出的答题框</h3></div>
+                <div class="feedback_tit"><h3>题目标题</h3></div>
                 <div class="feedback_con">
                     <div class="pop_h400 h438">
                         <ul class="list-group">
                             <li class="list-group-item clearfix">
                                 <div class="col-xs-1">
-                                    <img src="../img/ico_wrong.png">
+                                    <img data="A" src="../img/ico_notselected.png">
+                                    <!-- ../img/ico_wrong.png -->
                                 </div>
                                 <div class="col-xs-11">
-                                    A、违章行为
                                 </div>
                             </li>
                             <li class="list-group-item clearfix">
                                 <div class="col-xs-1">
-                                    <img src="../img/ico_right.png">
+                                    <img data="B" src="../img/ico_notselected.png">
+                                    <!-- ../img/ico_right.png -->
                                 </div>
                                 <div class="col-xs-11">
-                                    B、违章行为
                                 </div>
                             </li>
                             <li class="list-group-item clearfix">
                                 <div class="col-xs-1">
-                                    <img src="../img/ico_notselected.png">
+                                    <img data="C" src="../img/ico_notselected.png">
                                 </div>
                                 <div class="col-xs-11">
-                                   C、违章行为
                                 </div>
                             </li>
                             <li class="list-group-item clearfix">
                                 <div class="col-xs-1">
-                                    <img src="../img/ico_notselected.png">
+                                    <img data="D" src="../img/ico_notselected.png">
                                 </div>
                                 <div class="col-xs-11">
-                                   D、违章行为
                                 </div>
                             </li>
                         </ul>
                         <div class="row-tishi">
-                            <p class="color-right">恭喜您，答对了!</p>
-                            <p class="color-wrong">答错了，正确答案：B</p>
-                            <div class="color-explain">
+                            <p class="color-right" style="display: none;">恭喜您，答对了!</p>
+                            <p class="color-wrong" style="display: none;">答错了，正确答案：</p>
+                            <div class="color-explain" style="display: none;">
                                 <div class="row">解释：</div>
-                                <div class="content">违反道路交通安全法,明显的是违法,它都暗示了是违法行为. </div>
+                                <div id="parsing" class="content"></div>
                             </div>
                         </div>
                     </div>
