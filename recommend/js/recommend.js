@@ -60,8 +60,16 @@ PageManager.prototype = {
 			success: function(data){
 				var hotCourse = data.data || [];
 
-				var pageContent = data.pageContent;
-				$(".pindao_cont").html(pageContent);
+				var pageArray = data.pageArray || [];
+				var li = [];
+				pageArray.forEach(function(item){
+					li.push('<li>');
+					li.push('<span class="myfr" >'+ item.createTime+ '</span>');
+					// li.push('<span style="float:left;">【磐石新闻快讯】</span>');
+					li.push('<a href="/recommend/inside_pages.html?id='+item.id+'" style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 80%;float: left;">' + item.pageTitle + '</a>');
+                	li.push('</li>');
+				});
+				$(".article_list").html(li.join(''));
 
 				this.setHotCourseHtml(hotCourse);
 			},
