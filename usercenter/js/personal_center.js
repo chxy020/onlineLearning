@@ -90,16 +90,24 @@ PageManager.prototype = {
 	},
 	
 	studyingListHtml:function(list){
+
 		var html = [];
 		list.forEach(function(item){
+			var id = +item.id;
 			html.push('<div class="course-card-container">');
-			html.push('<a target="_blank" href="" class="course-card">');
+			html.push('<a href="/video/video_watch.html?id=' + id + '" class="course-card">');
+			// html.push('<a target="_blank" href="/video/video_watch.html?id=' + id + '" class="course-card">');
 			html.push('<img src="' + item.courseImg + '" style="width:281px;height:158px;">');
-			html.push('<p>' + item.courseTitle + '</p>');
+			html.push('<p >' + item.courseTitle + '</p>');
 			html.push('</a>');
 			html.push('</div>');
 		});
+		
 		$("#studying").html(html.join(''));
+
+		// for(var j = 0, len2 = data.length; j < len2; j++){
+		// 	this.getHotCourseInfoHttp(data[j].hotId);
+		// }
 	},
 
 	examOverListHtml:function(list){

@@ -108,15 +108,15 @@
 		__header.push('<div>');
 		if(on == 8){
 			if(userType == 0){
-				__header.push('<a href="/usercenter/personal_center.html" style="color: #00a0e9;">个人中心</a><span>'+username+'</span><a href="javascript:loginOut()" class="tc">退出</a>');
+				__header.push('<a href="/usercenter/personal_center.html" style="color: #00a0e9;">个人中心</a><span></span><a href="javascript:loginOut()" class="tc">'+username+'</a>');
 			}else{
-				__header.push('<a href="/usercenter/enterprise_management.html" style="color: #00a0e9;">个人中心</a><span>'+username+'</span><a href="javascript:loginOut()" class="tc">退出</a>');
+				__header.push('<a href="/usercenter/enterprise_management.html" style="color: #00a0e9;">个人中心</a><span></span><a href="javascript:loginOut()" class="tc">'+username+'</a>');
 			}
 		}else{
 			if(userType == 0){
-				__header.push('<a href="/usercenter/personal_center.html" >个人中心</a><span>'+username+'</span><a href="javascript:loginOut()" class="tc">退出</a>');
+				__header.push('<a href="/usercenter/personal_center.html" >个人中心</a><span></span><a href="javascript:loginOut()" class="tc">'+username+'</a>');
 			}else{
-				__header.push('<a href="/usercenter/enterprise_management.html" >个人中心</a><span>'+username+'</span><a href="javascript:loginOut()" class="tc">退出</a>');
+				__header.push('<a href="/usercenter/enterprise_management.html" >个人中心</a><span></span><a href="javascript:loginOut()" class="tc">'+username+'</a>');
 			}
 		}
 		__header.push('</div>');

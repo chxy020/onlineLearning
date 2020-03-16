@@ -11,6 +11,7 @@ PageManager.prototype = {
 	playTime:10000,
 	titleId:[],
 	showTime:[],
+	swiper:null,
 	init: function(){
 		//this.httpTip = new Utils.httpTip({});
 
@@ -28,6 +29,8 @@ PageManager.prototype = {
 	},
 	bindEvent:function(){
 		$("#buybtn").onbind("click",this.buyBtnClick,this);
+		$("#replaybtn").onbind("click",this.replayBtnClick,this);
+		$("#clearbtn").onbind("click",this.clearBtnClick,this);
 		// $("#password").onbind("keydown",this.keyDown,this);
 	},
 	pageLoad:function(){
@@ -81,6 +84,7 @@ PageManager.prototype = {
 			url:url,type:"POST",data:condi,dataType:"json",context:this,global:false,
 			success: function(res){
 				var obj = res.courseCategory || [];
+				var permissions = res.permissions;
 				var videoShort = obj.videoShort || "";
 				if(this.classType == 0){
 					$("#video1").show();
@@ -88,6 +92,13 @@ PageManager.prototype = {
 
 					$("#video1,#video2").attr("src",videoShort);
 					$("#video1")[0].play();
+
+					// 1是无权限，0是有
+					if(permissions){
+						//播放结束弹出购买
+						$("#video1,#video2").rebind("ended",this.videoEnded,this);
+					}
+					
 
 					// obj.subjectTime = "00:00:05,85;"
 					var times =  obj.subjectTime.split(";") || [];
@@ -126,11 +137,20 @@ PageManager.prototype = {
 
 					$(".swiper-container").show();
 					
-					var swiper = new Swiper('.swiper-container', {
+					this.swiper = new Swiper('.swiper-container', {
 						pagination: '.swiper-pagination',
 						paginationClickable: true,
-						autoplay: this.playTime
+						autoplayStopOnLast:true,
+						autoplay: this.playTime,
+						onReachEnd:function(){
+							this.pptEnded();
+						}.bind(this)
 					});
+					$('.swiper-container').mouseenter(function() {
+						this.swiper.stopAutoplay();
+					}.bind(this)).mouseleave(function() {
+						this.swiper.startAutoplay();
+					}.bind(this));
 				}
 			},
 			error:function(res){
@@ -259,9 +279,36 @@ PageManager.prototype = {
 		$(".J-fuwutiaokuan").hide();
 	},
 
+	videoEnded:function(){
+		$(".video_content_pop").show();
+	},
+	ppttout:null,
+	pptEnded:function(){
+		clearTimeout(this.ppttout);
+		this.ppttout = setTimeout(function(){
+			$(".video_content_pop").show();
+		},this.playTime);
+	},
+
 	buyBtnClick:function(evt){
 		
 	},
+	replayBtnClick:function(evt){
+		$(".video_content_pop").hide();
+
+		if($("#video1").length > 0){
+			$("#video1")[0].play();
+			if($("#video2").length > 0){
+				// $("#video2")[0].stop();
+			}
+		}
+		if(this.swiper){
+			this.swiper.slideTo(0);
+		}
+	},
+	clearBtnClick:function(evt){
+		$(".video_content_pop").hide();
+	}
 };
 
 //页面初始化

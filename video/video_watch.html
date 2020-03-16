@@ -52,10 +52,10 @@
     
     <div class="video_content">
         <div class="video_content_left">
-            <video id="video1" style="display: none;" width="100%" height="100%" muted controls autoplay loop="loop">
+            <video id="video1" style="display: none;" width="100%" height="100%" muted controls autoplay >
                 <source  src="" type="video/mp4" />
                 <!–[if lt IE 8]>
-                    <embed id="video2" muted preload="auto" controls="" autoplay="auto-play" src="" type="video/mp4" width="100%" height="100%" allowfullscreen="true" quality="high" loop="true" volume="-4200"/></embed>
+                    <embed id="video2" muted preload="auto" controls="" autoplay="auto-play" src="" type="video/mp4" width="100%" height="100%" allowfullscreen="true" quality="high"  volume="-4200"/></embed>
                 <![endif]–>
             </video>
 
@@ -131,13 +131,13 @@
             </div>
     </div>
     <!-- 试看结束 弹框 -->
-    <div class="video_content_pop" style="display:none">
+    <div class="video_content_pop" style="z-index:99;display:none;">
         <div class="video_content_pop_c">
             <p>试看3分钟或试看3张幻灯片已结束</p>
             <div class="rg_cg_a clearfix">
                 <a id="buybtn" href="javascript:;" class="myfr">立即购买</a>
-                <a href="#" class="myfr">再看一遍</a>
-                <a href="#" class="myfr">取消</a>
+                <a id="replaybtn" href="javascript:;" class="myfr">再看一遍</a>
+                <a id="clearbtn" href="javascript:;" class="myfr">取消</a>
             </div>
         </div>
     </div>
