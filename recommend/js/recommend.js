@@ -8,6 +8,11 @@ PageManager.prototype = {
 	constructor:PageManager,
 	// 1：法律法规；2：标准规范；3：政策文件；4：安全咨询；5：互学互鉴；6案例分析
 	id:0,
+
+	pageSize:1,
+	pageNum:1,
+	allPages:1,
+
 	init: function(){
 		//this.httpTip = new Utils.httpTip({});
 
@@ -54,15 +59,17 @@ PageManager.prototype = {
 		Utils.load();
 		var url = Base.serverUrl + "/home/getCourseByType/" + this.id;
 		var condi = {};
+		condi.pageNum = this.pageNum;
 
 		$.Ajax({
 			url:url,type:"POST",data:condi,dataType:"json",context:this,global:false,
 			success: function(data){
 				var hotCourse = data.data || [];
 
-				var pageArray = data.pageArray || [];
+				var pageArray = data.pageArray || {};
+				var records = pageArray.records || [];
 				var li = [];
-				pageArray.forEach(function(item){
+				records.forEach(function(item){
 					li.push('<li>');
 					li.push('<span class="myfr" >'+ item.createTime+ '</span>');
 					// li.push('<span style="float:left;">【磐石新闻快讯】</span>');
@@ -72,6 +79,11 @@ PageManager.prototype = {
 				$(".article_list").html(li.join(''));
 
 				this.setHotCourseHtml(hotCourse);
+
+				var current = pageArray.current || 1;
+				var pages = pageArray.pages || 1;
+				this.allPages = pages;
+				this.setPagesHtml(current,pages);
 			},
 			error:function(res){
 				layer.msg(res.message || "请求错误");
@@ -114,6 +126,67 @@ PageManager.prototype = {
 				layer.msg(res.message || "请求错误");
 			}
 		});
+	},
+	setPagesHtml:function(current,pages){
+		var html = [];
+		html.push('<li data="0" class="item prev prev-disabled">');
+		html.push('<span class="num" trace="srp_bottom_pageup">');
+		html.push('<span>首页</span>');
+		html.push('</span>');
+        html.push('</li>');
+        html.push('<li data="pre" class="item prev prev-disabled">');
+        html.push('<span class="num" trace="srp_bottom_pageup">');
+		html.push('<span>上一页</span>');
+		html.push('</span>');
+		html.push('</li>');
+		
+		for(var i = 1; i <= pages; i++){
+			if(i==current){
+				html.push('<li data="' + i + '" class="item active">');
+				html.push('<span class="num">' + i +'</span>');
+				html.push('</li>');
+			}else{
+				html.push('<li data="' + i + '" class="item ">');
+				html.push('<span class="num">' + i +'</span>');
+				html.push('</li>');
+			}
+		}
+		html.push('<li data="next" class="item next">');
+        html.push('<a class="num icon-tag" href="#">');
+		html.push('<span>下一页</span>');
+		html.push('</a>');
+		html.push('</li>');
+		html.push('<li data="' + pages +'" class="item next">');
+        html.push('<span class="num" trace="srp_bottom_pageup">');
+		html.push('<span>末页</span>');
+		html.push('</span>');
+		html.push('</li>');
+
+		$("#pages").html(html.join(''));
+
+		$("#pages li").rebind('click',this.changeListPage,this);
+	},
+	changeListPage:function(evt){
+		var ele = evt.currentTarget;
+		var num = $(ele).attr("data");
+		if(num == "pre"){
+			if(this.pageNum == 1){
+				layer.msg("当前是第一页");
+				return;
+			}
+			this.pageNum--;
+		}else if(num == "next"){
+			if(this.pageNum == this.allPages){
+				layer.msg("当前是最后一页");
+				return;
+			}
+			this.pageNum++;
+		}else{
+			this.pageNum = +num;
+		}
+
+		
+		this.getCourseByType();
 	}
 };
 
