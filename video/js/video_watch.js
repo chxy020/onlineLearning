@@ -29,6 +29,7 @@ PageManager.prototype = {
 	},
 	bindEvent:function(){
 		$("#buybtn").onbind("click",this.buyBtnClick,this);
+		$("#buybtn2").onbind("click",this.buyBtnClick,this);
 		$("#replaybtn").onbind("click",this.replayBtnClick,this);
 		$("#clearbtn").onbind("click",this.clearBtnClick,this);
 		// $("#password").onbind("keydown",this.keyDown,this);
@@ -89,14 +90,22 @@ PageManager.prototype = {
 				if(this.classType == 0){
 					$("#video1").show();
 
-
 					$("#video1,#video2").attr("src",videoShort);
-					$("#video1")[0].play();
-
+					
 					// 1是无权限，0是有
 					if(permissions){
+						//弹出试看提示
+						$("#video_content_pop2").show();
+
+						//试看按钮
+						$("#replaybtn2").rebind("click",function(){
+							$("#video_content_pop2").hide();
+							$("#video1")[0].play();
+						},this);
+
 						//播放结束弹出购买
 						$("#video1,#video2").rebind("ended",this.videoEnded,this);
+						
 					}
 					
 
@@ -280,13 +289,13 @@ PageManager.prototype = {
 	},
 
 	videoEnded:function(){
-		$(".video_content_pop").show();
+		$("#video_content_pop").show();
 	},
 	ppttout:null,
 	pptEnded:function(){
 		clearTimeout(this.ppttout);
 		this.ppttout = setTimeout(function(){
-			$(".video_content_pop").show();
+			$("#video_content_pop").show();
 		},this.playTime);
 	},
 
@@ -294,7 +303,7 @@ PageManager.prototype = {
 		
 	},
 	replayBtnClick:function(evt){
-		$(".video_content_pop").hide();
+		$("#video_content_pop").hide();
 
 		if($("#video1").length > 0){
 			$("#video1")[0].play();
@@ -307,7 +316,7 @@ PageManager.prototype = {
 		}
 	},
 	clearBtnClick:function(evt){
-		$(".video_content_pop").hide();
+		$("#video_content_pop").hide();
 	}
 };
 

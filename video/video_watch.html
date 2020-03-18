@@ -44,7 +44,13 @@
 
     <script type="text/javascript" src="../layout/logout.js"></script>
 </head>
-<body>
+<body 
+    oncontextmenu="return false"
+    onselectstart="return false" 
+    ondragstart="return false"
+    onbeforecopy="return false"
+    oncopy=document.selection.empty()
+    onselect=document.selection.empty() >
     <!-- 头部 -->
     <script type="text/javascript" src="../layout/header2.js"></script>
 
@@ -131,13 +137,23 @@
             </div>
     </div>
     <!-- 试看结束 弹框 -->
-    <div class="video_content_pop" style="z-index:99;display:none;">
+    <div id="video_content_pop" class="video_content_pop" style="z-index:99;display:none;">
         <div class="video_content_pop_c">
-            <p>试看3分钟或试看3张幻灯片已结束</p>
+            <p>试看已结束</p>
             <div class="rg_cg_a clearfix">
                 <a id="buybtn" href="javascript:;" class="myfr">立即购买</a>
                 <a id="replaybtn" href="javascript:;" class="myfr">再看一遍</a>
                 <a id="clearbtn" href="javascript:;" class="myfr">取消</a>
+            </div>
+        </div>
+    </div>
+    <!-- 试看弹框 -->
+    <div id="video_content_pop2" class="video_content_pop" style="z-index:99;display:none;">
+        <div class="video_content_pop_c">
+            <p>购买后既可观看完整视频</p>
+            <div class="rg_cg_a clearfix" style="margin-left: 100px;">
+                <a id="buybtn2" href="javascript:;" class="myfr">立即购买</a>
+                <a id="replaybtn2" href="javascript:;" class="myfr">试看</a>
             </div>
         </div>
     </div>
