@@ -113,12 +113,19 @@ PageManager.prototype = {
 	setReg:function(evt){
 		
 		var username = $("#username").val().trim() || "";
+		var nickname = $("#nickname").val().trim() || "";
 		var code = $("#messagecode").val().trim() || "";
 		var name = $("#name").val().trim() || "";
 		var idcard = $("#idcard").val().trim() || "";
 		var password1 = $("#password1").val().trim() || "";
 		var password2 = $("#password2").val().trim() || "";
 		
+		$("#nicknamemsg").html("");
+		if(!username){
+			$("#nicknamemsg").html("昵称不能为空");
+			return;
+		}
+
 		$("#usernamemsg").html("");
 		if(!username){
 			$("#usernamemsg").html("手机号不能为空");
@@ -183,6 +190,7 @@ PageManager.prototype = {
 		
 		var condi = {};
 		condi.username = username;
+		condi.nickname = nickname;
 		condi.code = code;
 		condi.name = name;
 		condi.idcard = idcard;

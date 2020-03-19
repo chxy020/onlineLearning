@@ -1,8 +1,9 @@
 /*index.html*/
+.positionR{position: relative;}
 .textC{text-align: center;}
 .ml20{margin-left: 20px;}
-.mt25mb55{padding-top: 55px;padding-bottom: 65px;}
-.mt50mb55{padding-top: 60px;padding-bottom: 60px;}
+.mt25mb55 {padding-top: 25px;padding-bottom: 45px;}
+.mt50mb55 {padding-top: 30px;padding-bottom: 50px;}
 /*---------头部-----------*/
 .w1190{width: 1190px;margin: 0 auto;}
 .head_content{background:#fff;border-bottom: 2px solid #00a0e9;color: #000;font-size: 15px;height: 80px;line-height: 80px;}
@@ -13,7 +14,10 @@
 .head_list ul li.on a,.head_list ul li a:hover{color: #00a0e9;}
 .head_list ul li a.dl{display: block;font-size: 12px;width: 47px;text-align: center;color: #00a0e9;background: url("../img/login-icon.png") no-repeat center;}
 .head_list ul li span{text-align: center;color: #5c5c5c;cursor:pointer;margin:0 10px 0 20px;}
-.head_list ul li a.tc{color: #5c5c5c;}
+.tcbg{display:none;z-index:1001;position:absolute;top:54px;left:0; right:0;height:7px;background:url(../img/arrtop.png) no-repeat center;}
+.tc{color:#5c5c5c;min-width:45px;display:none;position:absolute;top:60px;left: 0;right:0;background:#fff;border: 1px solid #ccc;font-size: 13px!important;line-height: 38px;z-index: 1000;border-radius: 4px;}
+.head_list ul li span:hover .tc{ display:block;}
+.head_list ul li span:hover .tcbg{ display:block;}
 /*---------头部 end-----------*/
 /*---------课程列表 -----------*/
 .moco-course-list {margin: 0 0 0 -22px;padding-bottom: 20px;}
@@ -26,16 +30,16 @@
 .footer{background:#fff;border-top:1px solid #e1e1e1;padding: 30px 0;}
 .footer p{font-size: 13px;color: #999;text-align: center;line-height: 24px;}
 /*------------------banner---------------*/
-.dpt_banner { width:100%; height:500px; overflow:hidden; }
-.c1006-row2-left { width:100%; height:500px; overflow:hidden; }
-.c1006-row2-left-con { width: 1920px; height: 500px; margin: 0 auto 0 -960px; position: relative; left: 50%; overflow: hidden; z-index: 4; }
-.c1006-row2-left .slideCon { width: 100%; height: 500px; }
-.c1006-row2-left .slideCon ul { width: 1920px; height: 500px; }
+.dpt_banner {width:100%;height: 400px;overflow:hidden;}
+.c1006-row2-left {width:100%;height: 400px;overflow:hidden;}
+.c1006-row2-left-con {width: 1920px;height: 400px;margin: 0 auto 0 -960px;position: relative;left: 50%;overflow: hidden;z-index: 4;}
+.c1006-row2-left .slideCon {width: 100%;height: 400px;}
+.c1006-row2-left .slideCon ul {width: 1920px;height: 400px;}
 .c1006-row2-left .slideCon ul li.on { display: block; }
 .c1006-row2-left .slideCon ul li { width: 100%; height: 100%; position:absolute; left: 0; top: 0; display: none; }
 .c1006-row2-left .slideCon ul li a { width: 1920px; height: 500px; display: block; cursor:pointer; }
 .c1006-row2-left .slideCon ul li img { width: 100%; height: 100%; }
-.c1006-row2-left .slideCon .slidtTab { height: 4px; margin-left: -90px; position: absolute; top:475px; left: 50%; z-index: 10; }
+.c1006-row2-left .slideCon .slidtTab {height: 4px;margin-left: -90px;position: absolute;top: 375px;left: 50%;z-index: 10;}
 .c1006-row2-left .slideCon .slidtTab span { width:26px; height:4px; background:#64686a; display:block; float:left; margin-right: 10px; font-size: 0; cursor:pointer; }
 .c1006-row2-left .slideCon .slidtTab .on { width:26px; height:4px; background:#fff; display:block; float:left; margin-right: 10px; font-size: 0 }
 /* 左右按钮 star */

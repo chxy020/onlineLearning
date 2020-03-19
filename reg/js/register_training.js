@@ -111,6 +111,7 @@ PageManager.prototype = {
 	//注册
 	setReg:function(evt){
 		var username = $("#username").val().trim() || "";
+		var nickname = $("#nickname").val().trim() || "";
 		var code = $("#messagecode").val().trim() || "";
 		var password1 = $("#password1").val() || "";
 		var password2 = $("#password2").val() || "";
@@ -121,6 +122,11 @@ PageManager.prototype = {
 		
 		var traininglevel = +$("#traininglevel").val() || 0;
 		
+		$("#nicknamemsg").html("");
+		if(!username){
+			$("#nicknamemsg").html("昵称不能为空");
+			return;
+		}
 
 		$("#usernamemsg").html("");
 		if(!username){
@@ -195,6 +201,7 @@ PageManager.prototype = {
 		
 		var condi = {};
 		condi.username = username;
+		condi.nickname = nickname;
 		condi.password = password2;
 		condi.code = code;
 		condi.name = name;
