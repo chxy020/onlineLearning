@@ -452,43 +452,78 @@ function submitTest() {
 					var answer = data.answer;
 					var parsing = data.parsing || '暂无解析';
 					var id = data.id;
+					var anInt = data.answerInt;
 					var html =[];
-					html.push('<div class="row-tishi">');
-					html.push('<p class="color-wrong">正确答案：'+answer+'</p>');
-					html.push('<div class="color-explain">');
-					html.push('<div class="row">解析：</div>');
-					html.push('<div class="content">'+parsing+'</div>');
-					html.push('</div>');
+					if(anInt === 0){
+						html.push('<div class="row-tishi" style="margin-top:20px;">');
+						html.push('<p class="color-right">恭喜您，答对了!</p>');
+						html.push('<div class="color-explain">');
+						html.push('<div class="row">解析：</div>');
+						html.push('<div class="content">'+parsing+'</div>');
+						html.push('</div>');
+					}else{
+						html.push('<div class="row-tishi" style="margin-top:20px;">');
+						html.push('<p class="color-wrong">正确答案：'+answer+'</p>');
+						html.push('<div class="color-explain">');
+						html.push('<div class="row">解析：</div>');
+						html.push('<div class="content">'+parsing+'</div>');
+						html.push('</div>');
+					}
 					$("#subject"+id).append(html.join(''));
 				})
 				$.each(multi,function(idx,data){
 					var answer = data.answer;
 					var parsing = data.parsing || '暂无解析';
 					var html =[];
+					var anInt = data.answerInt;
 					var id = data.id;
-					html.push('<div class="row-tishi">');
-					html.push('<p class="color-wrong">正确答案：'+answer+'</p>');
-					html.push('<div class="color-explain">');
-					html.push('<div class="row">解析：</div>');
-					html.push('<div class="content">'+parsing+'</div>');
-					html.push('</div>');
+					if(anInt === 0){
+						html.push('<div class="row-tishi" style="margin-top:20px;">');
+						html.push('<p class="color-right">恭喜您，答对了!</p>');
+						html.push('<div class="color-explain">');
+						html.push('<div class="row">解析：</div>');
+						html.push('<div class="content">'+parsing+'</div>');
+						html.push('</div>');
+					}else{
+						html.push('<div class="row-tishi" style="margin-top:20px;">');
+						html.push('<p class="color-wrong">正确答案：'+answer+'</p>');
+						html.push('<div class="color-explain">');
+						html.push('<div class="row">解析：</div>');
+						html.push('<div class="content">'+parsing+'</div>');
+						html.push('</div>');
+					}
+					
 					$("#subject"+id).append(html.join(''));
 				})
 				$.each(judge,function(idx,data){
 					var answer = data.answer;
 					var parsing = data.parsing || '暂无解析';
 					var id = data.id;
+					var anInt = data.answerInt;
 					var html =[];
-					html.push('<div class="row-tishi">');
-					html.push('<p class="color-wrong">正确答案：'+answer);
-					html.push('</p>');
-					html.push('<div class="color-explain">');
-					html.push('<div class="row">解析：');
-					html.push('</div>');
-					html.push('<div class="content">'+parsing+'</div>');
-					html.push('</div>');
-					html.push('</div>');
-					html.push('</div>');
+					if(anInt === 0){
+						html.push('<div class="row-tishi" style="margin-top:20px;">');
+						html.push('<p class="color-right">恭喜您，答对了!</p>');
+						html.push('<div class="color-explain">');
+						html.push('<div class="row">解析：');
+						html.push('</div>');
+						html.push('<div class="content">'+parsing+'</div>');
+						html.push('</div>');
+						html.push('</div>');
+						html.push('</div>');
+					}else {
+						html.push('<div class="row-tishi" style="margin-top:20px;">');
+						html.push('<p class="color-wrong">正确答案：'+answer);
+						html.push('</p>');
+						html.push('<div class="color-explain">');
+						html.push('<div class="row">解析：');
+						html.push('</div>');
+						html.push('<div class="content">'+parsing+'</div>');
+						html.push('</div>');
+						html.push('</div>');
+						html.push('</div>');
+					}
+					
 					$("#subject"+id).append(html.join(''));
 				})
 				
