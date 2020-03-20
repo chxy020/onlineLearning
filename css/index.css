@@ -15,9 +15,12 @@
 .head_list ul li a.dl{display: block;font-size: 12px;width: 47px;text-align: center;color: #00a0e9;background: url("../img/login-icon.png") no-repeat center;}
 .head_list ul li span{text-align: center;color: #5c5c5c;cursor:pointer;margin:0 10px 0 20px;}
 .tcbg{display:none;z-index:1001;position:absolute;top:54px;left:0; right:0;height:7px;background:url(../img/arrtop.png) no-repeat center;}
-.tc{color:#5c5c5c;min-width:45px;display:none;position:absolute;top:60px;left: 0;right:0;background:#fff;border: 1px solid #ccc;font-size: 13px!important;line-height: 38px;z-index: 1000;border-radius: 4px;}
+.tc{color:#5c5c5c;min-width:70px;display:none;position:absolute;top:60px;right:0;padding:5px 10px;background:#fff;border: 1px solid #ccc;font-size: 13px!important;line-height: 28px;z-index: 1000;border-radius: 4px;}
 .head_list ul li span:hover .tc{ display:block;}
 .head_list ul li span:hover .tcbg{ display:block;}
+.head_list ul li .tc a {color: #5c5c5c;font-size: 13px;display:block;padding:5px 0;border-bottom: 1px solid #f1f1f1;}
+.head_list ul li .tc a:hover {color: #00a0e9;}
+.head_list ul li .tc a:last-child{border-bottom:none;}
 /*---------头部 end-----------*/
 /*---------课程列表 -----------*/
 .moco-course-list {margin: 0 0 0 -22px;padding-bottom: 20px;}

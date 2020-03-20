@@ -109,18 +109,18 @@
 		if(on == 8){
 			if(userType == 0){
 				// __header.push('<a href="/usercenter/personal_center.html" style="color: #00a0e9;">个人中心</a><span></span><a href="javascript:loginOut()" class="tc">'+nickname+'</a>');
-				__header.push('<div>< a href="/usercenter/personal_center.html">个人中心</ a><span class="positionR">'+nickname+'<b class="tcbg"></b>< a href="javascript:loginOut()" class="tc">退出</ a></span></div>');
+				__header.push('<div><a href="/usercenter/personal_center.html" style="color: #00a0e9;">个人中心</a><span class="positionR" style="color:#000;">'+nickname+'<b class="tcbg"></b><div class="tc"><a href="/usercenter/password.html" >修改密码</a><a href="javascript:loginOut()" >退出</a></div></span></div>');
 			}else{
 				// __header.push('<a href="/usercenter/enterprise_management.html" style="color: #00a0e9;">个人中心</a><span></span><a href="javascript:loginOut()" class="tc">'+nickname+'</a>');
-				__header.push('<div>< a href="/usercenter/enterprise_management.html">个人中心</ a><span class="positionR">'+nickname+'<b class="tcbg"></b>< a href="javascript:loginOut()" class="tc">退出</ a></span></div>');
+				__header.push('<div><a href="/usercenter/enterprise_management.html" style="color: #00a0e9;">个人中心</a><span class="positionR" style="color:#000;">'+nickname+'<b class="tcbg"></b><div class="tc"><a href="/usercenter/password.html" >修改密码</a><a href="javascript:loginOut()" >退出</a></div></span></div>');
 			}
 		}else{
 			if(userType == 0){
 				// __header.push('<a href="/usercenter/personal_center.html" >个人中心</a><span></span><a href="javascript:loginOut()" class="tc">'+nickname+'</a>');
-				__header.push('<div>< a href="/usercenter/personal_center.html">个人中心</ a><span class="positionR">'+nickname+'<b class="tcbg"></b>< a href="javascript:loginOut()" class="tc">退出</ a></span></div>');
+				__header.push('<div><a href="/usercenter/personal_center.html">个人中心</a><span class="positionR" style="color:#000;">'+nickname+'<b class="tcbg"></b><div class="tc"><a href="/usercenter/password.html" >修改密码</a><a href="javascript:loginOut()" >退出</a></div></span></div>');
 			}else{
 				// __header.push('<a href="/usercenter/enterprise_management.html" >个人中心</a><span></span><a href="javascript:loginOut()" class="tc">'+nickname+'</a>');
-				__header.push('<div>< a href="/usercenter/enterprise_management.html">个人中心</ a><span class="positionR">'+nickname+'<b class="tcbg"></b>< a href="javascript:loginOut()" class="tc">退出</ a></span></div>');
+				__header.push('<div><a href="/usercenter/enterprise_management.html">个人中心</a><span class="positionR" style="color:#000;">'+nickname+'<b class="tcbg"></b><div class="tc"><a href="/usercenter/password.html" >修改密码</a><a href="javascript:loginOut()" >退出</a></div></span></div>');
 			}
 		}
 		__header.push('</div>');
