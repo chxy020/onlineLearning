@@ -5,22 +5,43 @@
     <title>购买信息确认</title>
     <link rel="stylesheet" charset="utf-8" href="../css/reset.css">
     <link rel="stylesheet" charset="utf-8" href="../css/reg.css">
+    <link rel="stylesheet" charset="utf-8" href="../css/index.css">
+
+    <script type="text/javascript" src="../libs/jquery/jquery-1.12.4.min.js" ></script>
+    <script type="text/javascript" src="../libs/ie8-polyfill.js" ></script>
+    <script type="text/javascript" src="../libs/jquery/jquery_ex.js" ></script>
+	<script type="text/javascript" src="../libs/layer-v2.2/layer/layer.js"></script>
+	<script type="text/javascript" src="../libs/utils.js"></script>
+    <script type="text/javascript" src="../libs/base.js"></script>
+
+    <script type="text/javascript" src="../layout/logout.js"></script>
+
 </head>
 <body class="bodybg">
+
+    <!-- 头部 -->
+    <script type="text/javascript" src="../layout/header.js"></script>
+
+
     <div class="login_content purchase_content clearfix">
-        <form action="" method="">
+        <!-- <form action="" method=""> -->
             <div class="login_box">
                 <div class="title clearfix">
                     <span class="myfl"></span><h1 class="myfl">购买信息确认</h1><span class="myfr"></span>
                 </div>
                 <div class="pc_text">
-                    <p>课程名： <span>氧化安全课程</span></p>
-                    <p>课程数量：<span>1节</span></p>
-                    <p>总金额：<span>60元</span></p>
+                    <p>课程名： <span></span></p>
+                    <p>课程数量：<span></span></p>
+                    <p>总金额：<span></span></p>
                 </div>
-                <input type="submit" value="确认并缴费" class="submit_btn">
+                <div id="payCode" class="clearfix" style="position: relative;width: 120px;margin: 0 auto;position: none;">
+                    <img style="width: 120px;" src="" />
+                </div>
+                <input type="button" value="确认并缴费" class="submit_btn">
             </div>
-        </form>
+        <!-- </form> -->
     </div>
+
+    <script type="text/javascript" src="js/purchase_confirmation.js"></script>
 </body>
 </html>

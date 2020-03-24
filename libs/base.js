@@ -9,7 +9,7 @@
 		Base = {};
 	}
 
-	var serverUrl = " http://www.panshicse.com/api";
+	var serverUrl = " https://www.panshicse.com/api";
 
 	//从本地获取token数据
 	var token = "";

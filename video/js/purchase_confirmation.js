@@ -15,7 +15,7 @@ PageManager.prototype = {
 	init: function(){
 		//this.httpTip = new Utils.httpTip({});
 
-		this.id = +Utils.getQueryString("id") || "";
+		this.id = +Utils.getQueryString("classId") || "";
 		if(!this.id){
 			layer.msg("没有获取到课程id");
 			return;
@@ -23,45 +23,32 @@ PageManager.prototype = {
 
 		this.bindEvent();
 
-		this.getInClassHttp();
+		this.getPayInfoHttp();
 
 		
 	},
 	bindEvent:function(){
-		$("#buybtn").onbind("click",this.buyBtnClick,this);
-		$("#buybtn2").onbind("click",this.buyBtnClick,this);
-		$("#replaybtn").onbind("click",this.replayBtnClick,this);
-		$("#clearbtn").onbind("click",this.clearBtnClick,this);
+		$(".submit_btn").onbind("click",this.playBtnClick,this);
 		// $("#password").onbind("keydown",this.keyDown,this);
 	},
 	pageLoad:function(){
 	},
-	getInClassHttp:function(){
+	getPayInfoHttp:function(){
 		Utils.load();
-		var url = Base.serverUrl + "/class/inclass/" + this.id;
+		var url = Base.serverUrl + "/pay/create"
 		var condi = {};
+		condi.classId = this.id;
 
 		$.Ajax({
 			url:url,type:"POST",data:condi,dataType:"json",context:this,global:false,
 			success: function(res){
-				var obj = res.data || [];
+				var obj = res.data || {};
 				var html = [];
-				var icid = 0;
-				// 课程类型   0: 视频 1: PPT
-				this.classType = +res.classType;
-				obj.forEach(function(item,i){
-					if( i == 0){
-						icid = item.id;
-					}
-					html.push('<li data="' + item.id + '"><a href="javascript:;">' + (i+1)+'、' + item.title + '</a></li>')
-				});
-
-				$("#inclasslist").html(html.join(''));
-
-				$("#inclasslist li").rebind('click',this.inclassItemClick,this);
-
-				//默认加载第一条
-				this.getIncateHttp(icid);
+                html.push('<p>课程名： <span>' + obj.classTitle + '</span></p>');
+                html.push('<p>课程数量：<span>' + obj.classCount + '节</span></p>');
+				html.push('<p>总金额：<span>' + obj.totalFee + '元</span></p>');
+				
+				$(".pc_text").html(html.join(''));
 			},
 			error:function(res){
 				layer.msg(res.message || "请求错误");
@@ -69,6 +56,54 @@ PageManager.prototype = {
 		});
 	},
 	
+	playBtnClick:function(){
+		Utils.load();
+		var url = Base.serverUrl + "/pay/classWxPay"
+		var condi = {};
+		condi.classId = this.id;
+
+		$.Ajax({
+			url:url,type:"POST",data:condi,dataType:"json",context:this,global:false,
+			success: function(res){
+				var obj = res.data || {};
+				if(obj.payScanner){
+					$("#payCode").show();
+					$("#payCode img").attr("src",obj.payScanner);
+				}else{
+					layer.msg("没有获取到支付二维码");
+				}
+				
+			},
+			error:function(res){
+				layer.msg(res.message || "请求错误");
+			}
+		});
+	},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	inclassItemClick:function(evt){
 		var ele = evt.currentTarget;
 		var icid = +$(ele).attr("data");
