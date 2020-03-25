@@ -49,6 +49,7 @@ PageManager.prototype = {
 		$.Ajax({
 			url:url,type:"POST",data:condi,dataType:"json",context:this,global:false,
 			success: function(res){
+				debugger
 				var obj = res.data || {};
 				var userInfo = obj.userInfo || {};
 				var user = obj.user || {};
@@ -58,7 +59,11 @@ PageManager.prototype = {
 				Utils.offlineStore.set("__user",JSON.stringify(user),true);
 				Utils.offlineStore.set("__token",token,true);
 
-				this.gotoIndex();
+				if(userInfo.userCate == null){
+					location.href = "/usercenter/select_category.html";
+				}else{
+					this.gotoIndex();
+				}
 			},
 			error:function(res){
 				layer.msg(res.message || "登录错误");
