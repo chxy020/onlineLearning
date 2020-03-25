@@ -9,6 +9,10 @@ PageManager.prototype = {
 	time:61,
 	init: function(){
 		//this.httpTip = new Utils.httpTip({});
+		setTimeout(function(){
+			$("#username").removeAttr('readonly');
+		},1500);
+
 		this.bindEvent();
 	},
 	bindEvent:function(){
@@ -60,18 +64,18 @@ PageManager.prototype = {
 			success: function(res){
 				if(res.code == 0){
 					var data = res.data || "";
-					
+					$(".message_code_again").show();
+					this.msgCodeTime();
 				}else{
 					layer.msg(res.message || "请求错误");
 				}
-				$(".message_code_again").show();
-				this.msgCodeTime();
+				
 			},
 			error:function(res){
 				layer.msg(res.message || "请求错误");
 
-				$(".message_code_again").show();
-				this.msgCodeTime();
+				// $(".message_code_again").show();
+				// this.msgCodeTime();
 			}
 		});
 	},
@@ -121,8 +125,12 @@ PageManager.prototype = {
 		var email = $("#email").val() || "";
 		
 		$("#nicknamemsg").html("");
-		if(!username){
+		if(!nickname){
 			$("#nicknamemsg").html("昵称不能为空");
+			return;
+		}
+		if(nickname && nickname.length > 8){
+			$("#nicknamemsg").html("昵称过长");
 			return;
 		}
 

@@ -49,7 +49,6 @@ PageManager.prototype = {
 		$.Ajax({
 			url:url,type:"POST",data:condi,dataType:"json",context:this,global:false,
 			success: function(res){
-				debugger
 				var obj = res.data || {};
 				var userInfo = obj.userInfo || {};
 				var user = obj.user || {};

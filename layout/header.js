@@ -7,10 +7,13 @@
 		nickname = user.userNickname || "";
 	}
 	var userType = 0;
+	var userCate = 0;
 	if(typeof(Utils) !== "undefined"){
 		var userInfo = Utils.offlineStore.get("__userInfo",true) || "";
 		if(userInfo){
-			userType = JSON.parse(userInfo).userType;
+			var obj = JSON.parse(userInfo);
+			userType = obj.userType;
+			userCate = obj.userCate;
 		}
 	}
 
@@ -47,7 +50,7 @@
 	__header.push('<div class="head_content clearfix">');
 	__header.push('<div class="w1190">');
 	__header.push('<div class="head_logo">');
-	__header.push('晋安安全');
+	__header.push('<img src="/img/logo.png" height="60">磐石安全');
 	__header.push('</div>');
 	__header.push('<div class="head_list">');
 	__header.push('<ul>');
@@ -91,10 +94,12 @@
 	}else{
 		__header.push('<li><a href="/course/course.html">所有课程</a></li>');
 	}
-	if(on == 9){
-		__header.push('<li class="on"><a href="/test/the_test_list.html">试卷查看</a></li>');
-	}else{
-		__header.push('<li><a href="/test/the_test_list.html">试卷查看</a></li>');
+	if(userCate){
+		if(on == 9){
+			__header.push('<li class="on"><a href="/test/the_test_list.html">试卷查看</a></li>');
+		}else{
+			__header.push('<li><a href="/test/the_test_list.html">试卷查看</a></li>');
+		}
 	}
 	
 	__header.push('<li class="dl">');
@@ -106,7 +111,7 @@
 		// __header.push('<span onclick="loginOut()">'+nickname+' 退出</span>');
 		__header.push('<div>');
 		if(on == 8){
-			if(userType == 0){
+			if(userType != 1){
 				// __header.push('<a href="/usercenter/personal_center.html" style="color: #00a0e9;">个人中心</a><span></span><a href="javascript:loginOut()" class="tc">'+nickname+'</a>');
 				__header.push('<div><a href="/usercenter/personal_center.html" style="color: #00a0e9;">个人中心</a><span class="positionR" style="color:#000;">'+nickname+'<b class="tcbg"></b><div class="tc"><a href="/usercenter/password.html" >修改密码</a><a href="javascript:loginOut()" >退出</a></div></span></div>');
 			}else{
@@ -114,7 +119,7 @@
 				__header.push('<div><a href="/usercenter/enterprise_management.html" style="color: #00a0e9;">个人中心</a><span class="positionR" style="color:#000;">'+nickname+'<b class="tcbg"></b><div class="tc"><a href="/usercenter/password.html" >修改密码</a><a href="javascript:loginOut()" >退出</a></div></span></div>');
 			}
 		}else{
-			if(userType == 0){
+			if(userType != 1){
 				// __header.push('<a href="/usercenter/personal_center.html" >个人中心</a><span></span><a href="javascript:loginOut()" class="tc">'+nickname+'</a>');
 				__header.push('<div><a href="/usercenter/personal_center.html">个人中心</a><span class="positionR" style="color:#000;">'+nickname+'<b class="tcbg"></b><div class="tc"><a href="/usercenter/password.html" >修改密码</a><a href="javascript:loginOut()" >退出</a></div></span></div>');
 			}else{

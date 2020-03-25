@@ -137,6 +137,9 @@ PageManager.prototype = {
 
 					clearTimeout(this.inter);
 					
+					if(!permissions){
+						this.getVideoPlayTime();
+					}
 					// this.getVideoPlayTime();
 					
 					// $("#video2")[0].play();
