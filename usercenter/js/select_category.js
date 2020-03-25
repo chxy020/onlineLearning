@@ -42,7 +42,7 @@ PageManager.prototype = {
 		this.typeid = +ele.id;
 	},
 	paybtnClick:function(){
-		location.href="/usercenter/category_confirmation?type="+this.typeid;
+		location.href="/usercenter/category_confirmation.html?type="+this.typeid;
 	}
 
 };
