@@ -1,0 +1,87 @@
+.bodybg{background: #fff url(../img/bj.png) repeat;}
+.textC{text-align: center;}
+/*--------------------登录内容区--------------------*/
+.login_content .login_box{background: #fff;width: 348px;margin:0 auto;padding:20px;border: 1px solid #ccc;border-radius: 4px;box-shadow: 0px 0px 15px #ccc;position: fixed;top: 50%;left: 50%;margin-top: -200px;margin-left: -195px;}
+.login_content .login_box .tabchange em{display: inline-block;width: 1px;height: 52px;background: #ccc;}
+.login_content .login_box .tabchange span{display: inline-block;width: 174px;height: 51px;line-height: 51px;text-align: center;font-size: 16px;color: #666;cursor: pointer;}
+.login_content .login_box .tabchange .bor_bottom{border-bottom: 1px solid #ccc;background: #f2f3f7;}
+.login_content .login_box .tabchange .sign_select{color: #ff366f;}
+.login_content .login_box .system_error{height: 26px;line-height: 26px;padding: 0 20px;color: red; text-align: center;}
+.login_content .login_box input{width: 298px;height: 46px;border: 1px solid #ccc;border-radius: 4px;outline: none;margin-left: 20px;padding-left: 10px;line-height: 46px;}
+.login_content .login_box .forget_password a{display: inline-block;margin-left: 20px;margin-right: 20px;color: #999999;line-height: 24px;}
+.login_content .login_box .forget_password a:hover{color: #0084c0;}
+.login_content .login_box .submit_btn{border: none;padding-left: 0;width: 310px;height: 48px;background:#00a0e9;color: white;margin: 20px;cursor: pointer;font-size: 18px;}
+.login_content .login_box .submit_btn:hover{background:#0084c0;}
+.login_content .login_box .submit_btn.bgccc{background:#ccc;cursor:auto}
+.login_content .login_box .entry_mode{margin: 0 20px;color: #999;}
+.login_content .entry_mode a{color: #999;}
+.login_content .entry_mode span{line-height: 66px;}
+.login_content .entry_mode a em{width: 34px;height: 34px;display: block;margin-left: 10px;}
+.login_content .title{height: 24px;line-height: 24px;margin:30px 20px 20px;}
+.login_content .title h1{font-size: 24px;color: #333;font-weight: normal;width: 140px;text-align: center;}
+.login_content .title span{width: 84px;height: 1px;background: #ccc;margin-top: 12px;}
+.input_error{height: 18px;line-height: 18px;color: red;margin: 0 20px;}
+.input_error span{padding-left: 16px;background: url("../img/login_error_icon.png") no-repeat 0 center;}
+/*--------------------注册选择--------------------*/
+.login_content .register_cg{width: 680px; height:240px;margin-top: -140px;margin-left: -361px;}
+.login_content .register_cg .title span {width: 250px;}
+.rg_cg_ti{text-align: center;padding:10px 0;font-size: 18px;color: #333;}
+.rg_cg_a{margin-left:20px;margin-top:20px;}
+.rg_cg_a a{display: block;text-align: center;float: left;margin: 0 20px 0 0;width: 200px;height: 80px;line-height: 80px;border-radius: 4px;background: #00a0e9;color: white;font-size: 18px;}
+.rg_cg_a a:hover{background:#0084c0;}
+/*--------------------注册--个人--------------------*/
+.login_content .login_box.register_person {position: static; top: auto;left: auto;margin-top: 20px;margin-left: auto;}
+.photo_code{position: relative;margin-bottom: 18px;}
+.photo_code img{position: absolute;right: 21px;top:1px;height: 46px;}
+.login_content .register_person .message_code_box {position: relative;margin-bottom: 18px;}
+.login_content .register_person .message_code{width: 164px;margin-right: 134px;}
+.login_content .register_person .message_code_btn {position:absolute;right: 18px;top:0;display:block;width: 120px;height: 48px;line-height: 48px;text-align: center;border-radius: 4px;color: #fff;cursor: pointer;background: #ff366f;}
+.login_content .register_person .message_code_btn:hover {background: #ff0e52;}
+.login_content .register_person .message_code_again {position: absolute;display: none;right: 18px;top: 0px;width: 120px;height: 48px;background: #ccc;color: #fff;border-radius: 4px;text-align: center;line-height: 48px;}
+.login_content .register_person .my_agreement {margin-left: 15px;color: #666;}
+.login_content .register_person .my_agreement input{width: auto;height: auto;vertical-align: middle;margin: -1px 10px 0 0;}
+.login_content .register_person .my_agreement a{color: #0084c0;vertical-align: middle;}
+.login_content .login_box.register_person .submit_btn {margin: 5px 20px 15px;}
+.login_content .login_box.register_person .system_error {margin-top: 10px;}
+/*--------------------购买信息确认页--------------------*/
+.login_content.purchase_content .title h1{width: 160px;}
+.login_content.purchase_content .title span {width: 74px;}
+.login_content.purchase_content .pc_text{margin-left: 20px;padding:20px 0;}
+.login_content.purchase_content p{padding:10px 0;color:#111;}
+.login_content.purchase_content p span{color:#00a0e9;}
+/*--------------------个人信息完善--------------------*/
+.login_content.personalInfo_content .login_box{width: 800px;margin-left: -400px;margin-top: -230px;}
+.login_content.personalInfo_content .title h1{width:185px;}
+.login_content.personalInfo_content .title span {width: 284px;}
+.login_content.personalInfo_content .personalInfo_text{margin-left: 20px;padding:20px 0;}
+.login_content.personalInfo_content .personalInfo_text h3{font-weight: 100;font-size: 16px;color:#111;margin-bottom: 20px}
+.login_content.personalInfo_content .personalInfo_text p{padding:5px 0;color:#111;line-height: 26px;}
+.login_content.personalInfo_content .personalInfo_text p span{color:#00a0e9;}
+.down_btn_div{text-align: center;}
+/*--------------------个人信息完善--------------------*/
+.login_content .login_box.qiye_management {position: static;top: auto;left: auto;margin-top: 20px;margin-bottom: 20px;margin-left: auto;width: 1000px;}
+.login_content .qiye_management .title h1{width: 180px;}
+.login_content .qiye_management .title span {width: 390px;}
+.qiye_cont{padding:20px;}
+.w100{width: 100px}
+.login_content .login_box.qiye_management table input {width: auto; height: auto; border: 1px solid #ccc; border-radius: 0; outline: none; margin-left: auto; padding-left: auto; line-height: auto; }
+.qiye_info{line-height: 26px}
+.qiye_info span{color:#ff6600;font-size: 18px;margin-right: 5px}
+.login_content .qiye_management.qiye_queren .title h1{width: 220px;}
+.login_content .qiye_management.qiye_queren .title span {width: 370px;}
+.login_content .login_box .submit_btn.sm{width: 150px;height: 38px;line-height: 38px;margin: 20px 20px 30px;font-size: 14px;}
+.login_content .login_box .submit_btn.cancel_btn.sm{height: 36px;line-height: 36px;border: 1px solid #ccc;background: #fff;color:#000;}
+.login_content .login_box .submit_btn.cancel_btn.sm:hover{border: 1px solid #ccc;background: #f1f1f1;color:#000;}
+/*--------------------选择并购买您的学习类别--------------------*/
+.login_content .login_box.select_category {position: static;top: auto;left: auto;margin-top: 20px;margin-bottom: 20px;margin-left: auto;width: 1000px;}
+.login_content .select_category .title h1{width: 290px;}
+.login_content .select_category .title span {width: 335px;}
+.celectlist{min-height: 260px;}
+.course-nav-item {display:inline-block;margin:0 4px;}
+.course-nav-item {display:inline-block;margin:0 4px;}
+.course-nav-item a {display:block;background:#f1f1f1;border-radius:6px;line-height:14px;margin-bottom:10px;padding:12px 20px;font-size:14px;}
+.course-nav-item a:link,.course-nav-item a:visited {color:#5c5c5c;}
+.course-nav-item a:active,.course-nav-item a:hover {color:#ec1500;}
+.course-nav-item.on a {background:rgba(242,13,13,.06) url("../img/selected.png") no-repeat right bottom;border-radius:6px;font-weight:700;color:#f20d0d;}
+
+
