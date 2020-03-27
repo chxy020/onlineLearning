@@ -58,10 +58,18 @@
     
     <div class="video_content">
         <div class="video_content_left">
+            <!-- 播放按钮 -->
+            <div class="video_play" style="display:none;">
+                <a id="playbtn" href="javascript:;" class="playbtn"></a>
+                <a id="pausebtn" href="javascript:;" class="pausebtn" style="display:none;"></a>
+            </div>
+            <!-- 时间 -->
+            <div class="video_time"></div>
+
             <video id="video1" style="display: none;" width="100%" height="100%"  >
                 <source  src="" type="video/mp4" />
                 <!–[if lt IE 8]>
-                    <embed id="video2"  src="" type="video/mp4" width="100%" height="100%" allowfullscreen="true" quality="high"  volume="-4200"/></embed>
+                    <embed id="video2" src="" type="video/mp4" width="100%" height="100%" allowfullscreen="true" quality="high"  volume="-4200"/></embed>
                 <![endif]–>
             </video>
 
@@ -86,9 +94,9 @@
     </div>
     <!-- 播放到一定位置弹出的答题框 -->
     <div class="mask J-mask" style="display:none"></div>
-    <div class="J-fuwutiaokuan feedback_mian" style="display:none">
+    <div class="J-fuwutiaokuan feedback_mian" style="display:none;margin-top:-230px;">
             <div class="feedback_box">
-                <a class="close_btn J-close-btn"></a>
+                <!-- <a class="close_btn J-close-btn"></a> -->
                 <div class="feedback_tit"><h3>题目标题</h3></div>
                 <div class="feedback_con">
                     <div class="pop_h400 h438">
@@ -131,6 +139,9 @@
                                 <div class="row">解释：</div>
                                 <div id="parsing" class="content"></div>
                             </div>
+                        </div>
+                        <div class="textC" style="display: none;">
+                            <a id="askplay" href="javascript:;" class="view_a" >继续</a>
                         </div>
                     </div>
                 </div>

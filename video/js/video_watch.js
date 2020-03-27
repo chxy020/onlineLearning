@@ -32,6 +32,15 @@ PageManager.prototype = {
 		$("#buybtn2").onbind("click",this.buyBtnClick,this);
 		$("#replaybtn").onbind("click",this.replayBtnClick,this);
 		$("#clearbtn").onbind("click",this.clearBtnClick,this);
+
+		
+		$("#playbtn").onbind("click",this.playBtnClick,this);
+		$("#askplay").onbind("click",this.askplayBtnClick,this);
+		$("#pausebtn").onbind("click",this.pauseBtnClick,this);
+		
+		$("#playbtn,#pausebtn,.video_content_left").onbind("mouseover",this.videoMouseover,this);
+		$(".video_content_left").onbind("mouseout",this.videoMouseout,this);
+
 		// $("#password").onbind("keydown",this.keyDown,this);
 	},
 	pageLoad:function(){
@@ -75,6 +84,8 @@ PageManager.prototype = {
 		this.getIncateHttp(icid);
 	},
 	classId:0,
+	videoLength:"",
+	isplay:false,
 	getIncateHttp:function(id){
 		Utils.load();
 		var url = Base.serverUrl + "/class/incate/" + id;
@@ -89,12 +100,16 @@ PageManager.prototype = {
 				var videoShort = obj.videoShort || "";
 
 				this.classId = obj.classId;
+				this.videoLength = obj.videoLength;
 
 				if(this.classType == 0){
 					$("#video1").show();
-
-					$("#video1,#video2").attr("src",videoShort);
+					$("#playbtn").show();
+					$("#pausebtn").hide();
+					this.isplay = false;
 					
+					$("#video1,#video2").attr("src",videoShort);
+					// permissions = 0
 					// 1是无权限，0是有
 					if(permissions){
 						//弹出试看提示
@@ -107,6 +122,11 @@ PageManager.prototype = {
 							if(this.IEVersion() == 8) {
 								$("#video2")[0].play();
 							}
+							this.isplay = true;
+
+							clearTimeout(this.inter2);
+							this.setVideoPlayTime();
+							clearTimeout(this.inter);
 							this.getVideoPlayTime();
 						},this);
 
@@ -136,16 +156,11 @@ PageManager.prototype = {
 						}
 					}.bind(this));
 					
-					console.log(this.showTime,this.titleId)
-
-					clearTimeout(this.inter);
+					// console.log(this.showTime,this.titleId)
 					
 					if(!permissions){
-						$("#video1")[0].play();
-						if(this.IEVersion() == 8) {
-							$("#video2")[0].play();
-						}
-						this.getVideoPlayTime();
+						$(".video_play").show();
+						// this.getVideoPlayTime();
 					}
 					// this.getVideoPlayTime();
 					
@@ -182,15 +197,68 @@ PageManager.prototype = {
 		});
 	},
 
+	coloseed:false,
+	videoMouseover:function(){
+		clearTimeout(this.tout);
+		if(!this.coloseed){
+			$(".video_play").show();
+		}else{
+			this.coloseed = false;
+		}
+	},
+	tout:null,
+	videoMouseout:function(){
+		this.tout = setTimeout(function(){
+			$(".video_play").hide();
+			this.coloseed = false;
+		},250);
+	},
+	playBtnClick:function(){
+		
+		$(".video_play").hide();
+		$("#playbtn").hide();
+		$("#pausebtn").show();
+
+		this.coloseed = true;
+
+		$("#video1")[0].play();
+		if(this.IEVersion() == 8) {
+			$("#video2")[0].play();
+		}
+		this.isplay = true;
+
+		clearTimeout(this.inter2);
+		this.setVideoPlayTime();
+		clearTimeout(this.inter);
+		this.getVideoPlayTime();
+	},
+	pauseBtnClick:function(){
+		$("#playbtn").show();
+		$("#pausebtn").hide();
+
+		$("#video1")[0].pause();
+		if(this.IEVersion() == 8) {
+			$("#video2")[0].pause();
+		}
+		this.isplay = false;
+	},
+	askplayBtnClick:function(){
+		this.closeChoose();
+	},
+
 	inter:null,
 	getVideoPlayTime:function(){
 		var playtime = Math.floor($("#video1")[0].currentTime);
+		if(this.IEVersion() == 8) {
+			var playtime = Math.floor($("#video2")[0].currentTime);
+		}
 		var pi = this.showTime.indexOf(playtime);
 		if(pi > -1){
 			$("#video1")[0].pause();
 			if(this.IEVersion() == 8) {
 				$("#video2")[0].pause();
 			}
+			this.isplay = false;
 
 			var tid = this.titleId[pi];
 			this.getTitleHttp(tid);
@@ -199,6 +267,28 @@ PageManager.prototype = {
 				this.getVideoPlayTime();
 			}.bind(this),1000);
 		}
+	},
+
+	inter2:null,
+	playtime:0,
+	setVideoPlayTime:function(){
+		// var playtime = Math.floor($("#video1")[0].currentTime);
+		$(".video_time").html("("+ this.formatTime(this.playtime) + "/"+this.videoLength+")");
+		this.inter2 = setTimeout(function(){
+			if(this.isplay){
+				this.playtime++;
+			}
+			this.setVideoPlayTime();
+		}.bind(this),1000);
+	},
+	formatTime:function(m){
+		var hh = parseInt(m/3600);
+		var mm =  parseInt((m - hh*3600)/60);
+		var ss = (m - hh*3600) - (mm*60);
+		hh = hh > 9 ? hh : "0"+hh;
+		mm = mm > 9 ? mm : "0"+mm;
+		ss = ss > 9 ? ss : "0"+ss;
+		return hh + ":" + mm + ":" + ss;
 	},
 
 	getTitleHttp:function(id){
@@ -231,10 +321,11 @@ PageManager.prototype = {
 				$(".color-explain").hide();
 
 				//弹出考试题目
+				$(".textC").hide();
 				$(".J-mask").show();
 				$(".J-fuwutiaokuan").show();
 
-				$(".close_btn").rebind('click',this.closeChoose,this);
+				// $(".close_btn").rebind('click',this.closeChoose,this);
 			},
 			error:function(res){
 				layer.msg(res.message || "请求错误");
@@ -285,6 +376,8 @@ PageManager.prototype = {
 					$(".color-wrong").hide();
 					$(".color-explain").hide();
 				}
+
+				$(".textC").show();
 				
 			},
 			error:function(res){
@@ -297,7 +390,19 @@ PageManager.prototype = {
 		if(this.IEVersion() == 8) {
 			$("#video2")[0].play();
 		}
+		this.isplay = true;
 
+		this.coloseed = true;
+
+		clearTimeout(this.inter2);
+		this.setVideoPlayTime();
+
+		setTimeout(function(){
+			clearTimeout(this.inter);
+			this.getVideoPlayTime();
+		}.bind(this),1000);
+		
+		
 		$(".J-mask").hide();
 		$(".J-fuwutiaokuan").hide();
 	},
@@ -324,6 +429,12 @@ PageManager.prototype = {
 			if(this.IEVersion() == 8) {
 				$("#video2")[0].play();
 			}
+			this.isplay = true;
+
+			clearTimeout(this.inter2);
+			this.setVideoPlayTime();
+			clearTimeout(this.inter);
+			this.getVideoPlayTime();
 		}
 		if(this.swiper){
 			this.swiper.slideTo(0);
