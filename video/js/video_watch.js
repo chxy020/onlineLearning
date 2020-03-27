@@ -400,7 +400,7 @@ PageManager.prototype = {
 		setTimeout(function(){
 			clearTimeout(this.inter);
 			this.getVideoPlayTime();
-		}.bind(this),1000);
+		}.bind(this),5000);
 		
 		
 		$(".J-mask").hide();
