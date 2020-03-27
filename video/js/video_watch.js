@@ -275,7 +275,11 @@ PageManager.prototype = {
 		// var playtime = Math.floor($("#video1")[0].currentTime);
 		$(".video_time").html("("+ this.formatTime(this.playtime) + "/"+this.videoLength+")");
 		this.inter2 = setTimeout(function(){
-			if(this.isplay){
+			var playtime = Math.floor($("#video1")[0].currentTime) || 0;
+			if(this.IEVersion() == 8) {
+				var playtime = Math.floor($("#video2")[0].currentTime) || 0;
+			}
+			if(this.isplay && playtime){
 				this.playtime++;
 			}
 			this.setVideoPlayTime();
