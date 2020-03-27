@@ -104,6 +104,9 @@ PageManager.prototype = {
 						$("#replaybtn2").rebind("click",function(){
 							$("#video_content_pop2").hide();
 							$("#video1")[0].play();
+							if(this.IEVersion() == 8) {
+								$("#video2")[0].play();
+							}
 							this.getVideoPlayTime();
 						},this);
 
@@ -138,6 +141,10 @@ PageManager.prototype = {
 					clearTimeout(this.inter);
 					
 					if(!permissions){
+						$("#video1")[0].play();
+						if(this.IEVersion() == 8) {
+							$("#video2")[0].play();
+						}
 						this.getVideoPlayTime();
 					}
 					// this.getVideoPlayTime();
@@ -181,8 +188,8 @@ PageManager.prototype = {
 		var pi = this.showTime.indexOf(playtime);
 		if(pi > -1){
 			$("#video1")[0].pause();
-			if($("#video2").length > 0){
-				// $("#video2")[0].stop();
+			if(this.IEVersion() == 8) {
+				$("#video2")[0].pause();
 			}
 
 			var tid = this.titleId[pi];
@@ -287,8 +294,8 @@ PageManager.prototype = {
 	},
 	closeChoose:function(evt){
 		$("#video1")[0].play();
-		if($("#video2").length > 0){
-			// $("#video2")[0].stop();
+		if(this.IEVersion() == 8) {
+			$("#video2")[0].play();
 		}
 
 		$(".J-mask").hide();
@@ -314,8 +321,8 @@ PageManager.prototype = {
 
 		if($("#video1").length > 0){
 			$("#video1")[0].play();
-			if($("#video2").length > 0){
-				// $("#video2")[0].stop();
+			if(this.IEVersion() == 8) {
+				$("#video2")[0].play();
 			}
 		}
 		if(this.swiper){
@@ -324,6 +331,35 @@ PageManager.prototype = {
 	},
 	clearBtnClick:function(evt){
 		$("#video_content_pop").hide();
+	},
+	IEVersion:function () {
+		var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串  
+		var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1; //判断是否IE<11浏览器  
+		var isEdge = userAgent.indexOf("Edge") > -1 && !isIE; //判断是否IE的Edge浏览器  
+		var isIE11 = userAgent.indexOf('Trident') > -1 && userAgent.indexOf("rv:11.0") > -1;
+		if(isIE) {
+			return 8;
+			// var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
+			// reIE.test(userAgent);
+			// var fIEVersion = parseFloat(RegExp["$1"]);
+			// if(fIEVersion == 7) {
+			// 	return 7;
+			// } else if(fIEVersion == 8) {
+			// 	return 8;
+			// } else if(fIEVersion == 9) {
+			// 	return 9;
+			// } else if(fIEVersion == 10) {
+			// 	return 10;
+			// } else {
+			// 	return 6;//IE版本<=7
+			// }   
+		} else if(isEdge) {
+			return 'edge';//edge
+		} else if(isIE11) {
+			return 11; //IE11  
+		}else{
+			return -1;//不是ie浏览器
+		}
 	}
 };
 
