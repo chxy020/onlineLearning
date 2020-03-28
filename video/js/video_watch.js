@@ -275,14 +275,15 @@ PageManager.prototype = {
 		// var playtime = Math.floor($("#video1")[0].currentTime);
 		$(".video_time").html("("+ this.formatTime(this.playtime) + "/"+this.videoLength+")");
 		this.inter2 = setTimeout(function(){
-			var playtime = Math.floor($("#video1")[0].currentTime) || 0;
+			var currentTime = Math.floor($("#video1")[0].currentTime) || 0;
 			if(this.IEVersion() == 8) {
-				var playtime = Math.floor($("#video2")[0].currentTime) || 0;
+				var currentTime = Math.floor($("#video2")[0].currentTime) || 0;
 			}
-			if(this.isplay && playtime){
+			if(this.isplay && currentTime){
 				this.playtime++;
 			}
-			if(this.playTime <= playtime){
+			// console.log(this.playtime , currentTime)
+			if(this.playtime <= currentTime){
 				this.setVideoPlayTime();
 			}
 		}.bind(this),1000);
