@@ -282,7 +282,9 @@ PageManager.prototype = {
 			if(this.isplay && playtime){
 				this.playtime++;
 			}
-			this.setVideoPlayTime();
+			if(this.playTime <= playtime){
+				this.setVideoPlayTime();
+			}
 		}.bind(this),1000);
 	},
 	formatTime:function(m){
