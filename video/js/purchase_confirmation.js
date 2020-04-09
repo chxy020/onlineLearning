@@ -58,6 +58,35 @@ PageManager.prototype = {
 	
 	orderNumber:"",
 	playBtnClick:function(){
+		
+		// this.wxPay();
+		this.aliPay();
+	},
+	aliPay:function(){
+		Utils.load();
+		var url = Base.serverUrl + "/aliPay/classAliPay"
+		var condi = {};
+		condi.classId = this.id;
+
+		$.Ajax({
+			url:url,type:"GET",data:condi,dataType:"json",context:this,global:false,
+			success: function(res){
+				var obj = res.data || "";
+				if(obj){
+					$("body").html(obj);
+					
+					// this.getOrderStatusHttp();
+				}else{
+					layer.msg("没有获取到支付页面");
+				}
+				
+			},
+			error:function(res){
+				layer.msg(res.message || "请求错误");
+			}
+		});
+	},
+	wxPay:function(){
 		Utils.load();
 		var url = Base.serverUrl + "/pay/classWxPay"
 		var condi = {};
@@ -83,8 +112,6 @@ PageManager.prototype = {
 			}
 		});
 	},
-
-
 
 	getOrderStatusHttp:function(){
 		if(this.orderNumber){

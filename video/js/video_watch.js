@@ -7,6 +7,7 @@ var PageManager = function (obj){
 PageManager.prototype = {
 	constructor:PageManager,
 	id:"",
+	videoId:"",
 	classType:0,
 	playTime:10000,
 	titleId:[],
@@ -15,19 +16,22 @@ PageManager.prototype = {
 	init: function(){
 		//this.httpTip = new Utils.httpTip({});
 
+		//栏目id
 		this.id = +Utils.getQueryString("id") || "";
 		if(!this.id){
-			layer.msg("没有获取到课程id");
+			layer.msg("没有获取到栏目id");
 			return;
 		}
+		this.videoId = +Utils.getQueryString("videoId") || "";
 
 		this.bindEvent();
 
 		this.getInClassHttp();
-
-		
 	},
 	bindEvent:function(){
+		// $(window).onbind("beforeunload",this.beforeUnLoad,this);
+
+
 		$("#buybtn").onbind("click",this.buyBtnClick,this);
 		$("#buybtn2").onbind("click",this.buyBtnClick,this);
 		$("#replaybtn").onbind("click",this.replayBtnClick,this);
@@ -42,8 +46,42 @@ PageManager.prototype = {
 		$(".video_content_left").onbind("mouseout",this.videoMouseout,this);
 
 		// $("#password").onbind("keydown",this.keyDown,this);
+
+		//5s 主动存一次当前播放时间
+		setTimeout(function(){
+			this.beforeUnLoad();
+		}.bind(this),5*1000);
 	},
 	pageLoad:function(){
+	},
+
+	sendTime:0,
+	beforeUnLoad:function(){
+
+		setTimeout(function(){
+			this.beforeUnLoad();
+		}.bind(this),5*1000);
+
+		if(+this.playtime <= 0 || this.playtime == this.sendTime){
+			return;
+		}
+
+		// 保存当前播放进度
+		var url = Base.serverUrl + "/gen/studying/saveStudying";
+		var condi = {};
+		condi.classId = this.id;
+		condi.videoId = this.videoId;
+		condi.nowTime = this.playtime || 0;
+		this.sendTime = this.playtime;
+		console.log("beforeUnLoad-------------",condi);
+		$.Ajax({
+			async: false,
+			url:url,type:"POST",data:condi,dataType:"json",context:this,global:false,
+			success: function(res){
+			},
+			error:function(res){
+			}
+		});
 	},
 	getInClassHttp:function(){
 		Utils.load();
@@ -51,6 +89,7 @@ PageManager.prototype = {
 		var condi = {};
 
 		$.Ajax({
+			async: false,
 			url:url,type:"POST",data:condi,dataType:"json",context:this,global:false,
 			success: function(res){
 				var obj = res.data || [];
@@ -69,8 +108,15 @@ PageManager.prototype = {
 
 				$("#inclasslist li").rebind('click',this.inclassItemClick,this);
 
-				//默认加载第一条
-				this.getIncateHttp(icid);
+				if(this.videoId == ""){
+					this.videoId = icid;
+					//默认加载第一条
+					this.getIncateHttp(icid);
+				}else{
+					//加载当前条
+					this.getIncateHttp(this.videoId);
+				}
+				
 			},
 			error:function(res){
 				layer.msg(res.message || "请求错误");
@@ -83,9 +129,11 @@ PageManager.prototype = {
 		var icid = +$(ele).attr("data");
 		this.getIncateHttp(icid);
 	},
+
 	classId:0,
 	videoLength:"",
 	isplay:false,
+	watchTime:0,
 	getIncateHttp:function(id){
 		Utils.load();
 		var url = Base.serverUrl + "/class/incate/" + id;
@@ -101,6 +149,7 @@ PageManager.prototype = {
 
 				this.classId = obj.classId;
 				this.videoLength = obj.videoLength;
+				this.sendTime = 0;
 
 				if(this.classType == 0){
 					$("#video1").show();
@@ -108,6 +157,7 @@ PageManager.prototype = {
 					$("#pausebtn").hide();
 					this.isplay = false;
 					
+					this.watchTime = +res.watchTime || 0;
 					$("#video1,#video2").attr("src",videoShort);
 					// permissions = 0
 					// 1是无权限，0是有
@@ -166,6 +216,7 @@ PageManager.prototype = {
 					
 					// $("#video2")[0].play();
 				}else{
+					// PPT 播放
 					var imgs = videoShort.split(',');
 					var html = [];
 					imgs.forEach(function(item){
@@ -221,14 +272,26 @@ PageManager.prototype = {
 
 		this.coloseed = true;
 
+		if(this.playtime==0){
+			$("#video1")[0].currentTime = this.watchTime; 
+		}
+
 		$("#video1")[0].play();
 		if(this.IEVersion() == 8) {
+			if(this.playtime==0){
+				$("#video2")[0].currentTime = this.watchTime; 
+			}
 			$("#video2")[0].play();
 		}
 		this.isplay = true;
+		
+		if(this.playtime == 0){
+			this.playtime = this.playtime + this.watchTime;
+		}
 
 		clearTimeout(this.inter2);
 		this.setVideoPlayTime();
+		
 		clearTimeout(this.inter);
 		this.getVideoPlayTime();
 	},
@@ -274,6 +337,7 @@ PageManager.prototype = {
 	setVideoPlayTime:function(){
 		// var playtime = Math.floor($("#video1")[0].currentTime);
 		$(".video_time").html("("+ this.formatTime(this.playtime) + "/"+this.videoLength+")");
+		// console.log(this.playtime)
 		this.inter2 = setTimeout(function(){
 			var currentTime = Math.floor($("#video1")[0].currentTime) || 0;
 			if(this.IEVersion() == 8) {
@@ -282,6 +346,7 @@ PageManager.prototype = {
 			if(this.isplay && currentTime){
 				this.playtime++;
 			}
+			
 			// console.log(this.playtime , currentTime)
 			if(this.playtime <= currentTime){
 				this.setVideoPlayTime();

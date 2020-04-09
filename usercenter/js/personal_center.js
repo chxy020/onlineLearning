@@ -94,8 +94,9 @@ PageManager.prototype = {
 		var html = [];
 		list.forEach(function(item){
 			var id = +item.id;
+			var videoId = +item.videoId;
 			html.push('<div class="course-card-container">');
-			html.push('<a href="/video/video_watch.html?id=' + id + '" class="course-card">');
+			html.push('<a href="/video/video_watch.html?id=' + id + '&videoId=' + videoId + '" class="course-card">');
 			// html.push('<a target="_blank" href="/video/video_watch.html?id=' + id + '" class="course-card">');
 			html.push('<img src="' + item.courseImg + '" style="width:281px;height:158px;">');
 			html.push('<p >' + item.courseTitle + '</p>');

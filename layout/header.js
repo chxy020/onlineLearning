@@ -75,9 +75,9 @@
 		__header.push('<li><a href="/recommend/policy.html">政策文件</a></li>');
 	}
 	if(on == 4){
-		__header.push('<li class="on"><a href="/recommend/safety.html">安全咨询</a></li>');
+		__header.push('<li class="on"><a href="/recommend/safety.html">安全资讯</a></li>');
 	}else{
-		__header.push('<li><a href="/recommend/safety.html">安全咨询</a></li>');
+		__header.push('<li><a href="/recommend/safety.html">安全资讯</a></li>');
 	}
 	if(on == 5){
 		__header.push('<li class="on"><a href="/recommend/share.html">互学互荐</a></li>');
