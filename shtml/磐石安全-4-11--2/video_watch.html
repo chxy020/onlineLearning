@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>磐石安全-视频观看</title>
+    <link rel="stylesheet" charset="utf-8" href="css/reset.css">
+    <link rel="stylesheet" charset="utf-8" href="css/index.css">
+</head>
+<body>
+    <!-- 头部 -->
+    <div class="head_content video_watch_head clearfix">
+        <div class="head_logo ml20">
+            <img src="img/logo.png" height="40">磐石安全
+        </div>
+        <div class="head_list">
+            <ul>
+                <li><a href="">法律法规</a></li>
+                <li class="on"><a href="">标准规范</a></li>
+                <li><a href="">政策文件</a></li>
+                <li><a href="">安全咨询</a></li>
+                <li><a href="">互学互荐</a></li>
+                <li><a href="">案例分析</a></li>
+                <li class="dl">
+                    <!-- 登录前 -->
+                    <a href="">登录</a>
+                    <!-- 登录后 -->
+                    <!-- <span>蒙蒙雨 退出</span> -->
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="video_content">
+        <div class="video_content_left">
+            <!-- 播放按钮 -->
+            <div class="video_play" style="display:none">
+                <a href="" class="playbtn"></a>
+                <a href="" class="pausebtn" style="display:none"></a>
+            </div>
+            <!-- 时间 -->
+            <div class="video_time">（已完成时间/总时长）</div>
+            <video id="video1" width="100%" height="100%" muted controls autoplay loop="loop">
+                <source src="http://static.99114.com/static/cyw_video/festival_wine.mp4" type="video/mp4">
+                <!–[if lt IE 8]>
+                    <embed muted preload="auto" controls="" autoplay="auto-play" src="http://static.99114.com/static/cyw_video/festival_wine.mp4" type="video/mp4" width="100%" height="100%" allowfullscreen="true" quality="high" loop="true" volume="-4200"/></embed>
+                <![endif]–>
+            </video>
+        </div>
+        <div class="video_content_right">
+            <h3>课程目录</h3>
+            <ul>
+                <li>1、安全规范</li>
+                <li>2、安全标准国际标准法，中国标准。</li>
+                <li>3、安全标准国际标准法，中国标准的区别。</a></li>
+                <li><a href="">3、安全标准国际标准法，中国标准的区别。</a></li>
+                <li><a href="">1、安全规范</a></li>
+                <li><a href="">1、安全规范</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- 播放到一定位置弹出的答题框 -->
+    <div class="mask J-mask" style="display:none-"></div>
+    <div class="J-fuwutiaokuan feedback_mian" style="display:none-">
+            <div class="feedback_box">
+                <a class="close_btn J-close-btn"></a>
+                <div class="feedback_tit"><h3>播放到一定位置弹出的答题框</h3></div>
+                <div class="feedback_con">
+                    <div class="pop_h400 h438">
+                        <ul class="list-group">
+                            <li class="list-group-item clearfix">
+                                <div class="col-xs-1">
+                                    <img src="img/ico_wrong.png">
+                                </div>
+                                <div class="col-xs-11">
+                                    A、违章行为
+                                </div>
+                            </li>
+                            <li class="list-group-item clearfix">
+                                <div class="col-xs-1">
+                                    <img src="img/ico_right.png">
+                                </div>
+                                <div class="col-xs-11">
+                                    B、违章行为
+                                </div>
+                            </li>
+                            <li class="list-group-item clearfix">
+                                <div class="col-xs-1">
+                                    <img src="img/ico_notselected.png">
+                                </div>
+                                <div class="col-xs-11">
+                                   C、违章行为
+                                </div>
+                            </li>
+                            <li class="list-group-item clearfix">
+                                <div class="col-xs-1">
+                                    <img src="img/ico_notselected.png">
+                                </div>
+                                <div class="col-xs-11">
+                                   D、违章行为
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="row-tishi">
+                            <p class="color-right">恭喜您，答对了!</p>
+                            <p class="color-wrong">答错了，正确答案：B</p>
+                            <div class="color-explain">
+                                <div class="row">解释：</div>
+                                <div class="content">违反道路交通安全法,明显的是违法,它都暗示了是违法行为. </div>
+                            </div>
+                        </div>
+                        <div class="textC">
+                            <a href="#" class="view_a">继续</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <!-- 试看结束 弹框 -->
+    <div class="video_content_pop" style="display: none;">
+        <div class="video_content_pop_c">
+            <p>试看3分钟或试看3张幻灯片已结束</p>
+            <div class="rg_cg_a clearfix">
+                <a href="#" class="myfr">立即购买</a>
+                <a href="#" class="myfr">再看一遍</a>
+                <a href="#" class="myfr">取消</a>
+            </div>
+        </div>
+    </div>
+
+
+    
+</body>
+</html>

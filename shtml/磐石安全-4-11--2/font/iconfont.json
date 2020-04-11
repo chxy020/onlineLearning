@@ -1,0 +1,30 @@
+{
+  "id": "1748209",
+  "name": "磐石安全",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "657611",
+      "name": "商务合作",
+      "font_class": "shangwuhezuo",
+      "unicode": "e6d5",
+      "unicode_decimal": 59093
+    },
+    {
+      "icon_id": "3763953",
+      "name": "联系我们",
+      "font_class": "lianxiwomen",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "8910034",
+      "name": "公司地址",
+      "font_class": "dizhi1",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    }
+  ]
+}
