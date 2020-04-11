@@ -58,9 +58,12 @@ PageManager.prototype = {
 	
 	orderNumber:"",
 	playBtnClick:function(){
-		
-		// this.wxPay();
-		this.aliPay();
+		var iswx = $("#wxpay:checked").val();
+		if(iswx){
+			this.wxPay();
+		}else{
+			this.aliPay();
+		}
 	},
 	aliPay:function(){
 		Utils.load();

@@ -49,6 +49,7 @@
 .login_content.purchase_content .pc_text{margin-left: 20px;padding:20px 0;}
 .login_content.purchase_content p{padding:10px 0;color:#111;}
 .login_content.purchase_content p span{color:#00a0e9;}
+.login_content .login_box input.radios {width: auto; height: auto;border: none;border-radius: none;outline: none;margin-left: 0;padding-left: 0;line-height: 0;}
 /*--------------------个人信息完善--------------------*/
 .login_content.personalInfo_content .login_box{width: 800px;margin-left: -400px;margin-top: -230px;}
 .login_content.personalInfo_content .title h1{width:185px;}
