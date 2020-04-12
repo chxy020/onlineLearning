@@ -14,7 +14,7 @@ PageManager.prototype = {
 		// this.setUserTypeHtml();
 
 		this.bindEvent();
-
+		this.getUserInfo();
 		this.getUserInfoHttp();
 	},
 	bindEvent:function(){
@@ -24,6 +24,24 @@ PageManager.prototype = {
 	pageLoad:function(){
 	},
 	setUserTypeHtml:function(){
+	},
+
+	getUserInfo:function(){
+		var user = Utils.offlineStore.get("__userInfo",true) || "";
+		if(!!user){
+			user = JSON.parse(user);
+			var userAudit = +user.userAudit || 0;
+			var nickname = user.userNickname || "";
+
+			var auditStatus = ["未审核","审核中","审核通过","审核未通过"];
+			$("#userNickname").html(nickname);
+			$("#userAudit").html(auditStatus[userAudit]);
+
+			if(userAudit == 0 || userAudit == 3){
+				layer.msg("系统检测学员档案表还未审核通过，如未提交请尽快提交，已提交请忽略。");
+			}
+			// userAudit字段获得，0：未审核；1：审核中；2：审核通过；3：审核未通过。 
+		}
 	},
 
 	getUserInfoHttp:function(condi){

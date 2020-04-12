@@ -7,11 +7,8 @@ var PageManager = function (obj){
 PageManager.prototype = {
 	constructor:PageManager,
 	id:"",
-	classType:0,
-	playTime:10000,
-	titleId:[],
-	showTime:[],
-	swiper:null,
+
+	userAudit:0,
 	init: function(){
 		//this.httpTip = new Utils.httpTip({});
 
@@ -23,6 +20,8 @@ PageManager.prototype = {
 
 		this.bindEvent();
 
+		this.getUserInfo();
+
 		this.getPayInfoHttp();
 
 		
@@ -32,6 +31,19 @@ PageManager.prototype = {
 		// $("#password").onbind("keydown",this.keyDown,this);
 	},
 	pageLoad:function(){
+	},
+	getUserInfo:function(){
+		var user = Utils.offlineStore.get("__userInfo",true) || "";
+		if(!!user){
+			user = JSON.parse(user);
+			this.userAudit = +user.userAudit || 0;
+			// var nickname = user.userNickname || "";
+
+			// var auditStatus = ["未审核","审核中","审核通过","审核未通过"];
+			// $("#userNickname").html(nickname);
+			// $("#userAudit").html(auditStatus[this.userAudit]);
+			// userAudit字段获得，0：未审核；1：审核中；2：审核通过；3：审核未通过。 
+		}
 	},
 	getPayInfoHttp:function(){
 		Utils.load();
@@ -133,7 +145,13 @@ PageManager.prototype = {
 					var obj = res.data || {};
 					// {"data":{"orderStatus":false},"message":"订单状态获取成功"}
 					if(obj.orderStatus){
-						history.go(-1);
+						//为0或3时打开档案填写表格，并弹出对话框提醒用户档案必须填写
+						if(this.userAudit == 0 || this.userAudit == 3){
+							location.href = "/usercenter/archives.html";
+						}else{
+							history.go(-1);
+						}
+
 					}else{
 						setTimeout(function(){
 							this.getOrderStatusHttp();

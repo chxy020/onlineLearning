@@ -53,7 +53,7 @@ PageManager.prototype = {
 				var userInfo = obj.userInfo || {};
 				var user = obj.user || {};
 				var token = obj.token || "";
-
+				
 				Utils.offlineStore.set("__userInfo",JSON.stringify(userInfo),true);
 				Utils.offlineStore.set("__user",JSON.stringify(user),true);
 				Utils.offlineStore.set("__token",token,true);

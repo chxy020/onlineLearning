@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>山东省注册安全工程师继续教育学员档案表</title>
+    <link rel="stylesheet" charset="utf-8" href="../css/reset.css">
+    <link rel="stylesheet" charset="utf-8" href="../css/reg.css">
+    <link rel="stylesheet" charset="utf-8" href="../css/index.css">
+
+    <script type="text/javascript" src="../libs/jquery/jquery-1.12.4.min.js" ></script>
+    <script type="text/javascript" src="../libs/ie8-polyfill.js" ></script>
+    <script type="text/javascript" src="../libs/jquery/jquery_ex.js" ></script>
+    <script type="text/javascript" src="../libs/jquery/jquery.jqprint-0.3.js" ></script>
+	<script type="text/javascript" src="../libs/layer-v2.2/layer/layer.js"></script>
+	<script type="text/javascript" src="../libs/utils.js"></script>
+    <script type="text/javascript" src="../libs/base.js"></script>
+
+    <script type="text/javascript" src="../layout/logout.js"></script>
+</head>
+<body class="bodybg">
+
+    <!-- 头部 
+    <script type="text/javascript" src="../layout/header.js"></script>
+    -->
+
+    
+    <div id="studentfile" class="login_content clearfix">
+        <!-- <form action="" method=""> -->
+            <div class="login_box qiye_management danganbiao">
+                <div class="title clearfix">
+                    <h1 class="myfl">山东省注册安全工程师继续教育学员档案表</h1>
+                </div>
+                <div class="">
+                    <p style="color:#ff0000;text-align: center;padding:15px 0">此档案必须填写，不填写无法取证，后果由个人承担！</p>
+                    <p style="padding:20px 0 15px;text-align: center;">档案号：　　　　　　　　　　　　学号：　　　　　　　　　　　填表时间：　　　年　　　月　　　日</p>
+                    <table class="table J-check-box">
+                        <colgroup>
+                            <col width="14%">
+                            <col>
+                            <col width="6%">
+                            <col width="15%">
+                            <col width="12%">
+                            <col width="16%">
+                            <col width="17.2%">
+                        </colgroup>
+                        <tbody class="mouseover_ta01">
+                            <tr>
+                                <td>姓名</td>
+                                <td>
+                                    <input id="userName" class="no-print" type="text" value="" placeholder="请输入"/>
+                                    <div class="printDIV"></div>
+                                </td>
+                                <td>性别</td>
+                                <td>
+                                    <input id="sex" class="no-print" type="text" value="" placeholder="请输入"/>
+                                    <div class="printDIV"></div>
+                                </td>
+                                <td>出生年月</td>
+                                <td>
+                                    <input id="birthday" class="no-print" type="text" value="" placeholder="yyyy-MM-dd"/>
+                                    <div class="printDIV"></div>
+                                </td>
+                                <td rowspan="3">照片粘贴处</td>
+                            </tr>
+                            <tr>
+                                <td>职务/职称</td>
+                                <td>
+                                    <input id="position" class="no-print" type="text" value="" placeholder="请输入"/>
+                                    <div class="printDIV"></div>
+                                </td>
+                                <td colspan="2">身份证号码</td>
+                                <td colspan="2">
+                                    <input id="idCard" class="no-print" type="text" value="" placeholder="请输入"/>
+                                    <div class="printDIV"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>学历</td>
+                                <td>
+                                    <input id="education" class="no-print" type="text" value="" placeholder="请输入"/>
+                                    <div class="printDIV"></div>
+                                </td>
+                                <td colspan="2">所学专业</td>
+                                <td colspan="2">
+                                    <input id="major" class="no-print" type="text" value="" placeholder="请输入"/>
+                                    <div class="printDIV"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>执业单位名称</td>
+                                <td colspan="3">
+                                    <input id="unitName" class="no-print" type="text" value="" placeholder="请输入"/>
+                                    <div class="printDIV"></div>
+                                </td>
+                                <td>从事行业</td>
+                                <td colspan="2">
+                                    <input id="work" class="no-print" type="text" value="" placeholder="请输入"/>
+                                    <div class="printDIV"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>通讯地址</td>
+                                <td colspan="3">
+                                    <input id="address" class="no-print" type="text" value="" placeholder="请输入"/>
+                                    <div class="printDIV"></div>
+                                </td>
+                                <td>邮编</td>
+                                <td colspan="2">
+                                    <input id="postcode" class="no-print" type="text" value="" placeholder="请输入"/>
+                                    <div class="printDIV"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>资格证书编号</td>
+                                <td colspan="3">
+                                    <input id="credentialsNum" class="no-print" type="text" value="" placeholder="请输入"/>
+                                    <div class="printDIV"></div>
+                                </td>
+                                <td>执业证号</td>
+                                <td colspan="2">
+                                    <input id="practiceNum" class="no-print" type="text" value="" placeholder="请输入"/>
+                                    <div class="printDIV"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>资格证管理号</td>
+                                <td colspan="3">
+                                    <input id="certificateNum" class="no-print" type="text" value="" placeholder="请输入"/>
+                                    <div class="printDIV"></div>
+                                </td>
+                                <td>注册类别</td>
+                                <td colspan="2">
+                                    <input id="registeredType" class="no-print" type="text" value="" placeholder="请输入"/>
+                                    <div class="printDIV"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>注册有效期</td>
+                                <td >
+                                    <input id="registeredStart" class="no-print" type="text" value="" placeholder="yyyy-MM-dd"/>
+                                    <div class="printDIV"></div>
+                                </td>
+                                <td>至</td>
+                                <td>
+                                    <input id="registeredEnd" class="no-print" type="text" value="" placeholder="yyyy-MM-dd"/>
+                                    <div class="printDIV"></div>
+                                </td>
+                                <td>联系电话</td>
+                                <td colspan="2">
+                                    <input id="phone" class="no-print" type="text" value="" placeholder="请输入"/>
+                                    <div class="printDIV"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="7" class="textTL">
+                                    <div class="pardiv">
+                                        <span class="lefttext">备注：</span>
+                                        <textarea id="remake" class="textareaT no-print" rows="3" cols="20" name="message" placeholder="请输入"></textarea>
+                                        <div class="printDIV ml60"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="7" class="center">
+                                        <label for="trainingType0" style="margin-right:40px">
+                                            <input class="checkbox" type="radio" name="trainingType" id="trainingType0" value="0" checked />
+                                            新训
+                                        </label>
+                                        <label for="trainingType1">
+                                            <input class="checkbox" type="radio" name="trainingType" id="trainingType1" value="1" />
+                                            复训
+                                        </label>
+                                </td>
+                            </tr>
+                            <!--  暂存 提交  退出 -->
+                        </tbody>
+                    </table>
+                </div>
+                <!-- <input type=button onclick="javascript:window.print()" name='button_export' title='打印' value=打印> -->
+                <div class="textC no-print">
+                    <input id="sendbtn" type="submit" value="提交" class="submit_btn sm" >
+                    <input id="temporarybtn" type="submit" value="暂存" class="submit_btn cancel_btn sm" >
+                    <input id="printbtn" type="submit" value="打印" class="submit_btn cancel_btn sm">
+                    <input id="backbtn" type="submit" value="退出" class="submit_btn cancel_btn sm">
+                </div>
+            </div>
+        <!-- </form> -->
+    </div>
+    <!--3.10 添加 添加学员-->
+    <div class="mask J-mask" style="position: fixed;"></div>
+    <div class="J-fuwutiaokuan" >
+        <div class="login_content clearfix">
+            <!-- <form action="" method=""> -->
+                <div class="login_box poswidth2">
+                    <a class="close_btn J-close-btn"></a>
+                    <p class="rg_cg_ti">打印并邮寄</p>
+                    <p class="poswidth2cont" >
+                        邮寄地址：山东省济南市历城区华信路巨匠大厦806室<br/>
+                        收件人：周仲薛 0531-81908775或16652003305
+                    </p>
+                    <input type="submit" value="确定" class="submit_btn" id="regFormBtn02">
+    
+                </div>
+            <!-- </form> -->
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/archives.js"></script>
+    <script type="text/javascript">
+        $(".no-print").blur(function(){
+            $(this).next().html($(this).val())
+        });
+    </script>
+</body>
+</html>
