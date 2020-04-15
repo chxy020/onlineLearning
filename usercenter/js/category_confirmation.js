@@ -85,7 +85,7 @@ PageManager.prototype = {
 		condi.type = this.id;
 
 		$.Ajax({
-			url:url,type:"POST",data:condi,dataType:"json",context:this,global:false,
+			url:url,type:"GET",data:condi,dataType:"json",context:this,global:false,
 			success: function(res){
 				var obj = res.data || "";
 				if(obj){
