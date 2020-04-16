@@ -13,6 +13,7 @@ PageManager.prototype = {
 	titleId:[],
 	showTime:[],
 	swiper:null,
+	isCollection:false,
 	init: function(){
 		//this.httpTip = new Utils.httpTip({});
 
@@ -32,6 +33,7 @@ PageManager.prototype = {
 		// $(window).onbind("beforeunload",this.beforeUnLoad,this);
 
 
+		$("#collectbtn").onbind("click",this.collectBtnClick,this);
 		$("#buybtn").onbind("click",this.buyBtnClick,this);
 		$("#buybtn2").onbind("click",this.buyBtnClick,this);
 		$("#replaybtn").onbind("click",this.replayBtnClick,this);
@@ -83,6 +85,33 @@ PageManager.prototype = {
 			}
 		});
 	},
+	collectBtnClick:function(){
+		Utils.load();
+		if(this.isCollection){
+			var url = Base.serverUrl + "/class/delCollection/" + this.id;
+		}else{
+			var url = Base.serverUrl + "/class/collection/" + this.id;
+		}
+		
+		var condi = {};
+
+		$.Ajax({
+			async: false,
+			url:url,type:"POST",data:condi,dataType:"json",context:this,global:false,
+			success: function(res){
+				this.isCollection = !this.isCollection;
+				if(this.isCollection){
+					$("#collectbtn").addClass("on");
+				}else{
+					$("#collectbtn").removeClass("on");
+				}
+				layer.msg(res.message || "收藏成功");
+			},
+			error:function(res){
+				layer.msg(res.message || "请求错误");
+			}
+		});
+	},
 	getInClassHttp:function(){
 		Utils.load();
 		var url = Base.serverUrl + "/class/inclass/" + this.id;
@@ -95,6 +124,13 @@ PageManager.prototype = {
 				var obj = res.data || [];
 				var html = [];
 				var icid = 0;
+				// 是否收藏
+				this.isCollection = res.isCollection;
+				if(this.isCollection){
+					$("#collectbtn").addClass("on");
+				}else{
+					$("#collectbtn").removeClass("on");
+				}
 				// 课程类型   0: 视频 1: PPT
 				this.classType = +res.classType;
 				obj.forEach(function(item,i){

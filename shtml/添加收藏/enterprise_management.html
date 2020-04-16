@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>企业报名管理</title>
+    <link rel="stylesheet" charset="utf-8" href="css/reset.css">
+    <link rel="stylesheet" charset="utf-8" href="css/reg.css">
+</head>
+<body class="bodybg">
+    <div class="login_content clearfix">
+        <form action="" method="">
+            <div class="login_box qiye_management">
+                <div class="title clearfix">
+                    <span class="myfl"></span><h1 class="myfl">企业报名管理</h1><span class="myfr"></span>
+                </div>
+                <div class="qiye_cont">
+                    <p class="mb20">
+                        <a href="#" class="view_a w100">添加学员</a>
+                    </p>
+                    <table class="table J-check-box">
+                        <colgroup>
+                            <col width="50">
+                            <col>
+                            <col width="15%">
+                            <col width="10%">
+                            <col width="20%">
+                            <col width="20%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th class="center">
+                                    <input type="checkbox" name="genre" id="comedy3" value="comedy3" />
+                                    <label for="comedy3" class="J-checkAll"></label>
+                                </th>
+                                <th>姓名</th>
+                                <th>身份证号</th>
+                                <th>联系方式</th>
+                                <th>培训类别</th>
+                                <th>操作</th>
+                            </tr> 
+                        </thead>
+                        <tbody class="mouseover_ta01">
+                            <tr>
+                                <td class="center">
+                                    <input type="checkbox" name="genre1" id="comedy41" value="comedy3" />
+                                    <label for="comedy41" class="J-check"></label>
+                                </td>
+                                <td>张三</td>
+                                <td>370209198804054556</td>
+                                <td>13301466511</td>
+                                <td>煤矿安全</td>
+                                <td><a href="#" class="view_a">编辑</a><a href="#" class="view_a ml10">删除</a></td>
+                            </tr>
+                            <tr>
+                                <td class="center">
+                                    <input type="checkbox" name="genre1" id="comedy42" value="comedy3" />
+                                    <label for="comedy42" class="J-check"></label>
+                                </td>
+                                <td>张三</td>
+                                <td>370209198804054556</td>
+                                <td>13301466511</td>
+                                <td>煤矿安全</td>
+                                <td><a href="#" class="view_a">编辑</a><a href="#" class="view_a ml10">删除</a></td>
+                            </tr>
+                            <tr>
+                                <td class="center">
+                                    <input type="checkbox" name="genre1" id="comedy43" value="comedy3" />
+                                    <label for="comedy43" class="J-check"></label>
+                                </td>
+                                <td>张三</td>
+                                <td>370209198804054556</td>
+                                <td>13301466511</td>
+                                <td>煤矿安全</td>
+                                <td><a href="#" class="view_a">编辑</a><a href="#" class="view_a ml10">删除</a></td>
+                            </tr>
+                            <tr>
+                                <td class="center">
+                                    <input type="checkbox" name="genre1" id="comedy44" value="comedy3" />
+                                    <label for="comedy44" class="J-check"></label>
+                                </td>
+                                <td>张三</td>
+                                <td>370209198804054556</td>
+                                <td>13301466511</td>
+                                <td>煤矿安全</td>
+                                <td><a href="#" class="view_a">编辑</a><a href="#" class="view_a ml10">删除</a></td>
+                            </tr>
+                            <tr>
+                                <td class="center">
+                                    <input type="checkbox" name="genre1" id="comedy45" value="comedy3" />
+                                    <label for="comedy45" class="J-check"></label>
+                                </td>
+                                <td>张三</td>
+                                <td>370209198804054556</td>
+                                <td>13301466511</td>
+                                <td>煤矿安全</td>
+                                <td><a href="#" class="view_a">编辑</a><a href="#" class="view_a ml10">删除</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="textR">
+                    <input type="submit" value="提交学员信息" class="submit_btn" id="regFormBtn02">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!--3.10 添加 添加学员-->
+    <div class="mask J-mask" style="display:none-"></div>
+    <div class="J-fuwutiaokuan" style="display:none-;">
+        <div class="login_content clearfix">
+            <form action="" method="">
+                <div class="login_box" style="z-index:9999">
+                    <a class="close_btn J-close-btn"></a>
+                    <p class="rg_cg_ti">添加学员</p>
+                    <p class="system_error"></p>
+                    <!-- 姓名 -->
+                    <input type="text" name="nick" value="" placeholder="请输入姓名" id="username"/>
+                    <p class="input_error"><span></span></p>
+                    <!-- 请输入身份证号 -->
+                    <input type="text" name="nick" value="" placeholder="请输入身份证号" id="username"/>
+                    <p class="input_error"><span></span></p>
+                    <!-- 联系方式 -->
+                    <input type="text" name="nick" value="" placeholder="请输入联系方式" id="username"/>
+                    <p class="input_error"><span></span></p>
+                    <!-- 培训级别（初级，中级） -->
+                    <div class="tzSelect36">
+                        <select name="" class="regularSelect w310">
+                            <option value="opt1" selected>培训级别-初级</option>
+                            <option value="opt2">培训级别-中级</option>
+                        </select>
+                    </div>
+                    <p class="input_error"><span></span></p>
+                    <input type="submit" value="确定" class="submit_btn" id="regFormBtn02">
+    
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--3.10 添加 添加学员 结束-->
+    <!-- 3.10 添加 -->
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script><!--通用必须得要-->
+    <script type="text/javascript" src="js/jquery.tzSelect.js"></script><!--下拉框美化-->
+    <script type="text/javascript">            
+        /*-------------select美化下拉菜单样式-------------------*/
+        $('select.regularSelect').tzSelect();
+        /*-------------点击显示服务条款-------------------*/
+        $(".J-fuwu").click( function () {
+            $('.J-mask').show();
+            $('.J-fuwutiaokuan').show();
+            $("body").css("overflow","hidden");
+        });
+        $(".J-close-btn,.J-agreed").click( function () {
+            $(this).parents(".J-fuwutiaokuan").hide();
+            $('.J-mask').hide();
+        });
+    </script>
+    <!-- 3.10 添加 结束-->
+</body>
+</html>

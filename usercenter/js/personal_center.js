@@ -56,6 +56,7 @@ PageManager.prototype = {
 				var course = obj.course || 0;
 				var collection = obj.collection || 0;
 				var studyCount = obj.studyCount || 0;
+				var studyTime = +obj.studyTime || 0;
 				var studying = obj.studying || [];
 
 				// studying = [
@@ -93,6 +94,7 @@ PageManager.prototype = {
 				// 	}
 				// ]
 
+				$("#studytime").html((studyTime/3600).toFixed(2));
 				$("#course").html(course);
 				$("#examCount").html(examCount);
 				$("#collection").html(collection);
@@ -137,7 +139,8 @@ PageManager.prototype = {
 			html.push('<td>' + item.testTime + '</td>');
             html.push('<td>' + item.score + '</td>');
             html.push('<td>' + (item.qualified == 0 ? '是' : '否') + '</td>');
-            html.push('<td><a href="#" class="view_a">查看</a></td>');
+            html.push('<td>' + (+item.testType == 0 ? '正常考试' : '补考') + '</td>');
+            // html.push('<td><a href="#" class="view_a">查看</a></td>');
             html.push('</tr>');
 		});
 		$("#examOver").html(html.join(''));

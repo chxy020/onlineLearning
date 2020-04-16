@@ -33,7 +33,7 @@ PageManager.prototype = {
 	pageLoad:function(){
 	},
 	goBack:function(){
-		history.go(-1);
+		location.href = "/usercenter/personal_center.html";
 	},
 	closeTip:function(){
 		$(".J-mask,.J-fuwutiaokuan").hide();
