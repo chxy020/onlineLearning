@@ -301,7 +301,6 @@ PageManager.prototype = {
 		},250);
 	},
 	playBtnClick:function(){
-		
 		$(".video_play").hide();
 		$("#playbtn").hide();
 		$("#pausebtn").show();
@@ -325,6 +324,7 @@ PageManager.prototype = {
 			this.playtime = this.playtime + this.watchTime;
 		}
 
+		// console.log("this.playtime----------",this.playtime)
 		clearTimeout(this.inter2);
 		this.setVideoPlayTime();
 		
@@ -376,6 +376,7 @@ PageManager.prototype = {
 		// console.log(this.playtime)
 		this.inter2 = setTimeout(function(){
 			var currentTime = Math.floor($("#video1")[0].currentTime) || 0;
+			// console.log("currentTime----------",currentTime)
 			if(this.IEVersion() == 8) {
 				var currentTime = Math.floor($("#video2")[0].currentTime) || 0;
 			}
@@ -384,7 +385,7 @@ PageManager.prototype = {
 			}
 			
 			// console.log(this.playtime , currentTime)
-			if(this.playtime <= currentTime){
+			if(this.playtime <= (currentTime+1)){
 				this.setVideoPlayTime();
 			}
 		}.bind(this),1000);
