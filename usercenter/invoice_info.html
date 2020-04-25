@@ -32,11 +32,11 @@
                         </div>
                         <div class="myfl"> 
                             <label for="ryes" class="labelsty">
-                                <input type="radio" class="radio" name="hebing" id="ryes" value="ryes" checked/>
+                                <input type="radio" class="radio" name="invoiceType" id="ryes" value="1" checked/>
                                 增值税普通发票
                             </label>
                             <label for="rno" class="labelsty">
-                                <input type="radio" class="radio" name="hebing" id="rno" value="rno" />
+                                <input type="radio" class="radio" name="invoiceType" id="rno" value="0" />
                                 增值税专用发票
                             </label>
                         </div>
@@ -46,8 +46,8 @@
                             <span>*</span>发票抬头：
                         </div>
                         <div class="myfl"> 
-                            <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
-                            <p class="input_error"><span></span></p>
+                            <input type="text" id="title" name="title" value="" placeholder="请输入" id="username"/>
+                            <p class="input_error" ><span id="title_msg"></span></p>
                             <!--失去焦点时的错误提示-->
                         </div>
                     </div>
@@ -56,8 +56,8 @@
                             <span>*</span>税务登记证号：
                         </div>
                         <div class="myfl"> 
-                            <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
-                            <p class="input_error"><span></span></p>
+                            <input type="text" id="taxNum" name="taxNum" value="" placeholder="请输入" id="username"/>
+                            <p class="input_error"><span id="taxNum_msg"></span></p>
                             <!--失去焦点时的错误提示-->
                         </div>
                     </div>
@@ -68,8 +68,8 @@
                                 <span>*</span>开户银行名称：
                             </div>
                             <div class="myfl"> 
-                                <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
-                                <p class="input_error"><span></span></p>
+                                <input type="text" id="bank" name="bank" value="" placeholder="请输入" id="username"/>
+                                <p class="input_error"><span id="bank_msg"></span></p>
                                 <!--失去焦点时的错误提示-->
                             </div>
                         </div>
@@ -78,8 +78,8 @@
                                 <span>*</span>基本开户账号：
                             </div>
                             <div class="myfl"> 
-                                <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
-                                <p class="input_error"><span></span></p>
+                                <input type="text" id="openNum" name="openNum" value="" placeholder="请输入" id="username"/>
+                                <p class="input_error"><span id="openNum_msg"></span></p>
                                 <!--失去焦点时的错误提示-->
                             </div>
                         </div>
@@ -88,8 +88,8 @@
                                 <span>*</span>注册场所地址：
                             </div>
                             <div class="myfl"> 
-                                <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
-                                <p class="input_error"><span></span></p>
+                                <input type="text" id="registerAddress" name="registerAddress" value="" placeholder="请输入" id="username"/>
+                                <p class="input_error"><span id="registerAddress_msg"></span></p>
                                 <!--失去焦点时的错误提示-->
                             </div>
                         </div>
@@ -98,8 +98,8 @@
                                 <span>*</span>注册固定电话：
                             </div>
                             <div class="myfl"> 
-                                <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
-                                <p class="input_error"><span></span></p>
+                                <input type="text" id="registerPhone" name="registerPhone" value="" placeholder="请输入" id="username"/>
+                                <p class="input_error"><span id="registerPhone_msg"></span></p>
                                 <!--失去焦点时的错误提示-->
                             </div>
                         </div>
@@ -115,8 +115,8 @@
                             <span>*</span>收件人：
                         </div>
                         <div class="myfl"> 
-                            <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
-                            <p class="input_error"><span></span></p>
+                            <input type="text" id="iRecipient" name="iRecipient" value="" placeholder="请输入" id="username"/>
+                            <p class="input_error"><span id="iRecipient_msg"></span></p>
                             <!--失去焦点时的错误提示-->
                         </div>
                     </div>
@@ -125,8 +125,8 @@
                             <span>*</span>详细地址：
                         </div>
                         <div class="myfl"> 
-                            <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
-                            <p class="input_error"><span></span></p>
+                            <input type="text" id="iAddress" name="iAddress" value="" placeholder="请输入" id="username"/>
+                            <p class="input_error"><span id="iAddress_msg"></span></p>
                             <!--失去焦点时的错误提示-->
                         </div>
                     </div>
@@ -135,8 +135,8 @@
                             <span>*</span>联系电话：
                         </div>
                         <div class="myfl"> 
-                            <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
-                            <p class="input_error"><span></span></p>
+                            <input type="text" id="iPhone" name="iPhone" value="" placeholder="请输入" id="username"/>
+                            <p class="input_error"><span id="iPhone_msg"></span></p>
                             <!--失去焦点时的错误提示-->
                         </div>
                     </div>
@@ -145,8 +145,8 @@
                             <span>*</span>邮政编码：
                         </div>
                         <div class="myfl"> 
-                            <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
-                            <p class="input_error"><span></span></p>
+                            <input type="text" id="iCode" name="iCode" value="" placeholder="请输入" id="username"/>
+                            <p class="input_error"><span id="iCode_msg"></span></p>
                             <!--失去焦点时的错误提示-->
                         </div>
                     </div>
@@ -165,8 +165,8 @@
                             <span>*</span>收件人：
                         </div>
                         <div class="myfl"> 
-                            <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
-                            <p class="input_error"><span></span></p>
+                            <input type="text" id="cRecipient" name="cRecipient" value="" placeholder="请输入" id="username"/>
+                            <p class="input_error"><span id="cRecipient_msg"></span></p>
                             <!--失去焦点时的错误提示-->
                         </div>
                     </div>
@@ -175,8 +175,8 @@
                             <span>*</span>详细地址：
                         </div>
                         <div class="myfl"> 
-                            <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
-                            <p class="input_error"><span></span></p>
+                            <input type="text" id="cAddress" name="cAddress" value="" placeholder="请输入" id="username"/>
+                            <p class="input_error"><span id="cAddress_msg"></span></p>
                             <!--失去焦点时的错误提示-->
                         </div>
                     </div>
@@ -185,8 +185,8 @@
                             <span>*</span>联系电话：
                         </div>
                         <div class="myfl"> 
-                            <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
-                            <p class="input_error"><span></span></p>
+                            <input type="text" id="cPhone" name="cPhone" value="" placeholder="请输入" id="username"/>
+                            <p class="input_error"><span id="cPhone_msg"></span></p>
                             <!--失去焦点时的错误提示-->
                         </div>
                     </div>
@@ -195,20 +195,19 @@
                             <span>*</span>邮政编码：
                         </div>
                         <div class="myfl"> 
-                            <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
-                            <p class="input_error"><span></span></p>
+                            <input type="text" id="cCode" name="cCode" value="" placeholder="请输入" id="username"/>
+                            <p class="input_error"><span id="cCode_msg"></span></p>
                             <!--失去焦点时的错误提示-->
                         </div>
                     </div>
                 </div>
                 <div class="textC no-print">
-                    <input type="submit" value="确定" class="submit_btn sm" >
-                    <input type="submit" value="取消" class="submit_btn cancel_btn sm">
+                    <input id="enterbtn" type="button" value="确定" class="submit_btn sm" >
+                    <input id="backbtn" type="button" value="取消" class="submit_btn cancel_btn sm">
                 </div>
             </div>
         </form>
     </div>
-    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
     <script type="text/javascript">  
         /*--------------选择 增值税专用发票 显示 special_invoice------------------*/
         $('#rno,#ryes').click(function(){
@@ -229,5 +228,6 @@
             }
         });
     </script>
+    <script type="text/javascript" src="js/invoice_info.js"></script>
 </body>
 </html>

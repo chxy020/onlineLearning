@@ -192,7 +192,9 @@ PageManager.prototype = {
 			url:url,type:"POST",data:condi,dataType:"json",context:this,global:false,
 			success: function(res){
 				var obj = res.data || {};
-				
+				if(res.code == 200){
+					layer.msg(res.message || "保存成功");
+				}
 			},
 			error:function(res){
 				layer.msg(res.message || "请求错误");
@@ -213,7 +215,9 @@ PageManager.prototype = {
 			url:url,type:"POST",data:condi,dataType:"json",context:this,global:false,
 			success: function(res){
 				var obj = res.data || {};
-				
+				if(res.code == 200){
+					layer.msg(res.message || "暂存成功");
+				}
 			},
 			error:function(res){
 				layer.msg(res.message || "请求错误");
