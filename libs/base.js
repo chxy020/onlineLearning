@@ -10,6 +10,7 @@
 	}
 
 	var serverUrl = " https://www.panshicse.com/api";
+	// var serverUrl = " http://127.0.0.1:9527";
 
 	//从本地获取token数据
 	var token = "";

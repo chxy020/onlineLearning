@@ -123,6 +123,14 @@ PageManager.prototype = {
 	setHotCourseHtml:function(data){
 		var html = [];
 		var currentId = this.currentClassId;
+		if(currentId ===1) {
+			html.push('<div class="test-card-container">');
+			html.push('<a href="/test/testRandom.html" class="course-card">');
+			// html.push('<a target="_blank" href="/video/video_watch.html?testId=' + id + '" class="course-card">');
+			html.push('<h3>自动生成模拟测试</h3>');
+			html.push('</a>');
+			html.push('</div>');
+		}
 		for(var i = 0,len = data.length; i < len; i++){
 			var id = data[i].id;
 			if(currentId === 0){
