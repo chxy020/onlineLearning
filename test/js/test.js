@@ -15,7 +15,7 @@ PageManager.prototype = {
 			layer.msg("没有获取到测试id");
 			return;
 		}
-		// this.bindEvent();
+		this.bindEvent();
 	},
 	bindEvent: function() {
 		Utils.load();
@@ -34,6 +34,9 @@ PageManager.prototype = {
 				var multi = data.multi || [];
 				var judge = data.judge || [];
 				var time = data.testWork.testTime;
+
+				this.countTime(time);
+
 				title = data.testWork.testTitle;
 				$("#title").html(title);
 				this.setTestHtml(radio, multi, judge);
@@ -44,6 +47,28 @@ PageManager.prototype = {
 			}
 		});
 
+	},
+	countTime:function(mm){
+		var hh = Math.floor(+mm/60);
+		var mm = +mm%60;
+		hh = hh > 9 ? hh : "0"+hh;
+		mm = mm > 9 ? mm : "0"+mm;
+		var time = hh+":"+mm+":00";
+		// var time = "00"+":"+"00"+":10";
+		$("#times1").attr("datetime",time);
+		$("#times2").attr("datetime",time);
+
+		$('#times1').countDown({
+			css_class: 'countdown-alt-1'
+		});
+		$('#times2').countDown({
+			css_class: 'countdown-alt-1',
+			onTimeElapsed:function(){
+				console.log("考试时间到-----");
+				//考试时间到
+				submitTest();
+			}
+		});
 	},
 	setTestHtml: function(radio, multi, judge) {
 		var html = [];
@@ -206,20 +231,20 @@ PageManager.prototype = {
 window.jQuery(function($) {
 	"use strict";
 
-	$('time1').countDown({
-		with_separators: true
-	});
-	$('#times1').countDown({
-		css_class: 'countdown-alt-1'
-	});
-	$('#times2').countDown({
-		css_class: 'countdown-alt-1',
-		onTimeElapsed:function(){
-			console.log("考试时间到-----");
-			//考试时间到
-			submitTest();
-		}
-	});
+	// $('time1').countDown({
+	// 	with_separators: true
+	// });
+	// $('#times1').countDown({
+	// 	css_class: 'countdown-alt-1'
+	// });
+	// $('#times2').countDown({
+	// 	css_class: 'countdown-alt-1',
+	// 	onTimeElapsed:function(){
+	// 		console.log("考试时间到-----");
+	// 		//考试时间到
+	// 		submitTest();
+	// 	}
+	// });
 	// $('.alt-2').countDown({
 	// 	css_class: 'countdown-alt-2'
 	// });
