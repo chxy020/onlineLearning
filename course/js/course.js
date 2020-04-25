@@ -12,10 +12,12 @@ PageManager.prototype = {
 	pageSize:10,
 	pageNum:1,
 	allPages:1,
+	userCate:-1,
 	init: function(){
 		//this.httpTip = new Utils.httpTip({});
 
-		
+		this.getUserInfo();
+
 		this.bindEvent();
 
 		this.getCourseType();
@@ -26,6 +28,16 @@ PageManager.prototype = {
 		// $("#password").onbind("keydown",this.keyDown,this);
 	},
 	pageLoad:function(){
+	},
+	getUserInfo:function(){
+		var user = Utils.offlineStore.get("__userInfo",true) || "";
+		if(!!user){
+			user = JSON.parse(user);
+			this.userCate = +user.userCate;
+			// userCate字段（0:煤矿安全、1:金属非金属矿山安全、2:化工安全、 3:金属冶炼安全、
+			// 4:建筑施工安全、5:道路运输安全、6:其他安全（不包括消防安全））
+			// userAudit字段获得，0：未审核；1：审核中；2：审核通过；3：审核未通过。 
+		}
 	},
 	keySearch:function(evt){
 		this.pageNum = 1;
@@ -48,9 +60,9 @@ PageManager.prototype = {
 			success: function(res){
 				var rows = res.rows || [];
 				this.bulidCourseTypeHtml(rows);
-
-				this.currentClassId = 0;
-				this.getCourseHttp();
+				
+				// this.currentClassId = 0;
+				// this.getCourseHttp();
 			},
 			error:function(res){
 				layer.msg(res.message || "请求错误");
@@ -58,6 +70,8 @@ PageManager.prototype = {
 		});
 	},
 	bulidCourseTypeHtml:function(rows){
+		this.currentClassId = 0;
+
 		var html = [];
 		rows.forEach(function(item,i){
 			// if(i == 0){
@@ -71,11 +85,46 @@ PageManager.prototype = {
 				html.push('<a href="javascript:;">'+item.name+'</a>');
 				html.push('</li>');
 			// }
+
+			// userCate字段（0:煤矿安全、1:金属非金属矿山安全、2:化工安全、 3:金属冶炼安全、
+			// 4:建筑施工安全、5:道路运输安全、6:其他安全（不包括消防安全））
+			if(this.userCate == 0){
+				if(item.name == "煤矿安全"){
+					this.currentClassId = item.id;
+				}
+			}else if(this.userCate == 1){
+				if(item.name == "金属非金属矿山安全"){
+					this.currentClassId = item.id;
+				}
+			}else if(this.userCate == 2){
+				if(item.name == "化工安全"){
+					this.currentClassId = item.id;
+				}
+			}else if(this.userCate == 3){
+				if(item.name == "金属冶炼安全"){
+					this.currentClassId = item.id;
+				}
+			}else if(this.userCate == 4){
+				if(item.name == "建筑施工安全"){
+					this.currentClassId = item.id;
+				}
+			}else if(this.userCate == 5){
+				if(item.name == "道路运输安全"){
+					this.currentClassId = item.id;
+				}
+			}else if(this.userCate == 6){
+				if(item.name == "其他安全（不包括消防安全）"){
+					this.currentClassId = item.id;
+				}
+			}
 		}.bind(this));
 
 		$("#course-type").append(html.join(''));
 
 		$("#course-type > li").rebind('click',this.changeCourseType,this);
+
+		$("#course-type > li[data='" + this.currentClassId +"']").addClass("on");
+		this.getCourseHttp();
 	},
 	changeCourseType:function(evt){
 		var ele = evt.currentTarget;

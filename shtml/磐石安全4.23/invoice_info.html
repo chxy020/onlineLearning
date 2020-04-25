@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加发票信息</title>
+    <link rel="stylesheet" charset="utf-8" href="css/reset.css">
+    <link rel="stylesheet" charset="utf-8" href="css/reg.css">
+</head>
+<body class="bodybg">
+    <div class="login_content clearfix">
+        <form action="" method="">
+            <div class="login_box qiye_management danganbiao">
+                <div class="title clearfix">
+                    <h1 class="myfl">添加发票信息</h1>
+                </div>
+                <!--开票信息-->
+                <div class="">
+                    <p class="smailtitle">------<span>开票信息</span>-----</p>
+                    <div class="clearfix mb10">
+                        <div class="myfltext"> 
+                            发票类型：
+                        </div>
+                        <div class="myfl"> 
+                            <label for="ryes" class="labelsty">
+                                <input type="radio" class="radio" name="hebing" id="ryes" value="ryes" checked/>
+                                增值税普通发票
+                            </label>
+                            <label for="rno" class="labelsty">
+                                <input type="radio" class="radio" name="hebing" id="rno" value="rno" />
+                                增值税专用发票
+                            </label>
+                        </div>
+                    </div>
+                    <div class="clearfix mb5">
+                        <div class="myfltext"> 
+                            <span>*</span>发票抬头：
+                        </div>
+                        <div class="myfl"> 
+                            <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
+                            <p class="input_error"><span></span></p>
+                            <!--失去焦点时的错误提示-->
+                        </div>
+                    </div>
+                    <div class="clearfix mb5">
+                        <div class="myfltext"> 
+                            <span>*</span>税务登记证号：
+                        </div>
+                        <div class="myfl"> 
+                            <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
+                            <p class="input_error"><span></span></p>
+                            <!--失去焦点时的错误提示-->
+                        </div>
+                    </div>
+                    <!-- 增值税专用发票 -->
+                    <div class="special_invoice" style="display: none;">
+                        <div class="clearfix mb5">
+                            <div class="myfltext"> 
+                                <span>*</span>开户银行名称：
+                            </div>
+                            <div class="myfl"> 
+                                <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
+                                <p class="input_error"><span></span></p>
+                                <!--失去焦点时的错误提示-->
+                            </div>
+                        </div>
+                        <div class="clearfix mb5">
+                            <div class="myfltext"> 
+                                <span>*</span>基本开户账号：
+                            </div>
+                            <div class="myfl"> 
+                                <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
+                                <p class="input_error"><span></span></p>
+                                <!--失去焦点时的错误提示-->
+                            </div>
+                        </div>
+                        <div class="clearfix mb5">
+                            <div class="myfltext"> 
+                                <span>*</span>注册场所地址：
+                            </div>
+                            <div class="myfl"> 
+                                <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
+                                <p class="input_error"><span></span></p>
+                                <!--失去焦点时的错误提示-->
+                            </div>
+                        </div>
+                        <div class="clearfix mb5">
+                            <div class="myfltext"> 
+                                <span>*</span>注册固定电话：
+                            </div>
+                            <div class="myfl"> 
+                                <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
+                                <p class="input_error"><span></span></p>
+                                <!--失去焦点时的错误提示-->
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!--发票收件人信息-->
+                <div class="">
+                    <p class="smailtitle">------<span>发票收件人信息</span>------</p>
+                    <div class="clearfix mb5">
+                        <div class="myfltext"> 
+                            <span>*</span>收件人：
+                        </div>
+                        <div class="myfl"> 
+                            <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
+                            <p class="input_error"><span></span></p>
+                            <!--失去焦点时的错误提示-->
+                        </div>
+                    </div>
+                    <div class="clearfix mb5">
+                        <div class="myfltext"> 
+                            <span>*</span>详细地址：
+                        </div>
+                        <div class="myfl"> 
+                            <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
+                            <p class="input_error"><span></span></p>
+                            <!--失去焦点时的错误提示-->
+                        </div>
+                    </div>
+                    <div class="clearfix mb5">
+                        <div class="myfltext"> 
+                            <span>*</span>联系电话：
+                        </div>
+                        <div class="myfl"> 
+                            <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
+                            <p class="input_error"><span></span></p>
+                            <!--失去焦点时的错误提示-->
+                        </div>
+                    </div>
+                    <div class="clearfix mb5">
+                        <div class="myfltext"> 
+                            <span>*</span>邮政编码：
+                        </div>
+                        <div class="myfl"> 
+                            <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
+                            <p class="input_error"><span></span></p>
+                            <!--失去焦点时的错误提示-->
+                        </div>
+                    </div>
+                </div>
+                <div class="same">
+                    <label for="same">
+                        <input class="checkbox" type="checkbox" name="hebing2" id="same" value="rno" />
+                        证书收件人信息 与 发票收件人信息 相同
+                    </label>
+                </div>
+                <!--证书收件人信息-->
+                <div class="shoujianren">
+                    <p class="smailtitle">------<span>证书收件人信息</span>------</p>
+                    <div class="clearfix mb5">
+                        <div class="myfltext"> 
+                            <span>*</span>收件人：
+                        </div>
+                        <div class="myfl"> 
+                            <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
+                            <p class="input_error"><span></span></p>
+                            <!--失去焦点时的错误提示-->
+                        </div>
+                    </div>
+                    <div class="clearfix mb5">
+                        <div class="myfltext"> 
+                            <span>*</span>详细地址：
+                        </div>
+                        <div class="myfl"> 
+                            <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
+                            <p class="input_error"><span></span></p>
+                            <!--失去焦点时的错误提示-->
+                        </div>
+                    </div>
+                    <div class="clearfix mb5">
+                        <div class="myfltext"> 
+                            <span>*</span>联系电话：
+                        </div>
+                        <div class="myfl"> 
+                            <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
+                            <p class="input_error"><span></span></p>
+                            <!--失去焦点时的错误提示-->
+                        </div>
+                    </div>
+                    <div class="clearfix mb5">
+                        <div class="myfltext"> 
+                            <span>*</span>邮政编码：
+                        </div>
+                        <div class="myfl"> 
+                            <input type="text" name="nick" value="" placeholder="请输入" id="username"/>
+                            <p class="input_error"><span></span></p>
+                            <!--失去焦点时的错误提示-->
+                        </div>
+                    </div>
+                </div>
+                <div class="textC no-print">
+                    <input type="submit" value="确定" class="submit_btn sm" >
+                    <input type="submit" value="取消" class="submit_btn cancel_btn sm">
+                </div>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">  
+        /*--------------选择 增值税专用发票 显示 special_invoice------------------*/
+        $('#rno,#ryes').click(function(){
+            if ($('#rno').prop("checked")==true) {
+                $(".special_invoice").show()
+                // $(".special_invoice .myfltext > span").show()
+            }else {
+                $(".special_invoice").hide()
+                // $(".special_invoice .myfltext > span").hide()
+            }
+        });
+        /*--------------证书收件人信息 与 发票收件人信息 相同------------------*/
+        $('#same').click(function(){
+            if ($(this).prop("checked")==true) {
+                $(".shoujianren").hide()
+            }else {
+                $(".shoujianren").show()
+            }
+        });
+    </script>
+</body>
+</html>

@@ -15,7 +15,7 @@ PageManager.prototype = {
 			layer.msg("没有获取到测试id");
 			return;
 		}
-		this.bindEvent();
+		// this.bindEvent();
 	},
 	bindEvent: function() {
 		Utils.load();
@@ -209,13 +209,20 @@ window.jQuery(function($) {
 	$('time1').countDown({
 		with_separators: true
 	});
-	$('.alt-1').countDown({
+	$('#times1').countDown({
 		css_class: 'countdown-alt-1'
 	});
-	$('.alt-2').countDown({
-		css_class: 'countdown-alt-2'
+	$('#times2').countDown({
+		css_class: 'countdown-alt-1',
+		onTimeElapsed:function(){
+			console.log("考试时间到-----");
+			//考试时间到
+			submitTest();
+		}
 	});
-
+	// $('.alt-2').countDown({
+	// 	css_class: 'countdown-alt-2'
+	// });
 });
 
 //页面初始化

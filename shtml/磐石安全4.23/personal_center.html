@@ -3,142 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <title>磐石安全</title>
-    <link rel="stylesheet" charset="utf-8" href="../css/reset.css">
-    <link rel="stylesheet" charset="utf-8" href="../css/index.css">
-
-    <script type="text/javascript" src="../libs/jquery/jquery-1.12.4.min.js" ></script>
-    <script type="text/javascript" src="../libs/ie8-polyfill.js" ></script>
-    <script type="text/javascript" src="../libs/jquery/jquery_ex.js" ></script>
-	<script type="text/javascript" src="../libs/layer-v2.2/layer/layer.js"></script>
-	<script type="text/javascript" src="../libs/utils.js"></script>
-    <script type="text/javascript" src="../libs/base.js"></script>
-
-    <script type="text/javascript" src="../layout/logout.js"></script>
+    <link rel="stylesheet" charset="utf-8" href="css/reset.css">
+    <link rel="stylesheet" charset="utf-8" href="css/index.css">
 </head>
 <body>
     <!-- 头部 -->
-    <script type="text/javascript" src="../layout/header.js"></script>
-
-
-
-
+    <div class="head_content clearfix">
+        <div class="w1190">
+            <div class="head_logo">
+                <img src="img/logo.png" height="60">磐石安全
+            </div>
+            <div class="head_list">
+                <ul>
+                    <li><a href="">法律法规</a></li>
+                    <li class="on"><a href="">标准规范</a></li>
+                    <li><a href="">政策文件</a></li>
+                    <li><a href="">安全咨询</a></li>
+                    <li><a href="">互学互荐</a></li>
+                    <li><a href="">案例分析</a></li>
+                    <li class="dl">
+                        <!-- 登录前 -->
+                        <a href="">登录</a>
+                        <!-- 登录后 -->
+                        <!-- <span>蒙蒙雨 退出</span> -->
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <!-- 个人中心-->
     <div class="w1190" style="padding-bottom: 60px;padding-top: 40px;">
         <div class="ps_biaoti">
             <span>个人中心</span>
         </div>
 
+
         <div class="ps_details">
-            <span id="userNickname" >昵称</span>
-            <span id="userAudit" class="ml10">审核状态</span>
-            <a target="_blank" href="/usercenter/archives.html" class="red_a ml10">
+            <span>用户的昵称</span>
+            <span class="ml10">审核状态</span>
+            <a target="_blank" href="" class="red_a ml10">
                 查看档案
             </a>
-            <a target="_blank" href="/usercenter/invoice_info.html" class="blue_a ml10">
+            <a target="_blank" href="" class="blue_a ml10">
                 发票/地址信息
             </a>
         </div>
 
         <ul class="ps_cont clearfix">
-            <li class="a1 ">
-                <a href="/usercenter/userpurchase.html">
+            <li class="a1">
+                <a href="javascript:;">
                     <div></div>
-                    <h3>学习课程</h3>
-                    <p><span id="course">0</span>节</p>
+                    <h3>学习时长</h3>
+                    <p><span>2.5</span>小时</p>
                 </a>
             </li>
             <li class="a2">
                 <a href="javascript:;">
                     <div></div>
-                    <h3>学习时长</h3>
-                    <p><span id="studytime">0</span>小时</p>
+                    <h3>学习课程数</h3>
+                    <p><span>4</span>节</p>
                 </a>
             </li>
             <li class="a3">
-                <a href="#examCountAnchor">
+                <a href="javascript:;">
                     <div></div>
                     <h3>参与考试</h3>
-                    <p><span id="examCount">0</span>次</p>
+                    <p><span>2</span>次</p>
                 </a>
             </li>
             <li class="a4">
-                <a href="/usercenter/userstart.html">
+                <a href="javascript:;">
                     <div></div>
                     <h3>收藏课程</h3>
-                    <p><span id="collection">0</span>节</p>
+                    <p><span>4</span>节</p>
                 </a>
             </li>
             <li class="a5">
-                <a href="#studyCountAnchor">
+                <a href="javascript:;">
                     <div></div>
                     <h3>正在进行</h3>
-                    <p><span id="studyCount">0</span>节</p>
+                    <p><span>9</span>节</p>
                 </a>
             </li>
         </ul>
     </div>
     <!-- 正在进行 -->
-    <div id="studyCountAnchor" style="background-color: #f2f2f2;padding-top: 40px;">
+    <div style="background-color: #f2f2f2;padding-top: 40px;">
         <div class="w1190">
             <div class="ps_biaoti">
                 <span>正在进行</span>
             </div>
             <div class="moco-course-list">
-                <div id="studying" class="clearfix">
-                    <!--< div class="course-card-container">
+                <div class="clearfix">
+                    <div class="course-card-container">
                         <a target="_blank" href="" class="course-card">
-                            <img src="../img/keimg1.png">
+                            <img src="img/keimg1.png">
                             <p>热门课程标题标题热门课程标题标题标题标题热门课程标题标题标题标题标题标题</p>
                         </a>
                     </div>
                     <div class="course-card-container">
                         <a target="_blank" href="" class="course-card">
-                            <img src="../img/keimg2.png">
+                            <img src="img/keimg2.png">
                             <p>热门课程标题标题标题标题</p>
                         </a>
                     </div>
                     <div class="course-card-container">
                         <a target="_blank" href="" class="course-card">
-                            <img src="../img/keimg3.png">
+                            <img src="img/keimg3.png">
                             <p>热门课程标题标题标题标题</p>
                         </a>
                     </div>
                     <div class="course-card-container">
                         <a target="_blank" href="" class="course-card">
-                            <img src="../img/keimg4.jpg">
+                            <img src="img/keimg4.jpg">
                             <p>热门课程标题标题标题标题</p>
                         </a>
                     </div>
                     <div class="course-card-container">
                         <a target="_blank" href="" class="course-card">
-                            <img src="../img/keimg3.png">
+                            <img src="img/keimg3.png">
                             <p>热门课程标题标题标题标题</p>
                         </a>
                     </div>
                     <div class="course-card-container">
                         <a target="_blank" href="" class="course-card">
-                            <img src="../img/keimg4.jpg">
+                            <img src="img/keimg4.jpg">
                             <p>热门课程标题标题标题标题</p>
                         </a>
                     </div>
                     <div class="course-card-container">
                         <a target="_blank" href="" class="course-card">
-                            <img src="../img/keimg1.png">
+                            <img src="img/keimg1.png">
                             <p>热门课程标题标题热门课程标题标题标题标题热门课程标题标题标题标题标题标题</p>
                         </a>
                     </div>
                     <div class="course-card-container">
                         <a target="_blank" href="" class="course-card">
-                            <img src="../img/keimg2.png">
+                            <img src="img/keimg2.png">
                             <p>热门课程标题标题标题标题</p>
                         </a>
-                    </div> -->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- 历史成绩 -->
-    <div id="examCountAnchor" class="w1190" style="padding-bottom: 60px;padding-top: 40px;">
+    <div class="w1190" style="padding-bottom: 60px;padding-top: 40px;">
         <div class="ps_biaoti">
             <span>历史成绩</span>
         </div>
@@ -156,11 +166,10 @@
                     <th>考试时间</th>
                     <th>分数</th>
                     <th>是否合格</th>
-                    <th>考试类型</th>
+                    <th>操作</th>
                 </tr> 
             </thead>
-            <tbody id="examOver" class="mouseover_ta01">
-                <!-- 
+            <tbody class="mouseover_ta01">
                 <tr>
                     <td>氧化安全</td>
                     <td>2019.12.20</td>
@@ -195,10 +204,18 @@
                     <td>85</td>
                     <td>是</td>
                     <td><a href="#" class="view_a">查看</a></td>
-                </tr> -->
+                </tr>
             </tbody>
         </table>
     </div>
-    <script type="text/javascript" src="js/personal_center.js"></script>
+    <!-- 底部页脚 -->
+    <div class="footer">            
+        <p>
+        咨询请拨打客服热线 4001899114 邮箱 kfb@99114.com 法律顾问：中银律师事务所<br />
+        经营许可证  网站备案号京ICP备08102099号-148  东城公安局网络备案编号：11010102000009  营业执照<br />
+        版权所有：北京网库信息技术股份有限公司
+        </p>
+    </div>
+
 </body>
 </html>
