@@ -17,6 +17,8 @@ PageManager.prototype = {
 
 		this.bindEvent();
 
+		this.getInvoiceInfoHttp();
+
 	},
 	bindEvent:function(){
 		$("#enterbtn").onbind("click",this.invoiceSave,this);
@@ -28,7 +30,50 @@ PageManager.prototype = {
 	goBack:function(){
 		history.go(-1);
 	},
+	getInvoiceInfoHttp:function(){
+		var url = Base.serverUrl + "/gen/invoice/getInvoice";
+		Utils.load();
+		var condi = {};
+		$.Ajax({
+			url:url,type:"POST",data:condi,dataType:"json",context:this,global:false,
+			success: function(res){
+				var obj = res.data || {};
+				
+				$("#title").val(obj.titles);
+				$("#taxNum").val(obj.taxNum);
 
+				if(obj.bank || obj.openNum || obj.registerAddress || obj.registerPhone){
+					$("#rno").prop("checked",true)
+					$("#rno").trigger("click");
+
+					$("#bank").val(obj.bank);
+					$("#openNum").val(obj.openNum);
+					$("#registerAddress").val(obj.registerAddress);
+					$("#registerPhone").val(obj.registerPhone);
+				}
+
+				$("#iRecipient").val(obj.invoiceRecipient);
+				$("#iAddress").val(obj.invoiceAddress);
+				$("#iPhone").val(obj.invoicePhone);
+				$("#iCode").val(obj.invoiceCode);
+
+				if(obj.certificateRecipient || obj.certificateAddress || obj.certificatePhone || obj.certificateCode){
+				
+					$("#cRecipient").val(obj.certificateRecipient);
+					$("#cAddress").val(obj.certificateAddress);
+					$("#cPhone").val(obj.certificatePhone);
+					$("#cCode").val(obj.certificateCode);
+				}else{
+					$("#same").trigger("click");
+				}
+				
+
+			},
+			error:function(res){
+				layer.msg(res.message || "请求错误");
+			}
+		});
+	},
 	invoiceSave:function(){
 		var invoiceType = +$("[name='invoiceType']:checked").val();
 

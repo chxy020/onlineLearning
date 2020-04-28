@@ -138,7 +138,7 @@ PageManager.prototype = {
 			html.push('<td>' + item.testTitle + '</td>');
 			html.push('<td>' + item.testTime + '</td>');
             html.push('<td>' + item.score + '</td>');
-            html.push('<td>' + (item.qualified == 0 ? '是' : '否') + '</td>');
+            html.push('<td>' + (item.qualified) + '</td>');
             html.push('<td>' + (+item.testType == 0 ? '正常考试' : '补考') + '</td>');
             // html.push('<td><a href="#" class="view_a">查看</a></td>');
             html.push('</tr>');

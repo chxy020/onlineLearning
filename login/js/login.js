@@ -10,6 +10,8 @@ PageManager.prototype = {
 	init: function(){
 		//this.httpTip = new Utils.httpTip({});
 		this.bindEvent();
+
+		this.getWebPdfHttp();
 	},
 	bindEvent:function(){
 		$("#subbtn").onbind("click",this.setLogin,this);
@@ -21,6 +23,21 @@ PageManager.prototype = {
 		if(evt.keyCode == 13){
 			this.setLogin();
 		}
+	},
+	getWebPdfHttp:function(){
+		Utils.load();
+		var url = Base.serverUrl + "/alioss/getWebPdf";
+		
+		$.Ajax({
+			url:url,type:"POST",data:{},dataType:"json",context:this,global:false,
+			success: function(res){
+				var obj = res.data || {};
+				$(".a_blue").attr("href",obj);
+			},
+			error:function(res){
+				layer.msg(res.message || "请求错误");
+			}
+		});
 	},
 	//登录
 	setLogin:function(evt){
