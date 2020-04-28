@@ -11,7 +11,7 @@ PageManager.prototype = {
 	init: function() {
 		//this.httpTip = new Utils.httpTip({});
 		testId = +Utils.getQueryString("testId") || "";
-		if(!testId){
+		if (!testId) {
 			layer.msg("没有获取到测试id");
 			return;
 		}
@@ -48,25 +48,25 @@ PageManager.prototype = {
 		});
 
 	},
-	countTime:function(mm){
-		var hh = Math.floor(+mm/60);
-		var mm = +mm%60;
-		hh = hh > 9 ? hh : "0"+hh;
-		mm = mm > 9 ? mm : "0"+mm;
-		var time = hh+":"+mm+":00";
+	countTime: function(mm) {
+		var hh = Math.floor(+mm / 60);
+		var mm = +mm % 60;
+		hh = hh > 9 ? hh : "0" + hh;
+		mm = mm > 9 ? mm : "0" + mm;
+		var time = hh + ":" + mm + ":00";
 		// var time = "00"+":"+"00"+":10";
-		$("#times1").attr("datetime",time);
-		$("#times2").attr("datetime",time);
+		$("#times1").attr("datetime", time);
+		$("#times2").attr("datetime", time);
 
 		$('#times1').countDown({
 			css_class: 'countdown-alt-1'
 		});
 		$('#times2').countDown({
 			css_class: 'countdown-alt-1',
-			onTimeElapsed:function(){
+			onTimeElapsed: function() {
 				console.log("考试时间到-----");
 				//考试时间到
-				submitTest();
+				submitTest(true);
 			}
 		});
 	},
@@ -98,7 +98,7 @@ PageManager.prototype = {
 			html.push('<div class="test_content_nr_tt" >');
 			html.push('<i>' + pointid + '</i>' + title + '</font>');
 			html.push('</div>');
-			html.push('<div class="test_content_nr_main" id="subject'+id+'">');
+			html.push('<div class="test_content_nr_main" id="subject' + id + '">');
 			html.push('<ul>');
 			for (var j = 0, lent = choose.length; j < lent; j++) {
 				var point = j;
@@ -143,7 +143,7 @@ PageManager.prototype = {
 			htmlMul.push('<div class="test_content_nr_tt" >');
 			htmlMul.push('<i>' + pointid + '</i>' + title + '</font>');
 			htmlMul.push('</div>');
-			htmlMul.push('<div class="test_content_nr_main" id="subject'+id+'">');
+			htmlMul.push('<div class="test_content_nr_main" id="subject' + id + '">');
 			htmlMul.push('<ul>');
 			for (var j = 0, lent = choose.length; j < lent; j++) {
 				var point = j;
@@ -179,7 +179,7 @@ PageManager.prototype = {
 			htmlJud.push('<div class="test_content_nr_tt" >');
 			htmlJud.push('<i>' + pointid + '</i>' + title + '</font>');
 			htmlJud.push('</div>');
-			htmlJud.push('<div class="test_content_nr_main" id="subject'+id+'">');
+			htmlJud.push('<div class="test_content_nr_main" id="subject' + id + '">');
 			htmlJud.push('<ul>');
 			for (var j = 0, lent = 2; j < lent; j++) {
 				var point = j;
@@ -263,36 +263,54 @@ $(function() {
 
 	});
 });
-function reset(){
+
+function reset() {
 	console.log(123);
 }
 
-function submitTest() {
+function submitTest(status) {
 	var names = [];
 	var ids = [];
 	var allIn = false;
-	$.each(allClicke, function(idx, item) {
-		var q1ck = false;
-		$("[name='" + item + "'").each(function(item) {
-			if ($(this).is(":checked")) {
-				//只有有一个选项选中即可
-				var name = $(this).context.name;
-				var id = $(this).context.id;
-				names.push(name);
-				ids.push(id);
-				q1ck = true;
+	if (status) {
+		$.each(allClicke, function(idx, item) {
+			var q1ck = false;
+			$("[name='" + item + "'").each(function(item) {
+				if ($(this).is(":checked")) {
+					//只有有一个选项选中即可
+					var name = $(this).context.name;
+					var id = $(this).context.id;
+					names.push(name);
+					ids.push(id);
+					q1ck = true;
+				}
+			});
+		})
+		allIn = true;
+	} else {
+		$.each(allClicke, function(idx, item) {
+			var q1ck = false;
+			$("[name='" + item + "'").each(function(item) {
+				if ($(this).is(":checked")) {
+					//只有有一个选项选中即可
+					var name = $(this).context.name;
+					var id = $(this).context.id;
+					names.push(name);
+					ids.push(id);
+					q1ck = true;
+				}
+			});
+			if (!q1ck) {
+				layer.msg("还有题没有作答");
+				ids = [];
+				names = [];
+				allIn = false;
+				return;
+			} else {
+				allIn = true
 			}
-		});
-		if (!q1ck) {
-			layer.msg("还有题没有作答");
-			ids = [];
-			names = [];
-			allIn = false;
-			return;
-		} else {
-			allIn = true
-		}
-	})
+		})
+	}
 	if (allIn) {
 		Utils.load();
 		var radioInput = '';
@@ -300,6 +318,7 @@ function submitTest() {
 		var judgeInput = '';
 		var preNum = 0;
 		var index = 0;
+		console.log(ids);
 		$.each(ids, function(idx, data) {
 			data = data.split('_');
 			var id = names[idx].split('_')[1];
@@ -456,7 +475,12 @@ function submitTest() {
 			}
 
 		})
-		multiInput = multiInput + ';';
+		if (multiInput === '') {} else {
+
+			multiInput = multiInput + ';';
+
+		}
+
 		//请求完成试卷
 		var url = Base.serverUrl + "/testwork/score";
 		$.Ajax({
@@ -480,93 +504,94 @@ function submitTest() {
 				var multi = data.multi || [];
 				var judge = data.judge || [];
 				var score = data.score;
-				$.each(radio,function(idx,data){
+				$.each(radio, function(idx, data) {
 					var answer = data.answer;
 					var parsing = data.parsing || '暂无解析';
 					var id = data.id;
 					var anInt = data.answerInt;
-					var html =[];
-					if(anInt === 0){
+					var html = [];
+					if (anInt === 0) {
 						html.push('<div class="row-tishi" style="margin-top:20px;">');
 						html.push('<p class="color-right">恭喜您，答对了!</p>');
 						html.push('<div class="color-explain">');
 						html.push('<div class="row">解析：</div>');
-						html.push('<div class="content">'+parsing+'</div>');
+						html.push('<div class="content">' + parsing + '</div>');
 						html.push('</div>');
-					}else{
+					} else {
 						html.push('<div class="row-tishi" style="margin-top:20px;">');
-						html.push('<p class="color-wrong">正确答案：'+answer+'</p>');
+						html.push('<p class="color-wrong">正确答案：' + answer + '</p>');
 						html.push('<div class="color-explain">');
 						html.push('<div class="row">解析：</div>');
-						html.push('<div class="content">'+parsing+'</div>');
+						html.push('<div class="content">' + parsing + '</div>');
 						html.push('</div>');
 					}
-					$("#subject"+id).append(html.join(''));
+					$("#subject" + id).append(html.join(''));
 				})
-				$.each(multi,function(idx,data){
+				$.each(multi, function(idx, data) {
 					var answer = data.answer;
 					var parsing = data.parsing || '暂无解析';
-					var html =[];
+					var html = [];
 					var anInt = data.answerInt;
 					var id = data.id;
-					if(anInt === 0){
+					if (anInt === 0) {
 						html.push('<div class="row-tishi" style="margin-top:20px;">');
 						html.push('<p class="color-right">恭喜您，答对了!</p>');
 						html.push('<div class="color-explain">');
 						html.push('<div class="row">解析：</div>');
-						html.push('<div class="content">'+parsing+'</div>');
+						html.push('<div class="content">' + parsing + '</div>');
 						html.push('</div>');
-					}else{
+					} else {
 						html.push('<div class="row-tishi" style="margin-top:20px;">');
-						html.push('<p class="color-wrong">正确答案：'+answer+'</p>');
+						html.push('<p class="color-wrong">正确答案：' + answer + '</p>');
 						html.push('<div class="color-explain">');
 						html.push('<div class="row">解析：</div>');
-						html.push('<div class="content">'+parsing+'</div>');
+						html.push('<div class="content">' + parsing + '</div>');
 						html.push('</div>');
 					}
-					
-					$("#subject"+id).append(html.join(''));
+
+					$("#subject" + id).append(html.join(''));
 				})
-				$.each(judge,function(idx,data){
+				$.each(judge, function(idx, data) {
 					var answer = data.answer;
 					var parsing = data.parsing || '暂无解析';
 					var id = data.id;
 					var anInt = data.answerInt;
-					var html =[];
-					if(anInt === 0){
+					var html = [];
+					if (anInt === 0) {
 						html.push('<div class="row-tishi" style="margin-top:20px;">');
 						html.push('<p class="color-right">恭喜您，答对了!</p>');
 						html.push('<div class="color-explain">');
 						html.push('<div class="row">解析：');
 						html.push('</div>');
-						html.push('<div class="content">'+parsing+'</div>');
+						html.push('<div class="content">' + parsing + '</div>');
 						html.push('</div>');
 						html.push('</div>');
 						html.push('</div>');
-					}else {
+					} else {
 						html.push('<div class="row-tishi" style="margin-top:20px;">');
-						html.push('<p class="color-wrong">正确答案：'+answer);
+						html.push('<p class="color-wrong">正确答案：' + answer);
 						html.push('</p>');
 						html.push('<div class="color-explain">');
 						html.push('<div class="row">解析：');
 						html.push('</div>');
-						html.push('<div class="content">'+parsing+'</div>');
+						html.push('<div class="content">' + parsing + '</div>');
 						html.push('</div>');
 						html.push('</div>');
 						html.push('</div>');
 					}
-					
-					$("#subject"+id).append(html.join(''));
+
+					$("#subject" + id).append(html.join(''));
 				})
-				
+
 				$("#SubmitBtn").hide();
 				$("#times2").hide();
 				$("#times1").hide();
 				var htmlbutton = [];
-				htmlbutton.push('<font><input type="button" id="clickHdler" name="test_jiaojuan" onclick="reset()" value="重新开始"></font>');
-				$("#title").html(title+'(考试结束)&nbsp&nbsp&nbsp总分数:'+score);
+				htmlbutton.push(
+					'<font><input type="button" id="clickHdler" name="test_jiaojuan" onclick="reset()" value="重新开始"></font>');
+				$("#title").html(title + '(考试结束)&nbsp&nbsp&nbsp总分数:' + score);
 				$("#test_times").append(htmlbutton.join(''));
-				$("#clickHdler").on("click",function(){
+				$("#clickHdler").on("click", function() {
 					window.location.reload();
 				});
 			},

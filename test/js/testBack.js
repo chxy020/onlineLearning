@@ -9,16 +9,22 @@ PageManager.prototype = {
 	time: 61,
 	testId: '',
 	resultId: '',
+	score: '',
 	init: function() {
 		//this.httpTip = new Utils.httpTip({});
 		testId = +Utils.getQueryString("testId") || "";
-		if(!testId){
+		if (!testId) {
 			layer.msg("没有获取到测试id");
 			return;
 		}
 		resultId = +Utils.getQueryString("resultId") || "";
-		if(!resultId){
+		if (!resultId) {
 			layer.msg("没有获取到结果id");
+			return;
+		}
+		score = +Utils.getQueryString("score") || "";
+		if (!score) {
+			layer.msg("没有获取到分數");
 			return;
 		}
 		this.bindEvent();
@@ -41,6 +47,7 @@ PageManager.prototype = {
 				var judge = data.judge || [];
 				var time = data.testWork.testTime;
 				title = data.testWork.testTitle;
+				title = title + ' &nbsp &nbsp 考试成绩(' + score + ')';
 				$("#title").html(title);
 				this.setTestHtml(radio, multi, judge);
 
@@ -49,7 +56,7 @@ PageManager.prototype = {
 				layer.msg(res.message || "请求错误");
 			}
 		});
-		
+
 		var url = Base.serverUrl + "/testwork/getResult/" + resultId;
 		$.Ajax({
 			async: false,
@@ -75,91 +82,91 @@ PageManager.prototype = {
 		console.log(radio);
 		var radioSplit = radio.split(';');
 		for (var i = 0, len = radioSplit.length; i < len; i++) {
-			var s = i+1;
+			var s = i + 1;
 			var radioKi = radioSplit[i].split(',');
-			if(radioKi[1] == 'A'){
-				$("#0_answer_" + s + "_option_1").attr('checked','true');
+			if (radioKi[1] == 'A') {
+				$("#0_answer_" + s + "_option_1").attr('checked', 'true');
 			}
-			if(radioKi[1] == 'B'){
-				$("#0_answer_" + s + "_option_2").attr('checked','true');
+			if (radioKi[1] == 'B') {
+				$("#0_answer_" + s + "_option_2").attr('checked', 'true');
 			}
-			if(radioKi[1] == 'C'){
-				$("#0_answer_" + s + "_option_3").attr('checked','true');
+			if (radioKi[1] == 'C') {
+				$("#0_answer_" + s + "_option_3").attr('checked', 'true');
 			}
-			if(radioKi[1] == 'D'){
-				$("#0_answer_" + s + "_option_4").attr('checked','true');
+			if (radioKi[1] == 'D') {
+				$("#0_answer_" + s + "_option_4").attr('checked', 'true');
 			}
-			if(radioKi[1] == 'E'){
-				$("#0_answer_" + s + "_option_5").attr('checked','true');
+			if (radioKi[1] == 'E') {
+				$("#0_answer_" + s + "_option_5").attr('checked', 'true');
 			}
-			if(radioKi[1] == 'F'){
-				$("#0_answer_" + s + "_option_6").attr('checked','true');
+			if (radioKi[1] == 'F') {
+				$("#0_answer_" + s + "_option_6").attr('checked', 'true');
 			}
-			if(radioKi[1] == 'G'){
-				$("#0_answer_" + s + "_option_7").attr('checked','true');
+			if (radioKi[1] == 'G') {
+				$("#0_answer_" + s + "_option_7").attr('checked', 'true');
 			}
 		}
-		
+
 		var multiSplit = multi.split(';');
 		multiSplit.pop();
 		for (var i = 0, len = multiSplit.length; i < len; i++) {
-			var s = i+1;
+			var s = i + 1;
 			var radioKi = multiSplit[i].split(',');
 			var ck = radioKi[1].split("");
 			for (var j = 0, sh = ck.length; j < sh; j++) {
-				if(ck[j] == 'A'){
-					$("#1_answer_" + s + "_option_1").attr('checked','true');
+				if (ck[j] == 'A') {
+					$("#1_answer_" + s + "_option_1").attr('checked', 'true');
 				}
-				if(ck[j] == 'B'){
-					$("#1_answer_" + s + "_option_2").attr('checked','true');
+				if (ck[j] == 'B') {
+					$("#1_answer_" + s + "_option_2").attr('checked', 'true');
 				}
-				if(ck[j] == 'C'){
-					$("#1_answer_" + s + "_option_3").attr('checked','true');
+				if (ck[j] == 'C') {
+					$("#1_answer_" + s + "_option_3").attr('checked', 'true');
 				}
-				if(ck[j] == 'D'){
-					$("#1_answer_" + s + "_option_4").attr('checked','true');
+				if (ck[j] == 'D') {
+					$("#1_answer_" + s + "_option_4").attr('checked', 'true');
 				}
-				if(ck[j] == 'E'){
-					$("#1_answer_" + s + "_option_5").attr('checked','true');
+				if (ck[j] == 'E') {
+					$("#1_answer_" + s + "_option_5").attr('checked', 'true');
 				}
-				if(ck[j] == 'F'){
-					$("#1_answer_" + s + "_option_6").attr('checked','true');
+				if (ck[j] == 'F') {
+					$("#1_answer_" + s + "_option_6").attr('checked', 'true');
 				}
-				if(ck[j] == 'G'){
-					$("#1_answer_" + s + "_option_7").attr('checked','true');
+				if (ck[j] == 'G') {
+					$("#1_answer_" + s + "_option_7").attr('checked', 'true');
 				}
 			}
-			
+
 		}
-		
-		
+
+
 		var judgeSplit = judge.split(';');
 		for (var i = 0, len = judgeSplit.length; i < len; i++) {
-			var s = i+1;
+			var s = i + 1;
 			var radioKi = judgeSplit[i].split(',');
-			if(radioKi[1] == 'A'){
-				$("#2_answer_" + s + "_option_1").attr('checked','true');
+			if (radioKi[1] == 'A') {
+				$("#2_answer_" + s + "_option_1").attr('checked', 'true');
 			}
-			if(radioKi[1] == 'B'){
-				$("#2_answer_" + s + "_option_2").attr('checked','true');
+			if (radioKi[1] == 'B') {
+				$("#2_answer_" + s + "_option_2").attr('checked', 'true');
 			}
-			if(radioKi[1] == 'C'){
-				$("#2_answer_" + s + "_option_3").attr('checked','true');
+			if (radioKi[1] == 'C') {
+				$("#2_answer_" + s + "_option_3").attr('checked', 'true');
 			}
-			if(radioKi[1] == 'D'){
-				$("#2_answer_" + s + "_option_4").attr('checked','true');
+			if (radioKi[1] == 'D') {
+				$("#2_answer_" + s + "_option_4").attr('checked', 'true');
 			}
-			if(radioKi[1] == 'E'){
-				$("#2_answer_" + s + "_option_5").attr('checked','true');
+			if (radioKi[1] == 'E') {
+				$("#2_answer_" + s + "_option_5").attr('checked', 'true');
 			}
-			if(radioKi[1] == 'F'){
-				$("#2_answer_" + s + "_option_6").attr('checked','true');
+			if (radioKi[1] == 'F') {
+				$("#2_answer_" + s + "_option_6").attr('checked', 'true');
 			}
-			if(radioKi[1] == 'G'){
-				$("#2_answer_" + s + "_option_7").attr('checked','true');
+			if (radioKi[1] == 'G') {
+				$("#2_answer_" + s + "_option_7").attr('checked', 'true');
 			}
 		}
-		
+
 	},
 	setTestHtml: function(radio, multi, judge) {
 		var html = [];
@@ -189,7 +196,7 @@ PageManager.prototype = {
 			html.push('<div class="test_content_nr_tt" >');
 			html.push('<i>' + pointid + '</i>' + title + '</font>');
 			html.push('</div>');
-			html.push('<div class="test_content_nr_main" id="subject'+id+'">');
+			html.push('<div class="test_content_nr_main" id="subject' + id + '">');
 			html.push('<ul>');
 			for (var j = 0, lent = choose.length; j < lent; j++) {
 				var point = j;
@@ -234,7 +241,7 @@ PageManager.prototype = {
 			htmlMul.push('<div class="test_content_nr_tt" >');
 			htmlMul.push('<i>' + pointid + '</i>' + title + '</font>');
 			htmlMul.push('</div>');
-			htmlMul.push('<div class="test_content_nr_main" id="subject'+id+'">');
+			htmlMul.push('<div class="test_content_nr_main" id="subject' + id + '">');
 			htmlMul.push('<ul>');
 			for (var j = 0, lent = choose.length; j < lent; j++) {
 				var point = j;
@@ -270,7 +277,7 @@ PageManager.prototype = {
 			htmlJud.push('<div class="test_content_nr_tt" >');
 			htmlJud.push('<i>' + pointid + '</i>' + title + '</font>');
 			htmlJud.push('</div>');
-			htmlJud.push('<div class="test_content_nr_main" id="subject'+id+'">');
+			htmlJud.push('<div class="test_content_nr_main" id="subject' + id + '">');
 			htmlJud.push('<ul>');
 			for (var j = 0, lent = 2; j < lent; j++) {
 				var point = j;
@@ -347,7 +354,8 @@ $(function() {
 
 	});
 });
-function reset(){
+
+function reset() {
 	console.log(123);
 }
 
@@ -564,93 +572,94 @@ function submitTest() {
 				var multi = data.multi || [];
 				var judge = data.judge || [];
 				var score = data.score;
-				$.each(radio,function(idx,data){
+				$.each(radio, function(idx, data) {
 					var answer = data.answer;
 					var parsing = data.parsing || '暂无解析';
 					var id = data.id;
 					var anInt = data.answerInt;
-					var html =[];
-					if(anInt === 0){
+					var html = [];
+					if (anInt === 0) {
 						html.push('<div class="row-tishi" style="margin-top:20px;">');
 						html.push('<p class="color-right">恭喜您，答对了!</p>');
 						html.push('<div class="color-explain">');
 						html.push('<div class="row">解析：</div>');
-						html.push('<div class="content">'+parsing+'</div>');
+						html.push('<div class="content">' + parsing + '</div>');
 						html.push('</div>');
-					}else{
+					} else {
 						html.push('<div class="row-tishi" style="margin-top:20px;">');
-						html.push('<p class="color-wrong">正确答案：'+answer+'</p>');
+						html.push('<p class="color-wrong">正确答案：' + answer + '</p>');
 						html.push('<div class="color-explain">');
 						html.push('<div class="row">解析：</div>');
-						html.push('<div class="content">'+parsing+'</div>');
+						html.push('<div class="content">' + parsing + '</div>');
 						html.push('</div>');
 					}
-					$("#subject"+id).append(html.join(''));
+					$("#subject" + id).append(html.join(''));
 				})
-				$.each(multi,function(idx,data){
+				$.each(multi, function(idx, data) {
 					var answer = data.answer;
 					var parsing = data.parsing || '暂无解析';
-					var html =[];
+					var html = [];
 					var anInt = data.answerInt;
 					var id = data.id;
-					if(anInt === 0){
+					if (anInt === 0) {
 						html.push('<div class="row-tishi" style="margin-top:20px;">');
 						html.push('<p class="color-right">恭喜您，答对了!</p>');
 						html.push('<div class="color-explain">');
 						html.push('<div class="row">解析：</div>');
-						html.push('<div class="content">'+parsing+'</div>');
+						html.push('<div class="content">' + parsing + '</div>');
 						html.push('</div>');
-					}else{
+					} else {
 						html.push('<div class="row-tishi" style="margin-top:20px;">');
-						html.push('<p class="color-wrong">正确答案：'+answer+'</p>');
+						html.push('<p class="color-wrong">正确答案：' + answer + '</p>');
 						html.push('<div class="color-explain">');
 						html.push('<div class="row">解析：</div>');
-						html.push('<div class="content">'+parsing+'</div>');
+						html.push('<div class="content">' + parsing + '</div>');
 						html.push('</div>');
 					}
-					
-					$("#subject"+id).append(html.join(''));
+
+					$("#subject" + id).append(html.join(''));
 				})
-				$.each(judge,function(idx,data){
+				$.each(judge, function(idx, data) {
 					var answer = data.answer;
 					var parsing = data.parsing || '暂无解析';
 					var id = data.id;
 					var anInt = data.answerInt;
-					var html =[];
-					if(anInt === 0){
+					var html = [];
+					if (anInt === 0) {
 						html.push('<div class="row-tishi" style="margin-top:20px;">');
 						html.push('<p class="color-right">恭喜您，答对了!</p>');
 						html.push('<div class="color-explain">');
 						html.push('<div class="row">解析：');
 						html.push('</div>');
-						html.push('<div class="content">'+parsing+'</div>');
+						html.push('<div class="content">' + parsing + '</div>');
 						html.push('</div>');
 						html.push('</div>');
 						html.push('</div>');
-					}else {
+					} else {
 						html.push('<div class="row-tishi" style="margin-top:20px;">');
-						html.push('<p class="color-wrong">正确答案：'+answer);
+						html.push('<p class="color-wrong">正确答案：' + answer);
 						html.push('</p>');
 						html.push('<div class="color-explain">');
 						html.push('<div class="row">解析：');
 						html.push('</div>');
-						html.push('<div class="content">'+parsing+'</div>');
+						html.push('<div class="content">' + parsing + '</div>');
 						html.push('</div>');
 						html.push('</div>');
 						html.push('</div>');
 					}
-					
-					$("#subject"+id).append(html.join(''));
+
+					$("#subject" + id).append(html.join(''));
 				})
-				
+
 				$("#SubmitBtn").hide();
 				$("#times2").hide();
 				$("#times1").hide();
 				var htmlbutton = [];
-				htmlbutton.push('<font><input type="button" id="clickHdler" name="test_jiaojuan" onclick="reset()" value="重新开始"></font>');
-				$("#title").html(title+'(考试结束)&nbsp&nbsp&nbsp总分数:'+score);
+				htmlbutton.push(
+					'<font><input type="button" id="clickHdler" name="test_jiaojuan" onclick="reset()" value="重新开始"></font>');
+				$("#title").html(title + '(考试结束)&nbsp&nbsp&nbsp总分数:' + score);
 				$("#test_times").append(htmlbutton.join(''));
-				$("#clickHdler").on("click",function(){
+				$("#clickHdler").on("click", function() {
 					window.location.reload();
 				});
 			},
