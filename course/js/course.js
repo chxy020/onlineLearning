@@ -116,6 +116,14 @@ PageManager.prototype = {
 				if(item.name == "其他安全（不包括消防安全）"){
 					this.currentClassId = item.id;
 				}
+			}else if(this.userCate == 7){
+				if(item.name == "拓展课程"){
+					this.currentClassId = item.id;
+				}
+			}else if(this.userCate == 8){
+				if(item.name == "热门课程"){
+					this.currentClassId = item.id;
+				}
 			}
 		}.bind(this));
 

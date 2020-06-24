@@ -6,7 +6,7 @@ var PageManager = function (obj){
 
 PageManager.prototype = {
 	constructor:PageManager,
-	classType:['煤矿安全','金属非金属矿山安全','化工安全','金属冶炼安全,建筑施工安全','道路运输安全','其他安全（不包括消防安全）'],
+	classType:['煤矿安全','金属非金属矿山安全','化工安全','金属冶炼安全,建筑施工安全','道路运输安全','其他安全（不包括消防安全）','拓展课程','热门课程'],
 	init: function(){
 		//this.httpTip = new Utils.httpTip({});
 		this.bindEvent();
